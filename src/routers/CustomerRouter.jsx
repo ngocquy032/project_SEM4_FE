@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react'
-import Header from '../Views/Customers/Pages/Header'
-import Footer from '../Views/Customers/Pages/Footer'
+import Header from '../views/Customers/components/header'
+import Footer from '../views/Customers/components/footer'
 import { Route, Routes } from 'react-router-dom'
-import Home from "../Views/Customers/Components/Home";
-import Login from '../Views/Customers/Components/Login';
-import MasterLayout from '../Views/Customers/Pages/MasterLayout';
-import About from '../Views/Customers/Components/About';
+import Home from "../views/Customers/pages/home";
+import Login from '../views/Customers/pages/login';
+import MasterLayout from '../views/Customers/components/masterLayout';
+import About from '../views/Customers/pages/about';
 
 
 const CustomerRouter = () => {

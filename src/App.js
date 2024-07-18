@@ -1,8 +1,8 @@
 import logo from './logo.svg';
 import './App.css'
 import {  Route, Routes } from 'react-router-dom';
-import AdminRouter from './Routers/AdminRouter';
-import CustomerRouter from './Routers/CustomerRouter';
+import AdminRouter from './routers/AdminRouter';
+import CustomerRouter from './routers/CustomerRouter';
 
 function App() {
   return (
