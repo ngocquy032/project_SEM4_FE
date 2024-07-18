@@ -1,5 +1,5 @@
 import React from 'react';
-
+import '../../../customerStyle'
 function Header(props) {
     return (
         <div>

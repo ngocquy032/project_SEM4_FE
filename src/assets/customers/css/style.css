@@ -456,7 +456,7 @@ a:focus {
 }
 
 .bg-1 {
-  background: url("../images/bg/22.jpg") no-repeat 50% 50%;
+  background: url("../../../../public/customer/images/bg/22.jpg") no-repeat 50% 50%;
   background-size: cover;
   position: relative;
 }
@@ -465,7 +465,7 @@ a:focus {
   position: relative;
   overflow: hidden;
   background: #fff;
-  background: url("../images/bg/slider-bg-1.jpg") no-repeat;
+  background: url("../../../../public/customer/images/bg/slider-bg-1.jpg") no-repeat;
   background-size: cover;
   min-height: 550px;
 }
@@ -819,7 +819,7 @@ a:focus {
 }
 
 .cta {
-  background: url("../images/bg/bg-4.jpg") no-repeat 50% 50%;
+  background: url("../../../../public/customer/images/bg/bg-4.jpg") no-repeat 50% 50%;
   background-size: cover;
   position: relative;
 }
@@ -847,12 +847,12 @@ a:focus {
 }
 
 .cta-2 {
-  background: url("../images/bg/cta-bg.png") no-repeat;
+  background: url("../../../../public/customer/images/bg/cta-bg.png") no-repeat;
   background-position: center center;
 }
 
 .cta-page {
-  background: url("../images/bg/banner.jpg") no-repeat;
+  background: url("../../../../public/customer/images/bg/banner.jpg") no-repeat;
   background-size: cover;
   position: relative;
 }
@@ -868,7 +868,7 @@ a:focus {
   left: 0px;
   position: absolute;
   content: "";
-  background: url("../images/bg/bg-2.jpg") no-repeat 50% 50%;
+  background: url("../../../../public/customer/images/bg/bg-2.jpg") no-repeat 50% 50%;
 }
 
 .testimonial .slick-dots {
