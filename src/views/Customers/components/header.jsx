@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 function Header(props) {
     return (
-        <div>
+        <div >
             <header>
                 <div className="header-top-bar">
                     <div className="container">

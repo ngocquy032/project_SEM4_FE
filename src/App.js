@@ -8,11 +8,14 @@ function App() {
   return (
     <div className="App">
       <Routes>
+          <Route path='/*' element={<CustomerRouter/>}/>
         <Route path='/admin/*' element={<AdminRouter/>}/>
-        <Route path='/*' element={<CustomerRouter/>}/>
+
       </Routes>
     </div>
+
   );
+
 }
 
 export default App;

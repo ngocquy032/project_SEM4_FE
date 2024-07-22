@@ -2,8 +2,7 @@ import React, { Fragment } from 'react'
 import Header from './header'
 import Footer from './footer'
 import { Outlet } from 'react-router-dom'
-import '../../../customerStyle'
-import $ from 'jquery';
+import '../../../styleCustomers.css'
 
 const MasterLayout = () => {
   return (
