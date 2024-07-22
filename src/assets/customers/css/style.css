@@ -846,10 +846,10 @@ a:focus {
   margin-bottom: -80px;
 }
 
-.cta-2 {
-  background: url("../../../../public/customer/images/bg/cta-bg.png") no-repeat;
-  background-position: center center;
-}
+/*.cta-2 {*/
+/*  background: url("../../../../public/customer/images/bg/cta-bg.png") no-repeat;*/
+/*  background-position: center center;*/
+/*}*/
 
 .cta-page {
   background: url("../../../../public/customer/images/bg/banner.jpg") no-repeat;
