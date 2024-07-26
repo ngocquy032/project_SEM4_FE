@@ -65,7 +65,7 @@ function Header(props) {
                                         <li><a className="dropdown-item" href="doctor.html">Doctors</a></li>
                                         <li><a className="dropdown-item" href="doctor-single.html">Doctor Single</a>
                                         </li>
-                                        <li><a className="dropdown-item" href="appoinment.html">Appoinment</a></li>
+                                        <li><Link className="dropdown-item" to="/bookAppoinment">Appoinment</Link></li>
                                     </ul>
                                 </li>
 
@@ -80,6 +80,7 @@ function Header(props) {
                                     </ul>
                                 </li>
                                 <li className="nav-item"><a className="nav-link" href="contact.html">Contact</a></li>
+                                <li className="nav-item"><a className="nav-link" href="contact.html">Account</a></li>
                             </ul>
                         </div>
                     </div>
