@@ -7,6 +7,10 @@ import About from '../views/Customers/pages/about';
 import BookAppoinment from '../views/Customers/components/bookAppoinment';
 // import '../styleCustomers.css'
 import ScrollTop from '../scrollTop';
+import Doctors from '../views/Customers/pages/doctors';
+import Contact from "../views/Customers/pages/contact";
+
+
 
 
 const CustomerRouter = () => {
@@ -24,6 +28,9 @@ const CustomerRouter = () => {
         <Route index element={<Home />} />
         <Route path='/about' element={<About />} />
         <Route path='/bookAppoinment' element={<BookAppoinment />} />
+        <Route path='/doctors' element={ <Doctors/>}/>
+        <Route path='/contact' element={ <Contact/>}/>
+
 
 
 

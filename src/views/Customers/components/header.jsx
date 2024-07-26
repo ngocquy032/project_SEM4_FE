@@ -59,14 +59,14 @@ function Header(props) {
                                 </li>
 
                                 <li className="nav-item dropdown">
-                                    <a className="nav-link dropdown-toggle" href="doctor.html" id="dropdown03"
-                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Doctors </a>
-                                    <ul className="dropdown-menu" aria-labelledby="dropdown03">
-                                        <li><a className="dropdown-item" href="doctor.html">Doctors</a></li>
-                                        <li><a className="dropdown-item" href="doctor-single.html">Doctor Single</a>
-                                        </li>
-                                        <li><Link className="dropdown-item" to="/bookAppoinment">Appoinment</Link></li>
-                                    </ul>
+                                    <Link className="nav-link dropdown-toggle"  to="/doctors"  id="dropdown03"
+                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Doctors </Link>
+                                    {/*<ul className="dropdown-menu" aria-labelledby="dropdown03">*/}
+                                    {/*    <li><Link className="dropdown-item" to="/doctors">Doctors</Link></li>*/}
+                                    {/*    <li><a className="dropdown-item" href="doctor-single.html">Doctor Single</a>*/}
+                                    {/*    </li>*/}
+                                    {/*    <li><Link className="dropdown-item" to="/bookAppoinment">Appoinment</Link></li>*/}
+                                    {/*</ul>*/}
                                 </li>
 
                                 <li className="nav-item dropdown">
@@ -79,7 +79,7 @@ function Header(props) {
                                         <li><a className="dropdown-item" href="blog-single.html">Blog Single</a></li>
                                     </ul>
                                 </li>
-                                <li className="nav-item"><a className="nav-link" href="contact.html">Contact</a></li>
+                                <li className="nav-item"><Link className="nav-link" to="/contact">Contact</Link></li>
                                 <li className="nav-item"><a className="nav-link" href="contact.html">Account</a></li>
                             </ul>
                         </div>
