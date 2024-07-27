@@ -45,17 +45,17 @@ function Header(props) {
                                 <li className="nav-item active">
                                     <Link className="nav-link" to="/">Home</Link>
                                 </li>
-                                <li className="nav-item"><a className="nav-link" href="about.html">About</a></li>
+                                <li className="nav-item"><Link className="nav-link" to="/about">About</Link></li>
                                 <li className="nav-item"><a className="nav-link" href="service.html">Services</a></li>
 
                                 <li className="nav-item dropdown">
-                                    <a className="nav-link dropdown-toggle" href="department.html" id="dropdown02"
-                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Department </a>
-                                    <ul className="dropdown-menu" aria-labelledby="dropdown02">
-                                        <li><a className="dropdown-item" href="department.html">Departments</a></li>
-                                        <li><a className="dropdown-item" href="department-single.html">Department
-                                            Single</a></li>
-                                    </ul>
+                                    <Link className="nav-link dropdown-toggle" to="/department" id="dropdown02"
+                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Department </Link>
+                                    {/*<ul className="dropdown-menu" aria-labelledby="dropdown02">*/}
+                                    {/*    <li><a className="dropdown-item" href="department.html">Departments</a></li>*/}
+                                    {/*    <li><a className="dropdown-item" href="department-single.html">Department*/}
+                                    {/*        Single</a></li>*/}
+                                    {/*</ul>*/}
                                 </li>
 
                                 <li className="nav-item dropdown">
