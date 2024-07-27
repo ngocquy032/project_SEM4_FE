@@ -9,6 +9,7 @@ const MasterLayout = () => {
         paddingTop: '100px',
         fontSize: '18px'// Điều chỉnh giá trị này cho phù hợp với chiều cao của header
     };
+
     return (
     <Fragment>
         <Header/>
