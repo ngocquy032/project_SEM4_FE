@@ -2,8 +2,16 @@ import React from 'react';
 import {Link} from "react-router-dom";
 
 function Header(props) {
+    const headerStyle = {
+        position: 'fixed',
+        top: 0,
+        width: '100%',
+        zIndex: 1000,
+        backgroundColor: '#fff',
+        boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)'
+    };
     return (
-        <div >
+        <div style={headerStyle} >
             <header>
                 <div className="header-top-bar">
                     <div className="container">
