@@ -2,10 +2,10 @@ import React from 'react';
 import BookAppoinment from '../components/bookAppoinment';
 import { Link, NavLink } from 'react-router-dom';
 
-import('../../../assets/customers/css/style.css')
+import('../../../assets/customers/css/style.css');
 
 
-function Home(props) {
+function Home() {
     return (
         <div>
             {/*slide*/}

@@ -5,8 +5,15 @@ import Login from '../views/Customers/pages/login';
 import MasterLayout from '../views/Customers/components/masterLayout';
 import About from '../views/Customers/pages/about';
 import BookAppoinment from '../views/Customers/components/bookAppoinment';
+import Department from "../views/Customers/pages/department";
 // import '../styleCustomers.css'
 import ScrollTop from '../scrollTop';
+import Doctors from '../views/Customers/pages/doctors';
+import Contact from "../views/Customers/pages/contact";
+import Account from "../views/Customers/pages/account";
+import Register from "../views/Customers/pages/register";
+
+
 
 
 const CustomerRouter = () => {
@@ -17,13 +24,19 @@ const CustomerRouter = () => {
 
 
       {/* components không có header và footer */}
-      <Route path='/login' element={<Login />} />
+
 
       {/* components có chung header và footer */}
       <Route path='/' element={<MasterLayout />}>
+        <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
         <Route index element={<Home />} />
         <Route path='/about' element={<About />} />
         <Route path='/bookAppoinment' element={<BookAppoinment />} />
+        <Route path='/doctors' element={ <Doctors/>}/>
+        <Route path='/contact' element={ <Contact/>}/>
+        <Route path='/department' element={ <Department/>}/>
+        <Route path='/account' element={ <Account/>}/>
 
 
 
