@@ -1,17 +1,20 @@
-import React, { Fragment } from 'react'
-import {Link, Route, Routes} from 'react-router-dom'
-import Home from "../views/Customers/pages/home";
-import Login from '../views/Customers/pages/login';
+import React from 'react';
+import { Link, Route, Routes } from 'react-router-dom';
+import BookAppoinment from '../views/Customers/components/bookAppoinment';
 import MasterLayout from '../views/Customers/components/masterLayout';
 import About from '../views/Customers/pages/about';
-import BookAppoinment from '../views/Customers/components/bookAppoinment';
 import Department from "../views/Customers/pages/department";
+import Home from "../views/Customers/pages/home";
+import Login from '../views/Customers/pages/login';
 // import '../styleCustomers.css'
 import ScrollTop from '../scrollTop';
-import Doctors from '../views/Customers/pages/doctors';
-import Contact from "../views/Customers/pages/contact";
 import Account from "../views/Customers/pages/account";
+import Contact from "../views/Customers/pages/contact";
+import Details from '../views/Customers/pages/details';
+import Doctors from '../views/Customers/pages/doctors';
 import Register from "../views/Customers/pages/register";
+import Service from '../views/Customers/pages/service';
+
 
 
 
@@ -37,6 +40,8 @@ const CustomerRouter = () => {
         <Route path='/contact' element={ <Contact/>}/>
         <Route path='/department' element={ <Department/>}/>
         <Route path='/account' element={ <Account/>}/>
+        <Route path='/service' element={ <Service/>}/>
+        <Route path='/details' element={ <Details/>}/>
 
 
 

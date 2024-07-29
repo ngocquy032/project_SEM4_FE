@@ -1,7 +1,7 @@
-import React from 'react';
-import {Link, useLocation} from "react-router-dom";
+import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faCircleUser} from "@fortawesome/free-solid-svg-icons";
+import React from 'react';
+import { Link, useLocation } from "react-router-dom";
 
 
 function Header(props) {
@@ -63,7 +63,7 @@ function Header(props) {
                                     <Link className="nav-link" to="/"  style={getLinkStyle("/")}>Home</Link>
                                 </li>
                                 <li className="nav-item"><Link className="nav-link" to="/about" style={getLinkStyle("/about")}>About</Link></li>
-                                <li className="nav-item"><a className="nav-link" href="service.html">Services</a></li>
+                                <li className="nav-item"><Link className="nav-link" to="/service" style={getLinkStyle("/service")}>Services</Link></li>
 
                                 <li className="nav-item dropdown">
                                     <Link className="nav-link dropdown-toggle" to="/department" id="dropdown02"
