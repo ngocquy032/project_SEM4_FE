@@ -1,9 +1,9 @@
 import React from 'react';
 
-
-function Footer(props) {
+function FooterAdmin(props) {
     return (
-        <div >
+        <div>
+
             <footer className="footer section gray-bg">
                 <div className="container">
                     <div className="row">
@@ -12,6 +12,8 @@ function Footer(props) {
                                 <div className="logo mb-4">
                                     <img src="customer/images/logo.png" alt="" className="img-fluid"/>
                                 </div>
+                                <p>Tempora dolorem voluptatum nam vero assumenda voluptate, facilis ad eos obcaecati
+                                    tenetur veritatis eveniet distinctio possimus.</p>
                                 <p>Tempora dolorem voluptatum nam vero assumenda voluptate, facilis ad eos obcaecati
                                     tenetur veritatis eveniet distinctio possimus.</p>
 
@@ -28,7 +30,7 @@ function Footer(props) {
 
                         <div className="col-lg-2 col-md-6 col-sm-6">
                             <div className="widget mb-5 mb-lg-0 text-left">
-                                <h4 className="text-capitalize mb-3">Department</h4>
+                                <h4 className="text-capitalize mb-3">Department333333</h4>
                                 <div className="divider mb-4"></div>
 
                                 <ul className="list-unstyled footer-menu lh-35">
@@ -66,10 +68,11 @@ function Footer(props) {
                                         <i className="icofont-email mr-3"></i>
                                         <span className="h6 mb-0">Support Available for 24/7</span>
                                     </div>
-                                    <h4  className="mt-2">
-                                        <a href="tel:+23-345-67890" style={{ color: '#222', fontFamily: 'Exo', fontWeight: 700, fontSize: 20.8}}>
+                                    <h4 className="mt-2">
+                                        <a href="tel:+23-345-67890"
+                                           style={{color: '#222', fontFamily: 'Exo', fontWeight: 700, fontSize: 20.8}}>
 
-                                        Support@email.com</a></h4>
+                                            Support@email.com</a></h4>
                                 </div>
 
                                 <div className="footer-contact-block">
@@ -77,7 +80,12 @@ function Footer(props) {
                                         <i className="icofont-support mr-3"></i>
                                         <span className="h6 mb-0">Mon to Fri : 08:30 - 18:00</span>
                                     </div>
-                                    <h4 className="mt-2"><a href="tel:+23-345-67890" style={{ color: '#222', fontFamily: 'Exo', fontWeight: 700, fontSize: 20.8}}>+23-456-6588</a></h4>
+                                    <h4 className="mt-2"><a href="tel:+23-345-67890" style={{
+                                        color: '#222',
+                                        fontFamily: 'Exo',
+                                        fontWeight: 700,
+                                        fontSize: 20.8
+                                    }}>+23-456-6588</a></h4>
                                 </div>
                             </div>
                         </div>
@@ -103,4 +111,4 @@ function Footer(props) {
     );
 }
 
-export default Footer;
+export default FooterAdmin;

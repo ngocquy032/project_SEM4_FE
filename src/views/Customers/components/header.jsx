@@ -1,9 +1,24 @@
 import React from 'react';
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faCircleUser} from "@fortawesome/free-solid-svg-icons";
+
 
 function Header(props) {
+    const location = useLocation();
+    const getLinkStyle = (path) => {
+        return location.pathname === path ? { color: 'red' } : {};
+    };
+    const headerStyle = {
+        position: 'fixed',
+        top: 0,
+        width: '100%',
+        zIndex: 1000,
+        backgroundColor: '#fff',
+        boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)'
+    };
     return (
-        <div>
+        <div style={headerStyle} >
             <header>
                 <div className="header-top-bar">
                     <div className="container">
@@ -42,46 +57,61 @@ function Header(props) {
 
                         <div className="collapse navbar-collapse" id="navbarmain">
                             <ul className="navbar-nav ml-auto">
+
                                 <li className="nav-item active">
-                                    <Link className="nav-link" to="/">Home</Link>
+
+                                    <Link className="nav-link" to="/"  style={getLinkStyle("/")}>Home</Link>
                                 </li>
-                                <li className="nav-item"><a className="nav-link" href="about.html">About</a></li>
+                                <li className="nav-item"><Link className="nav-link" to="/about" style={getLinkStyle("/about")}>About</Link></li>
                                 <li className="nav-item"><a className="nav-link" href="service.html">Services</a></li>
 
                                 <li className="nav-item dropdown">
-                                    <a className="nav-link dropdown-toggle" href="department.html" id="dropdown02"
-                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Department </a>
-                                    <ul className="dropdown-menu" aria-labelledby="dropdown02">
-                                        <li><a className="dropdown-item" href="department.html">Departments</a></li>
-                                        <li><a className="dropdown-item" href="department-single.html">Department
-                                            Single</a></li>
-                                    </ul>
+                                    <Link className="nav-link dropdown-toggle" to="/department" id="dropdown02"
+                                          data-toggle="dropdown" aria-haspopup="true"
+                                          aria-expanded="false" style={getLinkStyle("/department")}>Department </Link>
+                                    {/*<ul className="dropdown-menu" aria-labelledby="dropdown02">*/}
+                                    {/*    <li><a className="dropdown-item" href="department.html">Departments</a></li>*/}
+                                    {/*    <li><a className="dropdown-item" href="department-single.html">Department*/}
+                                    {/*        Single</a></li>*/}
+                                    {/*</ul>*/}
                                 </li>
 
                                 <li className="nav-item dropdown">
-                                    <a className="nav-link dropdown-toggle" href="doctor.html" id="dropdown03"
-                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Doctors </a>
-                                    <ul className="dropdown-menu" aria-labelledby="dropdown03">
-                                        <li><a className="dropdown-item" href="doctor.html">Doctors</a></li>
-                                        <li><a className="dropdown-item" href="doctor-single.html">Doctor Single</a>
-                                        </li>
-                                        <li><a className="dropdown-item" href="appoinment.html">Appoinment</a></li>
-                                    </ul>
+                                    <Link className="nav-link dropdown-toggle" to="/doctors" id="dropdown03"
+                                          data-toggle="dropdown" aria-haspopup="true"
+                                          aria-expanded="false" style={getLinkStyle("/doctors")}>Doctors </Link>
+                                    {/*<ul className="dropdown-menu" aria-labelledby="dropdown03">*/}
+                                    {/*    <li><Link className="dropdown-item" to="/doctors">Doctors</Link></li>*/}
+                                    {/*    <li><a className="dropdown-item" href="doctor-single.html">Doctor Single</a>*/}
+                                    {/*    </li>*/}
+                                    {/*    <li><Link className="dropdown-item" to="/bookAppoinment">Appoinment</Link></li>*/}
+                                    {/*</ul>*/}
                                 </li>
 
                                 <li className="nav-item dropdown">
                                     <a className="nav-link dropdown-toggle" href="blog-sidebar.html" id="dropdown05"
                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog </a>
-                                    <ul className="dropdown-menu" aria-labelledby="dropdown05">
-                                        <li><a className="dropdown-item" href="blog-sidebar.html">Blog with Sidebar</a>
-                                        </li>
+                                    {/*<ul className="dropdown-menu" aria-labelledby="dropdown05">*/}
+                                    {/*    <li><a className="dropdown-item" href="blog-sidebar.html">Blog with Sidebar</a>*/}
+                                    {/*    </li>*/}
 
-                                        <li><a className="dropdown-item" href="blog-single.html">Blog Single</a></li>
-                                    </ul>
+                                    {/*    <li><a className="dropdown-item" href="blog-single.html">Blog Single</a></li>*/}
+                                    {/*</ul>*/}
                                 </li>
-                                <li className="nav-item"><a className="nav-link" href="contact.html">Contact</a></li>
+                                <li className="nav-item"><Link className="nav-link" to="/contact" style={getLinkStyle("/contact")}>Contact</Link></li>
                             </ul>
+
+
                         </div>
+
+                    </div>
+                    <div style={{ fontSize: '30px'}}>
+                        <ul className="navbar-nav ml-auto">
+                            <li className="nav-item"><Link className="nav-link" to="/account" style={getLinkStyle("/account")}> <FontAwesomeIcon
+                                icon={faCircleUser}/></Link></li>
+                        </ul>
+
+
                     </div>
                 </nav>
             </header>
