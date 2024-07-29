@@ -3,7 +3,7 @@ import React from 'react'
 
 
 
-const Details = () => {
+const DepartmentDetails = () => {
     return (
         <div>
 
@@ -91,4 +91,4 @@ const Details = () => {
         </div>
     )
 }
-export default Details
+export default DepartmentDetails;

@@ -10,7 +10,7 @@ import Login from '../views/Customers/pages/login';
 import ScrollTop from '../scrollTop';
 import Account from "../views/Customers/pages/account";
 import Contact from "../views/Customers/pages/contact";
-import Details from '../views/Customers/pages/details';
+import DepartmentDetails from "../views/Customers/pages/departmentDetails"
 import Doctors from '../views/Customers/pages/doctors';
 import Register from "../views/Customers/pages/register";
 import Service from '../views/Customers/pages/service';
@@ -41,7 +41,8 @@ const CustomerRouter = () => {
         <Route path='/department' element={ <Department/>}/>
         <Route path='/account' element={ <Account/>}/>
         <Route path='/service' element={ <Service/>}/>
-        <Route path='/details' element={ <Details/>}/>
+        <Route path='/departmentDetails' element={ <DepartmentDetails/>}/>
+
 
 
 
