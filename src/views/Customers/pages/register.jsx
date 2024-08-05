@@ -1,7 +1,46 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Link} from "react-router-dom";
 
 function Register(props) {
+    // create form
+    const [createFrom, setCreateForm ] = useState({
+        id: 0,
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        password: '',
+        repassword: ''
+    });
+    // clear Form
+    const cleateForm = ()=>{
+        setCreateForm({
+            firstName: '',
+            lastName: '',
+            email: '',
+            phone: '',
+            password: '',
+            repassword: ''
+        })
+    }
+
+    // change input form
+    const inputChange = (e) => {
+        setCreateForm({...cleateForm, [e.target.name]: e.target.value})
+    }
+
+
+    const onRegister = (e) =>{
+        e.preventDefault();
+        console.log('register', createFrom);
+
+    }
+
+
+      
+
+
+
     return (
         <div>
             <section className="page-title bg-1">
@@ -40,40 +79,40 @@ function Register(props) {
                                     <div className="row">
                                         <div className="col-lg-6" style={{margin: '0 0 5% 0'}}>
                                             <div className="form-group">
-                                                <input name="firstName"  type="text" className="form-control"
-                                                       placeholder="First Name"/>
+                                                <input name="firstName" required=""  type="text" className="form-control"
+                                                       placeholder="First Name" value={createFrom.firstName} onChange={inputChange} />
                                             </div>
                                         </div>
 
                                         <div className="col-lg-6" >
                                             <div className="form-group">
                                                 <input name="lastName"  type="text" className="form-control"
-                                                       placeholder="Last Name"/>
+                                                       placeholder="Last Name" value={createFrom.lastName} onChange={inputChange}/>
                                             </div>
                                         </div>
                                         <div className="col-lg-6" style={{margin: '0 0 5% 0'}}>
                                             <div className="form-group">
                                                 <input name="email"  type="text" className="form-control"
-                                                       placeholder="Email"/>
+                                                       placeholder="Email" value={createFrom.email} onChange={inputChange}/>
                                             </div>
                                         </div>
 
                                         <div className="col-lg-6">
                                             <div className="form-group">
                                                 <input name="phone"  type="text" className="form-control"
-                                                       placeholder="Phone Number"/>
+                                                       placeholder="Phone Number" value={createFrom.phone} onChange={inputChange}/>
                                             </div>
                                         </div>
                                         <div className="col-lg-12" style={{margin: '0 0 5% 0'}}>
                                             <div className="form-group" >
                                                 <input name="password" type="text" className="form-control"
-                                                       placeholder="Password"/>
+                                                       placeholder="Password" value={createFrom.password} onChange={inputChange} />
                                             </div>
                                         </div>
                                         <div className="col-lg-12" style={{margin: '0 0 5% 0'}}>
                                             <div className="form-group">
                                                 <input name="repassword"  type="text" className="form-control"
-                                                       placeholder="Repassword"/>
+                                                       placeholder="Repassword"  value={createFrom.repassword} onChange={inputChange}/>
                                             </div>
                                         </div>
 
@@ -82,7 +121,7 @@ function Register(props) {
                                 </form>
                                 <div style={{textAlign: 'center'}}>
                                     <div className="btn-container " style={{color: 'white'}}>
-                                        <a
+                                        <a onClick={ onRegister }
                                             className="btn btn-main-2 btn-icon btn-round-full">Register
                                             <i className="icofont-simple-right ml-2  "></i>
                                         </a>
