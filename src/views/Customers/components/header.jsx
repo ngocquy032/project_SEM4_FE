@@ -89,8 +89,9 @@ function Header(props) {
                                 </li>
 
                                 <li className="nav-item dropdown">
-                                    <a className="nav-link dropdown-toggle" href="blog-sidebar.html" id="dropdown05"
-                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog </a>
+                                    <Link className="nav-link dropdown-toggle" to="/blog" id="dropdown02"
+                                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                          style={getLinkStyle("/blog")}>Blog </Link>
                                     {/*<ul className="dropdown-menu" aria-labelledby="dropdown05">*/}
                                     {/*    <li><a className="dropdown-item" href="blog-sidebar.html">Blog with Sidebar</a>*/}
                                     {/*    </li>*/}

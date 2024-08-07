@@ -69,13 +69,13 @@ const doctors = () => {
                                   </div>
                               </div>
                               <div className="content mt-3">
-                                  <h4 className="mb-0"><a href="doctor-single.html">Thomas Henry</a></h4>
+                                  <h4 className="mb-0"><Link to="/doctorDetails">Thomas Henry</Link></h4>
                                   <p>Cardiology</p>
                               </div>
                           </div>
                       </div>
 
-                      <div className="col-lg-3 col-sm-6 col-md-6 mb-4 shuffle-item" data-groups="[&quot;cat2&quot;]">
+                      <div className="col-lg-3 col-sm-6 col-md-6 mb-4 shuffle-item" data-groups="[&quot;cat2gi&quot;]">
                           <div className="position-relative doctor-inner-box">
                               <div className="doctor-profile">
                                   <div className="doctor-img">
