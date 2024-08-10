@@ -80,23 +80,12 @@ function Header(props) {
                                     <Link className="nav-link dropdown-toggle" to="/doctors" id="dropdown03"
                                           data-toggle="dropdown" aria-haspopup="true"
                                           aria-expanded="false" style={getLinkStyle("/doctors")}>Doctors </Link>
-                                    {/*<ul className="dropdown-menu" aria-labelledby="dropdown03">*/}
-                                    {/*    <li><Link className="dropdown-item" to="/doctors">Doctors</Link></li>*/}
-                                    {/*    <li><a className="dropdown-item" href="doctor-single.html">Doctor Single</a>*/}
-                                    {/*    </li>*/}
-                                    {/*    <li><Link className="dropdown-item" to="/bookAppoinment">Appoinment</Link></li>*/}
-                                    {/*</ul>*/}
+                                    
                                 </li>
 
                                 <li className="nav-item dropdown">
-                                    <a className="nav-link dropdown-toggle" href="blog-sidebar.html" id="dropdown05"
-                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog </a>
-                                    {/*<ul className="dropdown-menu" aria-labelledby="dropdown05">*/}
-                                    {/*    <li><a className="dropdown-item" href="blog-sidebar.html">Blog with Sidebar</a>*/}
-                                    {/*    </li>*/}
-
-                                    {/*    <li><a className="dropdown-item" href="blog-single.html">Blog Single</a></li>*/}
-                                    {/*</ul>*/}
+                                    <Link className="nav-link dropdown-toggle" to="/blog" id="dropdown05"
+                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={getLinkStyle("/blog")}>Blog </Link>
                                 </li>
                                 <li className="nav-item"><Link className="nav-link" to="/contact" style={getLinkStyle("/contact")}>Contact</Link></li>
                             </ul>

@@ -14,7 +14,9 @@ import DepartmentDetails from "../views/Customers/pages/departmentDetails"
 import Doctors from '../views/Customers/pages/doctors';
 import Register from "../views/Customers/pages/register";
 import Service from '../views/Customers/pages/service';
-
+import BookingForm from '../views/Customers/components/bookingForm';
+import Blog from'../views/Customers/pages/blog'
+import DoctorDetails from '../views/Customers/pages/doctorDetails';
 
 
 
@@ -42,6 +44,11 @@ const CustomerRouter = () => {
         <Route path='/account' element={ <Account/>}/>
         <Route path='/service' element={ <Service/>}/>
         <Route path='/departmentDetails' element={ <DepartmentDetails/>}/>
+        <Route path='/bookingForm' element={ <BookingForm/>}/>
+        <Route path='/blog' element={ <Blog/>}/>
+        <Route path='/doctorDetails' element={ <DoctorDetails/>}/>
+
+
 
 
 
