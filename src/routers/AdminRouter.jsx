@@ -1,7 +1,7 @@
 import React from 'react'
 import {Route, Routes} from "react-router-dom";
 import Demo from "../views/Admin/demo";
-import '../styleAdmin.css'
+import '../assets/admins/css/styleAdmin.css'
 import MasterLayoutAdmin from "../views/Admin/componets/masterLayoutAdmin";
 
 

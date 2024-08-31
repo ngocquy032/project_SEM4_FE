@@ -3,8 +3,7 @@ import React from 'react';
 function Demo(props) {
     return (
         <div>
-
-            <p>demo</p>
+                demo
         </div>
     );
 }
