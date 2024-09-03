@@ -65,4 +65,24 @@ import { API_BASE_URL, apiAdmin, apiUser } from "../../config/apiConfig";
     
     // },
 
+
+    // Một hàm call Api mẫu mn tham khảo 
+    
+    // async function createCoupon(couponData) {
+    //     try{
+    //       const response = await All_API.createCoupon(couponData)
+    //       if(response.data.status === "success") {
+    //           ToastSuccess(response.data.message)
+    //           onCreate()
+    //           handleCancel()
+    //       }else {
+    //           ToastError(response.data.message)
+    //           handleCancel()
+    //       }
+    //   }catch (error){
+    //       ToastError(error.response.data.message)
+    //       handleCancel()
+    //     }
+    //   }
+
   }
