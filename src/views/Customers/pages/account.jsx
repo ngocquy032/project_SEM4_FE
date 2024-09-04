@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 
-function Account(props) {
+function Account() {
     return (
         <div>
             <section className="page-title bg-1">
