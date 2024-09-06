@@ -10,8 +10,8 @@ body {
 
 .wrapper {
   height: 100%;
-  overflow-x: hidden;
-  overflow-y: hidden;
+  /* overflow-x: hidden;
+  overflow-y: hidden; */
   background-color: transparent;
   position: relative; }
   .wrapper:before, .wrapper:after {
@@ -22,8 +22,7 @@ body {
 
     
 body {
-  overflow-x: hidden;
-  overflow-y: auto;
+ 
   color: #172b4c;
   font-size: 1rem;
   font-style: normal;
@@ -20403,7 +20402,7 @@ Height property
   line-height: 115px;
   font-family: "Rubik", sans-serif !important; }
 
-.icon i {
+/* .icon i {
   width: 60px;
   height: 60px;
   text-align: center;
@@ -20411,7 +20410,7 @@ Height property
   background-color: rgba(255, 255, 255, 0.2);
   line-height: 60px;
   border-radius: 100%;
-  margin-right: 30px; }
+  margin-right: 30px; } */
 
 .wed-up {
   margin-top: -85px;
@@ -25206,7 +25205,7 @@ time {
   margin: 0 4px;
   background-color: rgba(53, 98, 174, 0.07); }
 
-.divider {
+/* .divider {
   display: -webkit-box;
   display: flex;
   -webkit-box-align: center;
@@ -25217,7 +25216,7 @@ time {
   font-size: 0.8571rem;
   letter-spacing: .5px;
   margin: 2rem auto;
-  width: 100%; }
+  width: 100%; } */
   .divider:before, .divider:after {
     content: '';
     -webkit-box-flex: 1;
@@ -31952,7 +31951,7 @@ img.away, img.busy, img.offline, img.online {
  }
 
  .multinav-scroll{
-  height: 90vh;
+  height: 100%;
   overflow-y: auto;
 }
 
