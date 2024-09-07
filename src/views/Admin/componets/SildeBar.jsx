@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const SildeBar = () => {
 	const [openItem, setOpenItem] = useState(null)
@@ -44,8 +45,8 @@ const SildeBar = () => {
 					</span>
 				  </a>
 				  <ul className="treeview-menu">
-					<li><a href="patients.html"><i className="icon-Commit"><span className="path1"></span><span className="path2"></span></i>Add User</a></li>
-					<li><a href="patient_details.html"><i className="icon-Commit"><span className="path1"></span><span className="path2"></span></i>List User</a></li>
+				  <li><a href="patients.html"><i className="icon-Commit"><span className="path1"></span><span className="path2"></span></i>Add User</a></li>
+					<li><Link to="/admin/userList"><i className="icon-Commit"><span className="path1"></span><span className="path2"></span></i>List User</Link></li>
 				  </ul>
 				</li>
 

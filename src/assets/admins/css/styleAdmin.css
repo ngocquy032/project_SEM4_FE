@@ -20264,7 +20264,7 @@ Height property
   -o-transition: transform 0.3s ease-in-out, margin 0.3s ease-in-out;
   -webkit-transition: transform 0.3s ease-in-out, margin 0.3s ease-in-out;
   transition: transform 0.3s ease-in-out, margin 0.3s ease-in-out;
-  margin-left: 19.29rem;
+  margin-left: 10.29rem;
   z-index: 820; }
 
 .main-footer {
@@ -20312,7 +20312,8 @@ Height property
 .fixed .main-sidebar {
   position: fixed; }
 .fixed .content-wrapper {
-  margin-top: 80px; }
+  width: 90%;
+  margin-top: 50px; }
 .fixed .right-side {
   margin-top: 80px; }
 
@@ -24079,13 +24080,13 @@ ul.panel-actions > li {
   .table > thead > tr > td, .table > thead > tr > th {
     white-space: nowrap; } }
 .table > tbody > tr > td, .table > tbody > tr > th {
-  padding: 1rem;
+  padding: 1rem 3rem;
   vertical-align: middle; }
 .table > tfoot > tr > td, .table > tfoot > tr > th {
   padding: 1rem;
   vertical-align: middle; }
 .table > thead > tr > td, .table > thead > tr > th {
-  padding: 1rem;
+  padding: 1rem 3rem;
   vertical-align: middle; }
 
 .table tr td .progress {
@@ -31993,4 +31994,3 @@ img.away, img.busy, img.offline, img.online {
 .main-footer {
   text-align: center;
 }
-
