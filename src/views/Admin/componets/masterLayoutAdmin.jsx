@@ -18,7 +18,7 @@ function MasterLayoutAdmin() {
             <section className="content1">
             <div className="row">
 
-              <Demo />
+              <Outlet/>
 
             </div>
             </section>
