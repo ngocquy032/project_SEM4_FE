@@ -3,6 +3,7 @@ import Header from './header'
 import Footer from './footer'
 import { Outlet } from 'react-router-dom'
 import '../../../styleCustomers.css'
+import ScrollTop from '../../../scrollTop.jsx'
 
 const MasterLayout = () => {
     const contentStyle = {
@@ -13,6 +14,8 @@ const MasterLayout = () => {
     return (
     <Fragment>
         <Header/>
+        <ScrollTop />
+
         <div style={contentStyle}>
             <Outlet/>
         </div>

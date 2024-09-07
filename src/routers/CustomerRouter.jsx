@@ -7,7 +7,6 @@ import Department from "../views/Customers/pages/department";
 import Home from "../views/Customers/pages/home";
 import Login from '../views/Customers/pages/login';
 // import '../styleCustomers.css'
-import ScrollTop from '../scrollTop';
 import Account from "../views/Customers/pages/account";
 import Contact from "../views/Customers/pages/contact";
 import DepartmentDetails from "../views/Customers/pages/departmentDetails"
@@ -24,7 +23,7 @@ import DoctorDetails from '../views/Customers/pages/doctorDetails';
 const CustomerRouter = () => {
   return (
     <>
-    <ScrollTop />
+
     <Routes>
 
 

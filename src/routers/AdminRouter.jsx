@@ -1,26 +1,45 @@
 import React from 'react'
-import {Route, Routes} from "react-router-dom";
+import { Route, Routes, Link } from "react-router-dom";
 import Demo from "../views/Admin/demo";
-import '../styleAdmin.css'
+import '../assets/admins/css/styleAdmin.css'
 import MasterLayoutAdmin from "../views/Admin/componets/masterLayoutAdmin";
+import UserList from '../views/Admin/pages/userList';
 
 
 const AdminRouter = () => {
   return (
-      <Routes>
+    <Routes>
 
-        {/* components không có header và footer */}
-        {/*<Route path='/demo' element={<Demo />} />*/}
+      {/* components không có header và footer */}
+      {/*<Route path='/demo' element={<Demo />} />*/}
 
-          {/* components có chung header và footer */}
-          <Route path='/' element={<MasterLayoutAdmin/>}>
-              <Route index element={<Demo />} />
+      {/* components có chung header và footer */}
+      <Route path='/' element={<MasterLayoutAdmin />}>
+        <Route index element={<Demo />} />
+        <Route path='/userList' element={<UserList />} />
 
 
-              <Route path='*' element={<div>404 Not Found</div>} />
-          </Route>
+        <Route path='*' element={<div className="error-section" style={{ margin: '7% 27%'}}>
+          <div className="container-fluid faq-container">
+            <div className="error-content text-center">
+              {/* <img className="error-content__icon" src="admin/images/404.svg" alt="404" width="62"
+                height="62" /> */}
+              <h2 className="error-content__title">
+                404. Page not found.
+              </h2>
+              <p>
+                Sorry, we couldn’t find the page you where looking
+                for. We suggest that you return to homepage.
+              </p>
+              <div className="error-content__btn btn">
+                <Link to="/admin/">Back to homepage</Link>
+              </div>
+            </div>
+          </div>
+        </div>} />
+      </Route>
 
-      </Routes>
+    </Routes>
   )
 }
 
