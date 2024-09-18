@@ -3,7 +3,11 @@ import { Route, Routes, Link } from "react-router-dom";
 import Demo from "../views/Admin/demo";
 import '../assets/admins/css/styleAdmin.css'
 import MasterLayoutAdmin from "../views/Admin/componets/masterLayoutAdmin";
-import UserList from '../views/Admin/pages/userList';
+import UserList from '../views/Admin/pages/user/userList';
+import UserAdd from '../views/Admin/pages/user/userAdd';
+import LoginAdmin from '../views/Admin/pages/loginAdmin';
+import UserDetails from '../views/Admin/pages/user/userDetails';
+
 
 
 const AdminRouter = () => {
@@ -11,12 +15,16 @@ const AdminRouter = () => {
     <Routes>
 
       {/* components không có header và footer */}
-      {/*<Route path='/demo' element={<Demo />} />*/}
+      <Route path='/loginAdmin' element={< LoginAdmin />} />
 
       {/* components có chung header và footer */}
       <Route path='/' element={<MasterLayoutAdmin />}>
         <Route index element={<Demo />} />
         <Route path='/userList' element={<UserList />} />
+        <Route path='/userAdd' element={<UserAdd />} />
+        <Route path='/userDetails/' element={<UserDetails />} />
+
+        
 
 
         <Route path='*' element={<div className="error-section" style={{ margin: '7% 27%'}}>

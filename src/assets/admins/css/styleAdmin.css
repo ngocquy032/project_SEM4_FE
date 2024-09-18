@@ -31994,3 +31994,6 @@ img.away, img.busy, img.offline, img.online {
 .main-footer {
   text-align: center;
 }
+.btn-group a:hover {
+  color: red; /* Màu đỏ khi hover */
+}

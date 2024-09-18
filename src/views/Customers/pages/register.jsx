@@ -112,12 +112,13 @@ function Register(props) {
             const { repassword, ...formDataWithoutRepassword } = createForm;
             console.log('register', formDataWithoutRepassword);
             // setRegisteredUsers([...registeredUsers, formDataWithoutRepassword]);
-            setRegisteredUsers(prevUsers => {
-                const updatedUsers = [...prevUsers, formDataWithoutRepassword];
-                console.log('Registered Users:', updatedUsers); // Hiển thị toàn bộ danh sách người dùng đã đăng ký
-                return updatedUsers;
-            });
-          
+            // setRegisteredUsers(prevUsers => {
+            //     const updatedUsers = [...prevUsers, formDataWithoutRepassword];
+            //     console.log('Registered Users:', updatedUsers); // Hiển thị toàn bộ danh sách người dùng đã đăng ký
+            //     return updatedUsers;
+            // });
+            
+            
 
             ToastSuccess('okok')
 
