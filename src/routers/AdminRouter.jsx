@@ -3,7 +3,21 @@ import { Route, Routes, Link } from "react-router-dom";
 import Demo from "../views/Admin/demo";
 import '../assets/admins/css/styleAdmin.css'
 import MasterLayoutAdmin from "../views/Admin/componets/masterLayoutAdmin";
-import UserList from '../views/Admin/pages/userList';
+import UserList from '../views/Admin/pages/user/UserList';
+import UserAdd from '../views/Admin/pages/user/UserAdd';
+import LoginAdmin from '../views/Admin/pages/loginAdmin';
+import ScheduleList from '../views/Admin/pages/schedule/ScheduleList';
+import AddSchedule from '../views/Admin/pages/schedule/AddSchedule';
+import UpdateSchedule from '../views/Admin/pages/schedule/UpdateSchedule';
+import TimeSlotList from '../views/Admin/pages/timeSlot/TimeSlotList';
+import AddTimeSlot from '../views/Admin/pages/timeSlot/AddTimeSlot';
+import UpdateTimeSlot from '../views/Admin/pages/timeSlot/UpdateTimeSlot';
+import ViewTimeSlot from '../views/Admin/pages/timeSlot/ViewTimeSlot';
+import ViewSchedule from '../views/Admin/pages/schedule/ViewSchedule';
+import BookingList from '../views/Admin/pages/booking/BookingList';
+import UserDetails from '../views/Admin/pages/user/UserDetails';
+import UserUpdate from '../views/Admin/pages/user/UserUpdate';
+
 
 
 const AdminRouter = () => {
@@ -11,12 +25,34 @@ const AdminRouter = () => {
     <Routes>
 
       {/* components không có header và footer */}
-      {/*<Route path='/demo' element={<Demo />} />*/}
+      <Route path='/login' element={< LoginAdmin />} />
 
       {/* components có chung header và footer */}
       <Route path='/' element={<MasterLayoutAdmin />}>
         <Route index element={<Demo />} />
         <Route path='/userList' element={<UserList />} />
+        <Route path='/userAdd' element={<UserAdd />} />
+        <Route path='/userDetails/:userId' element={<UserDetails />} />
+        <Route path='/userUpdate/:userId' element={<UserUpdate />} />
+
+        
+
+
+
+        <Route path='/schedules' element={<ScheduleList />} />
+        <Route path='/schedules/add' element={<AddSchedule />} />
+        <Route path='/schedules/update/:idSchedule' element={<UpdateSchedule />} />
+        <Route path='/schedules/:idSchedule' element={<ViewSchedule />} />
+
+        <Route path='/timeSlots' element={<TimeSlotList />} />
+        <Route path='/timeSlots/add' element={<AddTimeSlot />} />
+        <Route path='/timeSlots/:idTimeSlot' element={<ViewTimeSlot />} />
+        <Route path='/timeSlots/update/:idTimeSlot' element={<UpdateTimeSlot />} />
+
+
+        <Route path='/bookings' element={<BookingList />} />
+
+        
 
 
         <Route path='*' element={<div className="error-section" style={{ margin: '7% 27%'}}>

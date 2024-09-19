@@ -10,8 +10,8 @@ function HeaderAdmin(props) {
               {/* <!-- logo--> */}
              
               <div className="logo-lg">
-                  <span className="light-logo"><img src="../customer/images/logo.png" alt="logo"/></span>
-                  <span className="dark-logo"><img src="../customer/images/logo.png" alt="logo"/></span>
+                  <span className="light-logo"><img src="/customer/images/logo.png" alt="logo"/></span>
+                  <span className="dark-logo"><img src="/customer/images/logo.png" alt="logo"/></span>
               </div>
             </a>	
         </div>  
@@ -46,13 +46,13 @@ function HeaderAdmin(props) {
                 </li>	
                 <li className="btn-group nav-item d-lg-inline-flex d-none">
                     <a href="#" data-provide="fullscreen" className="waves-effect waves-light nav-link full-screen btn-warning-light" title="Full Screen">
-                        <img src="../admin/images/icons/expand_4562440.png" alt="" className='mt-icons-admin'/>
+                        <img src="/admin/images/icons/expand_4562440.png" alt="" className='mt-icons-admin'/>
                     </a>
                 </li>
               {/* <!-- Notifications --> */}
               <li className="dropdown notifications-menu">
                 <a href="#" className="waves-effect waves-light dropdown-toggle btn-info-light" data-bs-toggle="dropdown" title="Notifications">
-                <img src="../admin/images/icons/notification_11924712.png" alt="" />
+                <img src="/admin/images/icons/notification_11924712.png" alt="" />
 
                 </a>
                 <ul className="dropdown-menu animated bounceIn">
