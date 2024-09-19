@@ -127,11 +127,6 @@ function Register(props) {
 
     }
 
-
-
-
-
-
     return (
         <div>
             <section className="page-title bg-1">

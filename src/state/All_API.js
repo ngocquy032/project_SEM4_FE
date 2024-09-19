@@ -1,5 +1,6 @@
 import axios from "axios";
-import { API_BASE_URL, apiAdmin, apiUser } from "../../config/apiConfig";
+// import { API_BASE_URL, apiAdmin, apiUser } from "../../config/apiConfig";
+import { API_BASE_URL , apiAdmin} from "../config/apiConfig";
 
 
 
@@ -32,7 +33,7 @@ const All_API = {
             limit,
             keyword
         } = data;
-        const response = apiAdmin.get(`${API_BASE_URL}users?page=${page}&limit=${limit}&keyword=${keyword}`);
+        const response = apiAdmin.get(`${API_BASE_URL}users?limit=${limit}&page=${page}&keyword=${keyword}`);
         return response;
     },
 
@@ -41,8 +42,8 @@ const All_API = {
         return response;
     },
 
-    updateUserById: (userId, userData) => {
-        const response = apiAdmin.put(`${API_BASE_URL}users/update-by-id/${userId}`, userData);
+    updateUserByAdmin: (userId, userData) => {
+        const response = apiAdmin.put(`${API_BASE_URL}users/admin/${userId}`, userData);
         return response;
     },
 
@@ -57,6 +58,15 @@ const All_API = {
         const response = axios.get(`${API_BASE_URL}roles`);
         return response;
     },
+
+    // User
+    // post User in Admin
+    createUser: (createForm)=>{
+        const response = apiAdmin.post(`${API_BASE_URL}users`, createForm)
+        return response
+    }
+
+
 
 
     // updateUser:  (userId, userData) => {
@@ -85,4 +95,5 @@ const All_API = {
     //     }
     //   }
 
-}
+} 
+export default All_API;

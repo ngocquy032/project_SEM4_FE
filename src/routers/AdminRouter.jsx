@@ -3,10 +3,11 @@ import { Route, Routes, Link } from "react-router-dom";
 import Demo from "../views/Admin/demo";
 import '../assets/admins/css/styleAdmin.css'
 import MasterLayoutAdmin from "../views/Admin/componets/masterLayoutAdmin";
-import UserList from '../views/Admin/pages/user/userList';
-import UserAdd from '../views/Admin/pages/user/userAdd';
+import UserList from '../views/Admin/pages/user/UserList';
+import UserAdd from '../views/Admin/pages/user/UserAdd';
 import LoginAdmin from '../views/Admin/pages/loginAdmin';
-import UserDetails from '../views/Admin/pages/user/userDetails';
+import UserDetails from '../views/Admin/pages/user/UserDetails';
+import UserUpdate from '../views/Admin/pages/user/UserUpdate';
 
 
 
@@ -22,7 +23,11 @@ const AdminRouter = () => {
         <Route index element={<Demo />} />
         <Route path='/userList' element={<UserList />} />
         <Route path='/userAdd' element={<UserAdd />} />
-        <Route path='/userDetails/' element={<UserDetails />} />
+        <Route path='/userDetails/:userId' element={<UserDetails />} />
+        <Route path='/userUpdate/:userId' element={<UserUpdate />} />
+
+        
+
 
         
 
