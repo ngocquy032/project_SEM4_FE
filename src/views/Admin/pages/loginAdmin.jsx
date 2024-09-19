@@ -3,6 +3,9 @@ import { faCircleUser, faEye, faPen, faTrash } from "@fortawesome/free-solid-svg
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const loginAdmin = () => {
+
+
+    
     return (
         <body class="hold-transition theme-primary bg-img" style={{ backgroundImage: `url("/admin/images/bg-1.jpg")` }}>
 

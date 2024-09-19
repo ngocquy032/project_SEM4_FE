@@ -7,6 +7,15 @@ import UserList from '../views/Admin/pages/user/userList';
 import UserAdd from '../views/Admin/pages/user/userAdd';
 import LoginAdmin from '../views/Admin/pages/loginAdmin';
 import UserDetails from '../views/Admin/pages/user/userDetails';
+import ScheduleList from '../views/Admin/pages/schedule/ScheduleList';
+import AddSchedule from '../views/Admin/pages/schedule/AddSchedule';
+import UpdateSchedule from '../views/Admin/pages/schedule/UpdateSchedule';
+import TimeSlotList from '../views/Admin/pages/timeSlot/TimeSlotList';
+import AddTimeSlot from '../views/Admin/pages/timeSlot/AddTimeSlot';
+import UpdateTimeSlot from '../views/Admin/pages/timeSlot/UpdateTimeSlot';
+import ViewTimeSlot from '../views/Admin/pages/timeSlot/ViewTimeSlot';
+import ViewSchedule from '../views/Admin/pages/schedule/ViewSchedule';
+import BookingList from '../views/Admin/pages/booking/BookingList';
 
 
 
@@ -15,7 +24,7 @@ const AdminRouter = () => {
     <Routes>
 
       {/* components không có header và footer */}
-      <Route path='/loginAdmin' element={< LoginAdmin />} />
+      <Route path='/login' element={< LoginAdmin />} />
 
       {/* components có chung header và footer */}
       <Route path='/' element={<MasterLayoutAdmin />}>
@@ -23,6 +32,20 @@ const AdminRouter = () => {
         <Route path='/userList' element={<UserList />} />
         <Route path='/userAdd' element={<UserAdd />} />
         <Route path='/userDetails/' element={<UserDetails />} />
+
+
+        <Route path='/schedules' element={<ScheduleList />} />
+        <Route path='/schedules/add' element={<AddSchedule />} />
+        <Route path='/schedules/update/:idSchedule' element={<UpdateSchedule />} />
+        <Route path='/schedules/:idSchedule' element={<ViewSchedule />} />
+
+        <Route path='/timeSlots' element={<TimeSlotList />} />
+        <Route path='/timeSlots/add' element={<AddTimeSlot />} />
+        <Route path='/timeSlots/:idTimeSlot' element={<ViewTimeSlot />} />
+        <Route path='/timeSlots/update/:idTimeSlot' element={<UpdateTimeSlot />} />
+
+
+        <Route path='/bookings' element={<BookingList />} />
 
         
 

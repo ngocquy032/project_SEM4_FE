@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
+
 const SildeBar = () => {
 	const [openItem, setOpenItem] = useState(null)
 
@@ -21,7 +22,7 @@ const SildeBar = () => {
 			  <ul className="sidebar-menu" data-widget="tree">			
 				<li className="treeview ">
 				  <a href="#">
-				  <img src="../admin/images/icons/dasboard.png" alt="" className='icon-admin-nav'/>
+				  <img src="/admin/images/icons/dasboard.png" alt="" className='icon-admin-nav'/>
 
 					<span>Dashboard</span>
 					<span className="pull-right-container">
@@ -38,10 +39,10 @@ const SildeBar = () => {
 				</li>			
 				<li className={`treeview ${openItem === 1 ? 'active menu-open' : ''}`}>
 				<a onClick={()=> handleItem(1)}>
-				<img src="../admin/images/icons/users.png" alt="" className='icon-admin-nav'/>
+				<img src="/admin/images/icons/users.png" alt="" className='icon-admin-nav'/>
 					<span> Users</span>
 					<span className="pull-right-container">
-					  <img className=" pull-right icon-down" src='../admin/images/icons/down-arrow.png' alt=''/>
+					  <img className=" pull-right icon-down" src='/admin/images/icons/down-arrow.png' alt=''/>
 					</span>
 				  </a>
 				  <ul className="treeview-menu">
@@ -52,10 +53,10 @@ const SildeBar = () => {
 
 				<li className={`treeview ${openItem === 3 ? 'active menu-open' : ''}`}>
 				<a onClick={()=> handleItem(3)}>
-				<img src="../admin/images/icons/clinic.png" alt="" className='icon-admin-nav'/>
+				<img src="/admin/images/icons/clinic.png" alt="" className='icon-admin-nav'/>
 				<span>Clinics</span>
 					<span className="pull-right-container">
-					<img className=" pull-right icon-down" src='../admin/images/icons/down-arrow.png' alt=''/>
+					<img className=" pull-right icon-down" src='/admin/images/icons/down-arrow.png' alt=''/>
 					</span>
 				  </a>
 				  <ul className="treeview-menu">
@@ -66,10 +67,10 @@ const SildeBar = () => {
 						
 				<li className={`treeview ${openItem === 4 ? 'active menu-open' : ''}`}>
 				<a onClick={()=> handleItem(4)}>
-				<img src="../admin/images/icons/medicine.png" alt="" className='icon-admin-nav'/>
+				<img src="/admin/images/icons/medicine.png" alt="" className='icon-admin-nav'/>
 				<span>Specialty</span>
 					<span className="pull-right-container">
-					<img className=" pull-right icon-down" src='../admin/images/icons/down-arrow.png' alt=''/>
+					<img className=" pull-right icon-down" src='/admin/images/icons/down-arrow.png' alt=''/>
 					</span>
 				  </a>
 				  <ul className="treeview-menu">
@@ -81,10 +82,10 @@ const SildeBar = () => {
 
 				<li className={`treeview ${openItem === 2 ? 'active menu-open' : ''}`}>
 				<a onClick={()=> handleItem(2)}>
-				<img src="../admin/images/icons/doctor.png" alt="" className='icon-admin-nav'/>
+				<img src="/admin/images/icons/doctor.png" alt="" className='icon-admin-nav'/>
 				<span>Doctors</span>
 					<span className="pull-right-container">
-					<img className=" pull-right icon-down" src='../admin/images/icons/down-arrow.png' alt=''/>
+					<img className=" pull-right icon-down" src='/admin/images/icons/down-arrow.png' alt=''/>
 					</span>
 				  </a>
 				  <ul className="treeview-menu">
@@ -106,7 +107,7 @@ const SildeBar = () => {
 			  <div className="sidebar-widgets">
 				  <div className="mx-25 mb-30 pb-20 side-bx bg-primary-light rounded20">
 					<div className="text-center">
-						<img src="../admin/images/custom-17.svg" className="sideimg " alt=""/>
+						<img src="/admin/images/custom-17.svg" className="sideimg " alt=""/>
 						<h4 className="title-bx text-primary">Make an Appointments</h4>
 						<a href="#" className="py-10 fs-14 mb-0 text-primary">
 							Best Helth Care here <i className="mdi mdi-arrow-right"></i>

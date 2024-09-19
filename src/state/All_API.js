@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_BASE_URL, apiAdmin, apiUser } from "../../config/apiConfig";
+import { API_BASE_URL, apiAdmin, apiUser } from "../config/apiConfig";
 
 
 
@@ -59,6 +59,114 @@ const All_API = {
     },
 
 
+    
+    getScheduleAll: (data) => {
+        const {
+            specialtyId,
+            doctorId,
+            dateSchedule,
+            page,
+            limit,
+            keyword
+          } = data;
+        const response = apiAdmin.get(`${API_BASE_URL}schedules?limit=${limit}&page=${page}&specialtyId=${specialtyId}&doctorId=${doctorId}&dateSchedule=${dateSchedule}&keyword=${keyword}`);
+        return response;
+    },
+    
+    createSchedule: (scheduleData) => {
+        const response = apiAdmin.post(`${API_BASE_URL}schedules`, scheduleData);
+        return response;
+    },
+
+    getScheduleById: (scheduleId) => {
+        const response = apiAdmin.get(`${API_BASE_URL}schedules/${scheduleId}`);
+        return response;
+    },
+
+    updateSchedule: (scheduleId, scheduleData) => {
+        const response = apiAdmin.put(`${API_BASE_URL}schedules/${scheduleId}`, scheduleData);
+        return response;
+    },
+
+    
+    deleteScheduleById: (scheduleId) => {
+        const response = apiAdmin.delete(`${API_BASE_URL}schedules/${scheduleId}`);
+        return response;
+    },
+
+
+    
+
+    getAllTimeSlot: () => {
+        const response = apiAdmin.get(`${API_BASE_URL}time-slots`);
+        return response;
+    },
+
+    createTimeSlot: (timeSlotData) => {
+        const response = apiAdmin.post(`${API_BASE_URL}time-slots`, timeSlotData);
+        return response;
+    },
+    
+    gettimeSlotById: (timeSlotId) => {
+        const response = apiAdmin.get(`${API_BASE_URL}time-slots/${timeSlotId}`);
+        return response;
+    },
+
+    updateTimeSlot: (timeSlotId, timeSlotData) => {
+        const response = apiAdmin.put(`${API_BASE_URL}time-slots/${timeSlotId}`, timeSlotData);
+        return response;
+    },
+
+    getAllBooking: (data) => {
+        const {
+            dateBooking,
+            status,
+            page,
+            limit,
+            keyword
+          } = data;
+        const response = apiAdmin.get(`${API_BASE_URL}bookings?limit=${limit}&page=${page}&dateBooking=${dateBooking}&keyword=${keyword}&status=${status}`);
+        return response;
+    },
+
+    
+
+
+
+    
+
+    getDoctorFull: () => {
+        
+        const response = axios.get(`${API_BASE_URL}doctors`);
+        return response;
+    },
+
+    getSpecialtyFull: () => {
+        
+        const response = axios.get(`${API_BASE_URL}spcialties`);
+        return response;
+    },
+
+
+    getClinicFull: () => {
+        
+        const response = axios.get(`${API_BASE_URL}clinics`);
+        return response;
+    },
+
+    
+    getSlotTime: (specialtyId) => {
+        
+        const response = axios.get(`${API_BASE_URL}time-slots/specialty/${specialtyId}`);
+        return response;
+    },
+
+
+
+
+
+
+
     // updateUser:  (userId, userData) => {
     //     const response =  apiUser.put(`${API_BASE_URL}users/details/${userId}`, userData);
     // return response;
@@ -86,3 +194,5 @@ const All_API = {
     //   }
 
 }
+
+export default All_API;
