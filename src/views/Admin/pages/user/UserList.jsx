@@ -3,6 +3,7 @@ import { faCircleUser, faEye, faPen, faTrash } from "@fortawesome/free-solid-svg
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useNavigate } from 'react-router-dom';
 import All_API from '../../../../state/All_API';
+import { ToastError, ToastSuccess } from '../../../../notification';
 // import '../../../../src/assets/admins/css/styleAdmin.css'
 
 
@@ -24,13 +25,15 @@ const UserList = () => {
                 if (response.data && response.data.data) {
                     setUsers(response.data.data.users);
                 } else {
-                    setUsers([]); // Xử lý trường hợp không có dữ liệu
+                    ToastError(response.data.message)
+                    setUsers([]);
                 }
                 console.log('aaaa', response.data.data);
                 console.log('response', response);
 
             } catch (error) {
                 console.error('Failed to fetch users:', error);
+                ToastError(error.response.data.message)
                 setUsers([]);
             }
         }

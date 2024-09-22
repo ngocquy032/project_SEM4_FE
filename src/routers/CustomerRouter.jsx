@@ -16,6 +16,7 @@ import Service from '../views/Customers/pages/service';
 import BookingForm from '../views/Customers/components/bookingForm';
 import Blog from'../views/Customers/pages/blog'
 import DoctorDetails from '../views/Customers/pages/doctorDetails';
+import BookingAmbulance from '../views/Customers/pages/BookingAmbulance';
 
 
 
@@ -46,6 +47,8 @@ const CustomerRouter = () => {
         <Route path='/bookingForm' element={ <BookingForm/>}/>
         <Route path='/blog' element={ <Blog/>}/>
         <Route path='/doctorDetails' element={ <DoctorDetails/>}/>
+        <Route path='/bookingAmbulance' element={ <BookingAmbulance/>}/>
+
 
 
 

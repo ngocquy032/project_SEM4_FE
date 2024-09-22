@@ -25,9 +25,9 @@ function Header(props) {
                         <div className="row align-items-center">
                             <div className="col-lg-6">
                                 <ul className="top-bar-info list-inline-item pl-0 mb-0">
-                                    <li className="list-inline-item"><a style={{ color: '#fff', fontFamily: 'Roboto', fontSize: 14}}  href="mailto:support@gmail.com"><i
+                                    <li className="list-inline-item"><a style={{ color: '#fff', fontFamily: 'Roboto', fontSize: 14 }} href="mailto:support@gmail.com"><i
                                         className="icofont-support-faq mr-2"></i>support@novena.com</a></li>
-                                    <li className="list-inline-item" style={{ color: '#fff', fontFamily: 'Roboto', fontSize: 14}}><i className="icofont-location-pin mr-2"></i>Address
+                                    <li className="list-inline-item" style={{ color: '#fff', fontFamily: 'Roboto', fontSize: 14 }}><i className="icofont-location-pin mr-2"></i>Address
                                         Ta-134/A, New York, USA
                                     </li>
                                 </ul>
@@ -36,7 +36,7 @@ function Header(props) {
                                 <div className="text-lg-right top-right-bar mt-2 mt-lg-0">
                                     <a href="tel:+23-345-67890">
                                         <span>Call Now : </span>
-                                        <span className="h4" style={{ fontFamily: 'Exo', fontWeight: 700, fontSize: 20.8}} >823-4565-13456</span>
+                                        <span className="h4" style={{ fontFamily: 'Exo', fontWeight: 700, fontSize: 20.8 }} >823-4565-13456</span>
                                     </a>
                                 </div>
                             </div>
@@ -46,12 +46,12 @@ function Header(props) {
                 <nav className="navbar navbar-expand-lg navigation" id="navbar">
                     <div className="container">
                         <a className="navbar-brand" href="">
-                            <img src="customer/images/logo.png" alt="" className="img-fluid"/>
+                            <img src="customer/images/logo.png" alt="" className="img-fluid" />
                         </a>
 
                         <button className="navbar-toggler collapsed" type="button" data-toggle="collapse"
-                                data-target="#navbarmain" aria-controls="navbarmain" aria-expanded="false"
-                                aria-label="Toggle navigation">
+                            data-target="#navbarmain" aria-controls="navbarmain" aria-expanded="false"
+                            aria-label="Toggle navigation">
                             <span className="icofont-navigation-menu"></span>
                         </button>
 
@@ -60,32 +60,41 @@ function Header(props) {
 
                                 <li className="nav-item active">
 
-                                    <Link className="nav-link" to="/"  style={getLinkStyle("/")}>Home</Link>
+                                    <Link className="nav-link" to="/" style={getLinkStyle("/")}>Home</Link>
                                 </li>
                                 <li className="nav-item"><Link className="nav-link" to="/about" style={getLinkStyle("/about")}>About</Link></li>
-                                <li className="nav-item"><Link className="nav-link" to="/service" style={getLinkStyle("/service")}>Services</Link></li>
+                                <li className="nav-item dropdown ">
+                                    <Link className="nav-link dropdown-toggle" to="/service" style={getLinkStyle("/service")}>Services</Link>
+                                    <ul className="dropdown-menu" aria-labelledby="dropdown02">
+                                        <li>
+                                            <Link to= "/bookingAmbulance" style={getLinkStyle("/bookingAmbulance")}><a className="dropdown-item" >Ambulance Booking </a></Link>
+                                        </li>
+                                        <li><a className="dropdown-item" href="department-single.html">Department Single</a></li>
+
+                                    </ul>
+                                </li>
 
                                 <li className="nav-item dropdown">
                                     <Link className="nav-link dropdown-toggle" to="/department" id="dropdown02"
-                                          data-toggle="dropdown" aria-haspopup="true"
-                                          aria-expanded="false" style={getLinkStyle("/department")}>Department </Link>
-                                    {/*<ul className="dropdown-menu" aria-labelledby="dropdown02">*/}
-                                    {/*    <li><a className="dropdown-item" href="department.html">Departments</a></li>*/}
-                                    {/*    <li><a className="dropdown-item" href="department-single.html">Department*/}
-                                    {/*        Single</a></li>*/}
-                                    {/*</ul>*/}
+                                        data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false" style={getLinkStyle("/department")}>Department </Link>
+                                    {/* <ul className="dropdown-menu" aria-labelledby="dropdown02">
+                                        <li><a className="dropdown-item" href="department.html">Departments</a></li>
+                                        <li><a className="dropdown-item" href="department-single.html">Department
+                                            Single</a></li>
+                                    </ul> */}
                                 </li>
 
                                 <li className="nav-item dropdown">
                                     <Link className="nav-link dropdown-toggle" to="/doctors" id="dropdown03"
-                                          data-toggle="dropdown" aria-haspopup="true"
-                                          aria-expanded="false" style={getLinkStyle("/doctors")}>Doctors </Link>
-                                    
+                                        data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false" style={getLinkStyle("/doctors")}>Doctors </Link>
+
                                 </li>
 
                                 <li className="nav-item dropdown">
                                     <Link className="nav-link dropdown-toggle" to="/blog" id="dropdown05"
-                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={getLinkStyle("/blog")}>Blog </Link>
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={getLinkStyle("/blog")}>Blog </Link>
                                 </li>
                                 <li className="nav-item"><Link className="nav-link" to="/contact" style={getLinkStyle("/contact")}>Contact</Link></li>
                             </ul>
@@ -94,10 +103,10 @@ function Header(props) {
                         </div>
 
                     </div>
-                    <div style={{ fontSize: '30px'}}>
+                    <div style={{ fontSize: '30px' }}>
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item"><Link className="nav-link" to="/account" style={getLinkStyle("/account")}> <FontAwesomeIcon
-                                icon={faCircleUser}/></Link></li>
+                                icon={faCircleUser} /></Link></li>
                         </ul>
 
 

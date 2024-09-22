@@ -5,7 +5,7 @@ import '../assets/admins/css/styleAdmin.css'
 import MasterLayoutAdmin from "../views/Admin/componets/masterLayoutAdmin";
 import UserList from '../views/Admin/pages/user/UserList';
 import UserAdd from '../views/Admin/pages/user/UserAdd';
-import LoginAdmin from '../views/Admin/pages/loginAdmin';
+import LoginAdmin from '../views/Admin/pages/LoginAdmin';
 import ScheduleList from '../views/Admin/pages/schedule/ScheduleList';
 import AddSchedule from '../views/Admin/pages/schedule/AddSchedule';
 import UpdateSchedule from '../views/Admin/pages/schedule/UpdateSchedule';

@@ -1,11 +1,50 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { faCircleUser, faEye, faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import All_API from '../../../state/All_API';
+import { ToastError, ToastSuccess } from '../../../notification';
 
-const loginAdmin = () => {
+const LoginAdmin = () => {
+    const [createForm, setCreateForm] = useState({
+        phone_number: '',
+        password: '',
+        role_id: 2
+
+    });
+    const inputChange = (e) => {
+        const { name, value } = e.target;
+        setCreateForm((prevData) => ({
+            ...prevData,
+            [name]: value
+        }));
+    };
+    const clearInput = () =>{
+        setCreateForm({
+            phone_number: '',
+            password: ''
+        })
+    }
 
 
-    
+
+    const onClickLogin = async (e) => {
+        e.preventDefault();
+        console.log('createForm', createForm);
+        const response = await All_API.loginAPI(createForm);
+        try {
+            if (response.data.status === "success") {
+                ToastSuccess(response.data.message)
+                localStorage.setItem("jwtAdmin", response.data.token);
+            } else {
+                ToastError(response.data.message)
+            }
+            console.log('Response from API:', response.data);
+        } catch (error) {
+            ToastError(error.response.data.message)
+        }
+
+
+    }
     return (
         <body class="hold-transition theme-primary bg-img" style={{ backgroundImage: `url("/admin/images/bg-1.jpg")` }}>
 
@@ -28,41 +67,33 @@ const loginAdmin = () => {
 
                                                     <div className="col-lg-12" style={{ margin: '5% 0px' }}>
                                                         <div className="form-group">
-                                                            <input name="phone" type="text" className="form-control"
-                                                                placeholder="Email"
-                                                                />
+                                                            <input name="phone_number" type="text" className="form-control"
+                                                                placeholder="Phone Number"
+                                                                value={createForm.phone_number}
+                                                                onChange={inputChange}
+                                                            />
                                                         </div>
-                                                        {/* <span style={errorStyle}>{errForm.phone}</span> */}
+
 
                                                     </div>
 
                                                     <div className="col-lg-12" style={{ margin: '0 0 5% 0' }}>
                                                         <div className="form-group">
-                                                            <input name="password" id="password" type="password"
+                                                            <input name="password" type="text"
                                                                 className="form-control"
                                                                 placeholder="Password"
-                                                                />
+                                                                value={createForm.password}
+                                                                onChange={inputChange}
+                                                            />
                                                         </div>
                                                         {/* <span style={errorStyle}>{errForm.password}</span> */}
 
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    {/* <div class="col-6">
-                                                        <div class="checkbox">
-                                                            <input type="checkbox" id="basic_checkbox_1" />
-                                                            <label for="basic_checkbox_1">Remember Me</label>
-                                                        </div>
-                                                    </div> */}
-                                                    {/* <!-- /.col --> */}
-                                                    {/* <div class="col-6">
-                                                        <div class="fog-pwd text-end">
-                                                            <a href="javascript:void(0)" class="hover-warning"><i class="ion ion-locked"></i> Forgot pwd?</a><br />
-                                                        </div>
-                                                    </div> */}
-                                                    {/* <!-- /.col --> */}
+
                                                     <div class="col-12 text-center">
-                                                        <button type="submit" class="btn btn-danger mt-10">SIGN IN</button>
+                                                        <button type="submit" onClick={onClickLogin} class="btn btn-danger mt-10">SIGN IN</button>
                                                     </div>
 
                                                 </div>
@@ -92,4 +123,4 @@ const loginAdmin = () => {
     )
 }
 
-export default loginAdmin
+export default LoginAdmin

@@ -43,7 +43,7 @@ const UserUpdate = () => {
             [name]: value
         }));
     };
-    const updateUser = async(e) => {
+    const updateUser = async (e) => {
         e.preventDefault();
         const userData = {
             fullname: createForm.fullname,
@@ -59,18 +59,15 @@ const UserUpdate = () => {
 
         try {
             const response = await All_API.updateUserByAdmin(userId, userData);
-            if(response.status === 200){
-                ToastSuccess(response.data.message)
-            }else{
+            if (response.status === 200) {
+                ToastSuccess(response.data.message);
+            } else {
                 ToastError(response.data.message)
             }
-            
         } catch (error) {
-                      ToastError(error.response.data.message)
+            ToastError(error.response.data.message)
 
         }
-        console.log('dataSetCreate', createForm );
-
     }
     const cancle = () => {
         navigate('/admin/userList')
@@ -114,7 +111,7 @@ const UserUpdate = () => {
                                                         <label class="form-label">Full Name</label>
                                                         <input type="text" class="form-control"
                                                             placeholder="Full Name"
-                                                            value={createForm?.fullname || 'N/A'}
+                                                            value={createForm?.fullname || ''}
                                                             onChange={inputChange}
                                                             name='fullname'
                                                         />
@@ -125,7 +122,7 @@ const UserUpdate = () => {
                                                         <label class="form-label">Address</label>
                                                         <input type="text" class="form-control"
                                                             placeholder="Address"
-                                                            value={createForm?.address || 'N/A'}
+                                                            value={createForm?.address || ''}
                                                             onChange={inputChange}
                                                             name='address' />
                                                     </div>
@@ -137,7 +134,7 @@ const UserUpdate = () => {
                                                         <label class="form-label">E-mail</label>
                                                         <input type="text" class="form-control"
                                                             placeholder="E-mail"
-                                                            value={createForm?.email || 'N/A'}
+                                                            value={createForm?.email || ''}
                                                             onChange={inputChange}
                                                             name='email' />
                                                     </div>
@@ -147,7 +144,7 @@ const UserUpdate = () => {
                                                         <label class="form-label">Contact Number</label>
                                                         <input type="text" class="form-control"
                                                             placeholder="Phone"
-                                                            value={createForm?.phone_number || 'N/A'}
+                                                            value={createForm?.phone_number || ''}
                                                             onChange={inputChange}
                                                             name='phone_number' />
                                                     </div>
