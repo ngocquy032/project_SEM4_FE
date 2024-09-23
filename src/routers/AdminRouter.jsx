@@ -17,6 +17,15 @@ import ViewSchedule from '../views/Admin/pages/schedule/ViewSchedule';
 import BookingList from '../views/Admin/pages/booking/BookingList';
 import UserDetails from '../views/Admin/pages/user/UserDetails';
 import UserUpdate from '../views/Admin/pages/user/UserUpdate';
+import ViewBooking from '../views/Admin/pages/booking/ViewBooking';
+import UpdateBooking from '../views/Admin/pages/booking/UpdateBooking';
+import MedicationList from '../views/Admin/pages/medication/MedicationList';
+import SpecialtyList from '../views/Admin/pages/specialty/SpecialtyList';
+import AddSpeciaty from '../views/Admin/pages/specialty/AddSpecialty';
+import UpdateSpecialty from '../views/Admin/pages/specialty/UpdateSpecialty';
+import ViewSpecialty from '../views/Admin/pages/specialty/ViewSpecialty';
+import DoctorList from '../views/Admin/pages/doctor/DoctorList';
+import AddDoctor from '../views/Admin/pages/doctor/AddDoctor';
 
 
 
@@ -49,8 +58,23 @@ const AdminRouter = () => {
         <Route path='/timeSlots/:idTimeSlot' element={<ViewTimeSlot />} />
         <Route path='/timeSlots/update/:idTimeSlot' element={<UpdateTimeSlot />} />
 
-
         <Route path='/bookings' element={<BookingList />} />
+        <Route path='/bookings/:idBooking' element={<ViewBooking />} />
+        <Route path='/bookings/update/:idBooking' element={<UpdateBooking />} />
+
+        <Route path='/medications' element={<MedicationList />} />
+
+        <Route path='/specialties' element={<SpecialtyList />} />
+        <Route path='/specialties/add' element={<AddSpeciaty />} />
+        <Route path='/specialties/update/:idSpecialty' element={<UpdateSpecialty />} />
+        <Route path='/specialties/:idSpecialty' element={<ViewSpecialty />} />
+
+
+        <Route path='/doctors' element={<DoctorList />} />
+        <Route path='/doctors/add' element={<AddDoctor />} />
+
+
+
 
         
 

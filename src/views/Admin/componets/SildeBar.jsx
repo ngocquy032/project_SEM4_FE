@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 
 const SildeBar = () => {
+	const navigate = useNavigate()
 	const [openItem, setOpenItem] = useState(null)
 
 	const handleItem = (value) => {
@@ -60,8 +61,8 @@ const SildeBar = () => {
 					</span>
 				  </a>
 				  <ul className="treeview-menu">
-					<li><a href="doctor_list.html"><i className="icon-Commit"><span className="path1"></span><span className="path2"></span></i>Add Clinic</a></li>
-					<li><a href="doctors.html"><i className="icon-Commit"><span className="path1"></span><span className="path2"></span></i>List Clinic</a></li>
+					<li><a onClick={()=> navigate('/admin/clinics/add')}><i className="icon-Commit"><span className="path1"></span><span className="path2"></span></i>Add Clinic</a></li>
+					<li><a onClick={()=> navigate('/admin/clinics/add')}><i className="icon-Commit"><span className="path1"></span><span className="path2"></span></i>List Clinic</a></li>
 				  </ul>
 				</li>
 						
@@ -74,8 +75,8 @@ const SildeBar = () => {
 					</span>
 				  </a>
 				  <ul className="treeview-menu">
-					<li><a href="doctor_list.html"><i className="icon-Commit"><span className="path1"></span><span className="path2"></span></i>Add Specialty</a></li>
-					<li><a href="doctors.html"><i className="icon-Commit"><span className="path1"></span><span className="path2"></span></i>List Specialty</a></li>
+					<li><a onClick={()=> navigate('/admin/specialties/add')}><i className="icon-Commit"><span className="path1"></span><span className="path2"></span></i>Add Specialty</a></li>
+					<li><a onClick={()=> navigate('/admin/specialties')}><i className="icon-Commit"><span className="path1"></span><span className="path2"></span></i>List Specialty</a></li>
 				  </ul>
 				</li>			
 				
@@ -89,8 +90,8 @@ const SildeBar = () => {
 					</span>
 				  </a>
 				  <ul className="treeview-menu">
-					<li><a href="doctor_list.html"><i className="icon-Commit"><span className="path1"></span><span className="path2"></span></i>Add Doctor</a></li>
-					<li><a href="doctors.html"><i className="icon-Commit"><span className="path1"></span><span className="path2"></span></i>List Doctor</a></li>
+					<li><a onClick={()=> navigate('/admin/doctors/add')}><i className="icon-Commit"><span className="path1"></span><span className="path2"></span></i>Add Doctor</a></li>
+					<li><a onClick={()=> navigate('/admin/doctors')}><i className="icon-Commit"><span className="path1"></span><span className="path2"></span></i>List Doctor</a></li>
 				  </ul>
 				</li>
 				

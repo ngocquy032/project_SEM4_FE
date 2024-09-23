@@ -77,7 +77,7 @@ const UserAdd = () => {
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a><FontAwesomeIcon icon={faCircleUser} /></a>
                                         </li>
-                                        <li class="breadcrumb-item active" aria-current="page">UserAdd</li>
+                                        <li class="breadcrumb-item active" aria-current="page">Add User</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -88,9 +88,7 @@ const UserAdd = () => {
                     <div class="row">
                         <div class=" col-12">
                             <div class="box">
-                                <div class="box-header with-border">
-                                    <h4 class="box-title"> Create User</h4>
-                                </div>
+                          
                                 {/* <!-- /.box-header --> */}
                                 <form class="form">
                                     <div class="box-body">
@@ -199,11 +197,10 @@ const UserAdd = () => {
 
                                         <div class="my-15">
                                             <div class="box-footer">
-                                                <button type="button" class="btn btn-warning me-1" onClick={cancle}>
+                                                <button type="button" class="btn btn-warning m-10" onClick={cancle}>
                                                     <i class="ti-trash"></i> Cancel
                                                 </button>
                                                 <button type="submit" class="btn btn-primary"
-                                                    style={{ marginLeft: '10%' }}
                                                     onClick={onSave}>
                                                     <i class="ti-save-alt"></i> Save
                                                 </button>

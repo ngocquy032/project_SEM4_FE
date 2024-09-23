@@ -134,11 +134,115 @@ const All_API = {
         return response;
     },
 
+
+    getBookingByIdAdmin: (idBooking) => {
+        const response = apiAdmin.get(`${API_BASE_URL}bookings/${idBooking}`);
+        return response;
+    },
+
+    updateBookingAdmin: (idBooking, status) => {
+        const response = apiAdmin.put(`${API_BASE_URL}bookings/status/${idBooking}?status=${status}`);
+        return response;
+    },
+
+
+    getAllMedications: (data) => {
+        const {
+            page,
+            limit,
+            keyword
+          } = data;
+        const response = axios.get(`${API_BASE_URL}medications?limit=${limit}&page=${page}&keyword=${keyword}`);
+        return response;
+    },
+    
+    createMedication: (medicationData) => {
+        const response = apiAdmin.post(`${API_BASE_URL}medications`, medicationData);
+        return response;
+    },
+
+    getMedicationById: (idMedication) => {
+        const response = apiAdmin.get(`${API_BASE_URL}medications/${idMedication}`);
+        return response;
+    },
+
+    updateMedication: (idMedication, medicationData) => {
+        const response = apiAdmin.put(`${API_BASE_URL}medications/${idMedication}`, medicationData);
+        return response;
+    },
+
+    deleteMedicationById: (idMedication) => {
+        const response = apiAdmin.delete(`${API_BASE_URL}medications/${idMedication}`);
+        return response;
+    },
+
+    
+    getAllSpecialty: (data) => {
+        const {
+            page,
+            limit,
+            keyword
+          } = data;
+        const response = axios.get(`${API_BASE_URL}specialties?limit=${limit}&page=${page}&keyword=${keyword}`);
+        return response;
+    },
+
+    createSpecialty: (specialtyData) => {
+        const response = apiAdmin.post(`${API_BASE_URL}specialties`, specialtyData);
+        return response;
+    },
+
+    getSpecialtyById: (idSpecialty) => {
+        const response = apiAdmin.get(`${API_BASE_URL}specialties/${idSpecialty}`);
+        return response;
+    },
+
+    updateSpecialty: (idSpecialty, specialtyData) => {
+        const response = apiAdmin.put(`${API_BASE_URL}specialties/${idSpecialty}`, specialtyData);
+        return response;
+    },
+
+    deleteSpecialtyById: (idSpecialty) => {
+        const response = apiAdmin.delete(`${API_BASE_URL}specialties/${idSpecialty}`);
+        return response;
+    },
+
+
+    getAllDoctor: (data) => {
+        const {
+            page,
+            limit,
+            specialtyId,
+            keyword
+          } = data;
+        const response = axios.get(`${API_BASE_URL}doctors?limit=${limit}&page=${page}&specialtyId=&keyword=${keyword}`);
+        return response;
+    },
+
+    createDoctor: (doctorData) => {
+        const response = apiAdmin.post(`${API_BASE_URL}doctors`, doctorData);
+        return response;
+    },
+
+    
+
+
+    uploadImage:   (token, imageData) => {
+        const response =  axios.post(`${API_BASE_URL}images/uploads`,imageData,  {
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                'Content-Type': 'multipart/form-data'
+            }
+        });
+        return response;
+
+    },
     
 
 
 
-    
+
+
 
     getDoctorFull: () => {
         
@@ -148,7 +252,7 @@ const All_API = {
 
     getSpecialtyFull: () => {
         
-        const response = axios.get(`${API_BASE_URL}spcialties`);
+        const response = axios.get(`${API_BASE_URL}specialties`);
         return response;
     },
 
@@ -163,6 +267,12 @@ const All_API = {
     getSlotTime: (specialtyId) => {
         
         const response = axios.get(`${API_BASE_URL}time-slots/specialty/${specialtyId}`);
+        return response;
+    },
+
+    getUserFull: () => {
+        
+        const response = apiAdmin.get(`${API_BASE_URL}users`);
         return response;
     },
 

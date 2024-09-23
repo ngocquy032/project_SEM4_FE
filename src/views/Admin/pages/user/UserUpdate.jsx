@@ -4,38 +4,44 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import All_API from '../../../../state/All_API';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ToastError, ToastSuccess } from '../../../../notification';
+import { convertDate } from '../../componets/ConvertData';
 
 const UserUpdate = () => {
     const { userId } = useParams();
     const navigate = useNavigate();
+    const [birthday, setBirthday] = useState()
     const [createForm, setCreateForm] = useState({
         fullname: '',
         address: '',
         email: '',
         phone_number: '',
-        birthday: '',
         gender: '',
         password: '',
         role_id: '',
-        active: ''
+        is_active: ''
     });
+    
+   
 
+    async function getUserById(userId) {
+        try {
+            const response = await All_API.getUserById(userId);
+            if (response?.status === 200) {
+                setCreateForm(response?.data?.data);
+                setBirthday(convertDate(response?.data?.data.birthday))
+            } else {
+                ToastError(response?.data.status);
+                navigate('/admin/userList');
+            }
+        } catch (error) {
+            // ToastError("Please try again.")
+            // navigate('/admin/userList');
+        }
+    }
     // call api
     useEffect(() => {
-        const fetchUserData = async () => {
-            try {
-                const response = await All_API.getUserById(userId);
-                if (response.data && response.data.data) {
-                    setCreateForm(response.data.data);
-                }
-                console.log('respone', response.data.data);
-
-            } catch (error) {
-                console.error('Lỗi khi lấy dữ liệu người dùng:', error);
-            }
-        }
-        fetchUserData();
-    }, [userId]);
+        getUserById(userId);
+    }, []);
     const inputChange = (e) => {
         const { name, value } = e.target;
         setCreateForm((prevData) => ({
@@ -43,31 +49,33 @@ const UserUpdate = () => {
             [name]: value
         }));
     };
-    const updateUser = async (e) => {
+
+    const updateUser = async(e) => {
         e.preventDefault();
         const userData = {
             fullname: createForm.fullname,
             address: createForm.address,
             email: createForm.email,
             phone_number: createForm.phone_number,
-            birthday: createForm.birthday,
+            birthday: birthday,
             gender: createForm.gender,
             role_id: createForm.role_id,
-            active: createForm.active === "true",
+            active: createForm.is_active === "true",
             password: createForm.password !== "" ? createForm.password : ""
         };
 
         try {
             const response = await All_API.updateUserByAdmin(userId, userData);
-            if (response.status === 200) {
-                ToastSuccess(response.data.message);
-            } else {
+        if(response.data.status === "success") {
+            ToastSuccess(response.data.message)
+            navigate('/admin/userList')
+            }else{
                 ToastError(response.data.message)
             }
         } catch (error) {
             ToastError(error.response.data.message)
-
         }
+
     }
     const cancle = () => {
         navigate('/admin/userList')
@@ -85,7 +93,7 @@ const UserUpdate = () => {
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a><FontAwesomeIcon icon={faCircleUser} /></a>
                                         </li>
-                                        <li class="breadcrumb-item active" aria-current="page">UserAdd</li>
+                                        <li class="breadcrumb-item active" aria-current="page">Update User</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -96,9 +104,7 @@ const UserUpdate = () => {
                     <div class="row">
                         <div class=" col-12">
                             <div class="box">
-                                <div class="box-header with-border">
-                                    <h4 class="box-title"> Create User</h4>
-                                </div>
+                              
                                 {/* <!-- /.box-header --> */}
                                 <form class="form">
                                     <div class="box-body">
@@ -154,9 +160,9 @@ const UserUpdate = () => {
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label class="form-label">BirthDay</label>
-                                                        <input type="text" class="form-control"
-                                                            value={createForm.birthday}
-                                                            onChange={inputChange}
+                                                        <input type="date" class="form-control"
+                                                            value={birthday || ''}
+                                                            onChange={(e)=> setBirthday(e.target.value)}
                                                             name='birthday' />
                                                     </div>
                                                 </div>
@@ -166,12 +172,12 @@ const UserUpdate = () => {
                                                         {/* <input type="text" class="form-control" placeholder="Gender" /> */}
                                                         <select class="form-control"
                                                             style={{ fontSize: 'unset' }}
-                                                            value={createForm.gender}
+                                                            value={createForm?.gender}
                                                             onChange={inputChange}
                                                             name='gender'>
-                                                            <option></option>
-                                                            <option>Male</option>
-                                                            <option>Female</option>
+                                                           <option ></option>
+                                                            <option value="Male">Male</option>
+                                                            <option value="Female">Female</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -181,7 +187,7 @@ const UserUpdate = () => {
                                                     <div class="form-group">
                                                         <label class="form-label">Passwod</label>
                                                         <input type="text" class="form-control"
-                                                            value={createForm.password}
+                                                            value={createForm?.password}
                                                             onChange={inputChange}
                                                             name='password' />
                                                     </div>
@@ -191,7 +197,7 @@ const UserUpdate = () => {
                                                         <label class="form-label">Role</label> <br />
                                                         <select class="form-control"
                                                             style={{ fontSize: 'unset' }}
-                                                            value={createForm.role?.id}
+                                                            value={createForm?.role?.id}
                                                             onChange={inputChange}
                                                             name='role'>
                                                             <option value=''></option>
@@ -206,10 +212,9 @@ const UserUpdate = () => {
                                                         <label class="form-label">Active</label> <br />
                                                         <select class="form-control"
                                                             style={{ fontSize: 'unset' }}
-                                                            value={createForm.is_active}
+                                                            value={createForm?.is_active}
                                                             onChange={inputChange}
-                                                            name='active'>
-                                                            <option></option>
+                                                            name='is_active'>
                                                             <option value="true">Active</option>
                                                             <option value="false">Block</option>
                                                         </select>
@@ -220,11 +225,10 @@ const UserUpdate = () => {
 
                                         <div class="my-15">
                                             <div class="box-footer">
-                                                <button type="button" class="btn btn-warning me-1" onClick={cancle} >
+                                                <button type="button" class="btn btn-warning m-10" onClick={cancle} >
                                                     <i class="ti-trash"></i> Cancel
                                                 </button>
                                                 <button type="submit" class="btn btn-primary"
-                                                    style={{ marginLeft: '10%' }}
                                                     onClick={updateUser}
                                                 >
                                                     <i class="ti-save-alt"></i> Update

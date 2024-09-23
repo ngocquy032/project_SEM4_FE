@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { faCircleUser, faEye, faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useNavigate } from 'react-router-dom';
 import All_API from '../../../../state/All_API';
 import { ToastError, ToastSuccess } from '../../../../notification';
+import DeleteLayout from '../../componets/DeleteLayout';
+import { Pagination, Stack } from '@mui/material';
 // import '../../../../src/assets/admins/css/styleAdmin.css'
 
 
@@ -13,9 +15,63 @@ const UserList = () => {
     }
     const navigate = useNavigate();
     const [users, setUsers] = useState([])
-    const [page, setPage] = useState('');
-    const [limit] = useState(''); // Số lượng người dùng trên mỗi trang
+    const [totalPages, setTotalPages] = useState(0)
+    const [page, setPage] = useState(0);
+    const [limit, setLimit] = useState(5);
     const [keyword, setKeyword] = useState('');
+    const [openDeleteModal, setOpenDeleteModal] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [idObject, setIdObject] = useState('');
+    const timeoutRef = useRef(null);
+
+
+
+
+
+    const handleDeleteOpen = () => {
+        setOpenDeleteModal(true);
+        };
+      const handleDeleteClose = () => {
+        setOpenDeleteModal(false);
+      };
+
+      const handleLimitChange = (e) => setLimit(e.target.value);
+      const handleSearchChange = (e) => {
+        if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current);
+          }
+      
+          // Set a new timeout
+          timeoutRef.current = setTimeout(() => {
+            setKeyword(e.target.value);
+          }, 500);
+      };
+
+      const handlePaginate = (event, value) => {
+        setPage(value - 1); // Cập nhật số trang hiện tại khi người dùng chuyển trang
+      };
+
+      async function deleteUser(id) {
+        try{
+          const response = await All_API.deleteUserById(id)
+          if(response.data.status === "success") {
+            ToastSuccess(response.data.message)
+            handleLoading()
+            handleDeleteClose()
+          }else {
+            ToastError(response.data.message)
+            handleDeleteClose()
+          }
+        }catch (error) {
+              ToastError(error.response.data.message);
+          handleDeleteClose()
+      
+        }
+      }
+
+      const handleLoading = ()=> {
+        setLoading(!loading)
+        }
 
     useEffect(() => {
         const fetchUsers = async () => {
@@ -24,16 +80,13 @@ const UserList = () => {
                 const response = await All_API.getAllUsers(data);
                 if (response.data && response.data.data) {
                     setUsers(response.data.data.users);
+                    setTotalPages(response.data.data.totalPages);
                 } else {
                     ToastError(response.data.message)
                     setUsers([]);
                 }
-                console.log('aaaa', response.data.data);
-                console.log('response', response);
 
             } catch (error) {
-                console.error('Failed to fetch users:', error);
-                ToastError(error.response.data.message)
                 setUsers([]);
             }
         }
@@ -53,20 +106,25 @@ const UserList = () => {
     users.forEach((user) => {
         userRows.push(
             <tr className="hover-primary" key={user.id}>
-                <td>#{user.id}</td>
-                <td>{user.fullname}</td>
-                <td>{user.phone_number}</td>
-                <td>{user.gender || 'N/A'}</td>
-                <td>{user.role.name}</td>
+                <td>#{user?.id}</td>
+                <td>{user?.fullname}</td>
+                <td>{user?.phone_number}</td>
+                <td>{user?.gender || 'N/A'}</td>
+                <td>{user?.role.name}</td>
+
                 <td>
                     <div className="btn-group">
-                        <a style={displayStyle} href="#" onClick={(e) => { e.preventDefault(); handleViewDetails(user.id); }}>
+                        <a style={displayStyle} href="#" onClick={(e) => { e.preventDefault(); handleViewDetails(user?.id); }}>
                             <FontAwesomeIcon icon={faEye} />
                         </a>
-                        <a style={displayStyle} href="#" onClick={(e) =>{e.preventDefault(); handleEditUser(user.id); }}>
+                        <a style={displayStyle} href="#" onClick={(e) =>{e.preventDefault(); handleEditUser(user?.id); }}>
                             <FontAwesomeIcon icon={faPen} />
                         </a>
-                        <a style={displayStyle} href="#">
+                        <a style={displayStyle} href="#" onClick={()=>{
+                                                        setIdObject(user?.id)
+                                                        handleDeleteOpen()
+                                                      }}
+                        >
                             <FontAwesomeIcon icon={faTrash} />
                         </a>
                     </div>
@@ -102,6 +160,37 @@ const UserList = () => {
                     <div class="row"  >
                         <div class="col-12">
                             <div class="box">
+                            <div className="schedule-filter-container">
+      {/* Select Limit (bên trái) */}
+      <div className="schedule-filter-limit">
+        <label htmlFor="limit" className="schedule-filter-label">Limit</label>
+        <select
+          id="limit"
+          value={limit}
+          onChange={handleLimitChange}
+          className="schedule-filter-select"
+        >
+          <option value={5}>5</option>
+          <option value={10}>10</option>
+          <option value={20}>20</option>
+        </select>
+      </div>
+
+      {/* Các phần tử ở bên phải */}
+      <div className="schedule-filter-right">
+     
+        {/* Search */}
+        <div className="schedule-filter-item">
+          <label htmlFor="search" className="schedule-filter-label">Search</label>
+          <input
+            type="text"
+            id="search"
+            onChange={handleSearchChange}
+            className="schedule-filter-input inputsearch-admin"
+          />
+        </div>
+      </div>
+    </div>
                                 <div class="box-body">
                                     <div class="table-responsive rounded card-table">
                                         <table class="table border-no" id="example1">
@@ -147,13 +236,30 @@ const UserList = () => {
                                             </tbody>
                                         </table>
                                     </div>
+                                    <Stack
+                    spacing={2}
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Pagination
+                      count={totalPages}
+                      page={page+1}
+                      onChange={handlePaginate}
+                    />
+                  </Stack>
                                 </div>
+                            
                             </div>
                         </div>
                     </div>
                 </section>
                 {/* <!-- /.content --> */}
             </div>
+            {openDeleteModal && <DeleteLayout  open={openDeleteModal} handleClose={handleDeleteClose} idObject={idObject} deleteFunction={deleteUser} onDelete={handleLoading}/>}
+
         </div>
 
 

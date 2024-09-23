@@ -40,7 +40,7 @@ const UserDetails = () => {
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a><FontAwesomeIcon icon={faCircleUser} /></a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">UserAdd</li>
+                    <li class="breadcrumb-item active" aria-current="page">View User</li>
                   </ol>
                 </nav>
               </div>
@@ -52,7 +52,6 @@ const UserDetails = () => {
             <div class=" col-12">
               <div class="box">
                 <div class="box-header with-border">
-                  <h4 class="box-title"> Create User</h4>
                 </div>
                 {/* <!-- /.box-header --> */}
                 <form class="form">
@@ -69,7 +68,8 @@ const UserDetails = () => {
                               value={user?.fullname || 'N/A'}
                               // onChange={inputChange}
                               name='fullname'
-                              readOnly />
+                              readOnly 
+                              />
                           </div>
                         </div>
                         <div class="col-md-6">
@@ -79,7 +79,8 @@ const UserDetails = () => {
                               placeholder="Address"
                               value={user?.address || 'N/A'}
                               // onChange={inputChange}
-                              name='address' />
+                              name='address' 
+                              disabled/>
                           </div>
                         </div>
                       </div>
@@ -91,7 +92,8 @@ const UserDetails = () => {
                               placeholder="E-mail"
                               value={user?.email ||  'N/A'}
                               // onChange={inputChange}
-                              name='email' />
+                              name='email'
+                              disabled />
                           </div>
                         </div>
                         <div class="col-md-6">
@@ -101,7 +103,8 @@ const UserDetails = () => {
                               placeholder="Phone"
                               value={user?.phone_number || 'N/A'}
                               // onChange={inputChange}
-                              name='phone_number' />
+                              name='phone_number' 
+                              disabled/>
                           </div>
                         </div>
                       </div>
@@ -113,7 +116,8 @@ const UserDetails = () => {
                               placeholder="BirthDay"
                               value={user?.birthday || 'N/A'}
                               // onChange={inputChange}
-                              name='birthday' />
+                              name='birthday' 
+                              disabled/>
                           </div>
                         </div>
                         <div class="col-md-3">
@@ -123,7 +127,8 @@ const UserDetails = () => {
                               placeholder="Gender"
                               value={user?.gender || 'N/A'}
                               // onChange={inputChange}
-                              name='gender' />
+                              name='gender'
+                              disabled />
                           </div>
                         </div>
                         <div class="col-md-3">
@@ -133,6 +138,7 @@ const UserDetails = () => {
                               placeholder="Role"
                               value={user?.role?.name || 'N/A'}
                               name='role'
+                              disabled
                               // onChange={inputChange}
                               />
                           </div>
@@ -144,6 +150,7 @@ const UserDetails = () => {
                               placeholder=""
                               value={user?.is_active || 'N/A'}
                               // onChange={inputChange}
+                              disabled
                               name='is_active' />
                           </div>
                         </div>
@@ -155,11 +162,7 @@ const UserDetails = () => {
                         <button type="button" class="btn btn-warning me-1" onClick={cancle}>
                           <i class="ti-trash"></i> Cancel
                         </button>
-                        <button type="submit" class="btn btn-primary"
-                          style={{ marginLeft: '10%' }}
-                        >
-                          <i class="ti-save-alt"></i> Update
-                        </button>
+                      
                       </div>
                     </div>
                   </div>
