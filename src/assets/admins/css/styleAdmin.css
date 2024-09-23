@@ -32167,3 +32167,53 @@ img.away, img.busy, img.offline, img.online {
   background-color: #f0f0f0 !important;
   cursor: not-allowed !important;
 }
+
+.btn-add-admin{
+  float: right !important;
+  display: block;
+}
+
+.header-admin-edit{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-medication-ad{
+  height: 340px ;
+}
+
+.form-medication-ad > .custom-modal-content {
+  text-align: left;
+}
+
+.box-btn-ad{
+  text-align: center;
+}
+
+.form-specialty-ad > .mb-3 > .form-group > input,
+.form-specialty-ad > .mb-3 > .form-group > textarea
+{
+  text-align: left !important;
+}
+
+
+.treeview-menu > li  {
+  cursor: pointer;
+}
+
+
+
+
+
+.css-1egyuem{
+  padding: 0px !important;
+  margin-left: 10px;
+  margin-top: -4px;
+  font-size: 15px;
+  color: #000000;
+}
+
+.css-1egyuem {
+  height: 50px !important;
+}
