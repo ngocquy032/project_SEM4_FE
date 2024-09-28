@@ -1,41 +1,38 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
-import { ToastSuccess } from '../../../notification';
+import { ToastError, ToastSuccess } from '../../../notification';
+import All_API from '../../../state/All_API';
 
-function Register(props) {
+function Register() {
     const errorStyle = {
         fontSize: '15px',
         color: 'red',
     };
     // create form
     const [createForm, setCreateForm] = useState({
-        role: 1,
-        firstName: '',
-        lastName: '',
+        fullname: '',
         email: '',
-        phone: '',
+        phone_number: '',
         password: '',
-        repassword: ''
+        retype_password: ''
     });
     // clear Form
     const cleateForm = () => {
         setCreateForm({
-            firstName: '',
-            lastName: '',
+            fullname: '',
             email: '',
-            phone: '',
+            phone_number: '',
             password: '',
-            repassword: ''
+            retype_password: ''
         })
     }
 
     const [errForm, setErrForm] = useState({
-        firstName: '',
-        lastName: '',
+        fullname: '',
         email: '',
-        phone: '',
+        phone_number: '',
         password: '',
-        repassword: ''
+        retype_password: ''
     })
 
     // change input form
@@ -43,23 +40,12 @@ function Register(props) {
         setCreateForm({ ...createForm, [e.target.name]: e.target.value })
     }
     const validateForm = () => {
-        const existingData = [
-            { email: 'dung@gmail.com', phone: '0833691560' },
-            { email: 'example@test.com', phone: '0912345678' },
-
-        ];
-        const isEmailExist = existingData.some(user => user.email === createForm.email);
-        const isPhoneExist = existingData.some(user => user.phone === createForm.phone);
         const err = {};
         let valid = true;
         const regexEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
         const regexPhome = /(((\+|)84)|0)(3|5|7|8|9)+([0-9]{8})\b/
-        if (createForm.firstName.trim() === '') {
-            err.firstName = "* First Name is requied *"
-            valid = false;
-        }
-        if (createForm.lastName.trim() === '') {
-            err.lastName = "* Last Name is requied *"
+        if (createForm.fullname.trim() === '') {
+            err.fullname = "* First Name is requied *"
             valid = false;
         }
         // mail
@@ -69,20 +55,14 @@ function Register(props) {
         } else if (!regexEmail.test(createForm.email)) {
             err.email = "* Please enter a valid emaid adders *"
             valid = false;
-        } else if (isEmailExist) {
-            err.email = "* Email already exists *"
-            valid = false;
         }
-
-        // phone
-        if (createForm.phone.trim() === '') {
-            err.phone = "* Phone is requied *"
+    
+        // phone_number
+        if (createForm.phone_number.trim() === '') {
+            err.phone_number = "* phone_number is requied *"
             valid = false;
-        } else if (!regexPhome.test(createForm.phone)) {
-            err.phone = "* Please enter a valid phone *"
-            valid = false;
-        }else if (isPhoneExist) {
-            err.phone = "* Phone already exists *"
+        } else if (!regexPhome.test(createForm.phone_number)) {
+            err.phone_number = "* Please enter a valid phone_number *"
             valid = false;
         }
 
@@ -91,40 +71,38 @@ function Register(props) {
             err.password = "* Password is requied *"
             valid = false;
         }
-        if (createForm.repassword.trim() === '') {
-            err.repassword = "* Repassword is requied *"
+        if (createForm.retype_password.trim() === '') {
+            err.retype_password = "* retype_password is requied *"
             valid = false;
-        }else if (createForm.password !== createForm.repassword) {
+        } else if (createForm.password !== createForm.retype_password) {
             // check pass voi repass
-            err.repassword = "* Password does not match the password just entered, please re-enter *"
+            err.retype_password = "* Password does not match the password just entered, please re-enter *"
             valid = false;
         }
 
         setErrForm(err);
         return valid;
     }
-    const [registeredUsers, setRegisteredUsers] = useState([]);
 
 
-    const onRegister = (e) => {
+    const onRegister = async (e) => {
         e.preventDefault();
         if (validateForm()) {
-            const { repassword, ...formDataWithoutRepassword } = createForm;
-            console.log('register', formDataWithoutRepassword);
-            // setRegisteredUsers([...registeredUsers, formDataWithoutRepassword]);
-            // setRegisteredUsers(prevUsers => {
-            //     const updatedUsers = [...prevUsers, formDataWithoutRepassword];
-            //     console.log('Registered Users:', updatedUsers); // Hiển thị toàn bộ danh sách người dùng đã đăng ký
-            //     return updatedUsers;
-            // });
-            
-            
+            try {
+                const response = await All_API.registerAPI(createForm);
 
-            ToastSuccess('okok')
-
-
+                if(response.data.status === "success"){
+                    cleateForm();
+                    ToastSuccess(response.data.message);
+                    navigator('/login')
+                }else{
+                    ToastError('Please try again1')
+                }
+                
+            } catch (error) {
+                ToastError(error.response.data.message)
+            }
         }
-
     }
 
     return (
@@ -137,7 +115,6 @@ function Register(props) {
                             <div className="block text-center">
                                 <span className="text-white">Account</span>
                                 <h1 className="text-capitalize mb-5 text-lg">Login & Register</h1>
-
                             </div>
                         </div>
                     </div>
@@ -150,10 +127,6 @@ function Register(props) {
                         <div className="col-lg-6 ">
                             <div className="appoinment-content">
                                 <img src="customer/images/login.jpg" alt="" className="img-fluid" />
-                                {/*<div className="emergency">*/}
-                                {/*    <h2 className="text-lg"><i className="icofont-phone-circle text-lg"></i>+23 345*/}
-                                {/*        67980</h2>*/}
-                                {/*</div>*/}
                             </div>
                         </div>
                         <div className="col-lg-6 col-md-10 ">
@@ -161,29 +134,29 @@ function Register(props) {
                                 <h2 className="mb-2 title-color" style={{ textAlign: 'center' }}>Register </h2>
                                 <p className="mb-4">Mollitia dicta commodi est recusandae iste, natus eum asperiores
                                     corrupti qui velit . Iste dolorum atque similique praesentium soluta.</p>
-                                <form id="#" className="appoinment-form" method="post" action="#">
+                                <form id="" className="appoinment-form" method="" action="">
                                     <div className="row">
                                         <div className="col-lg-6" style={{ margin: '0 0 5% 0' }}>
                                             <div className="form-group">
-                                                <input name="firstName" required="" type="text" className="form-control"
-                                                    placeholder="First Name"
-                                                    value={createForm.firstName}
+                                                <input name="fullname" required="" type="text" className="form-control"
+                                                    placeholder="Full Name"
+                                                    value={createForm.fullname}
                                                     onChange={inputChange} />
                                             </div>
-                                            <span style={errorStyle}>{errForm.firstName}</span>
+                                            <span style={errorStyle}>{errForm.fullname}</span>
                                         </div>
-
-                                        <div className="col-lg-6" >
+                                        <div className="col-lg-6">
                                             <div className="form-group">
-                                                <input name="lastName" type="text" className="form-control"
-                                                    placeholder="Last Name"
-                                                    value={createForm.lastName}
+                                                <input name="phone_number" type="text" className="form-control"
+                                                    placeholder="Phone Number"
+                                                    value={createForm.phone_number}
                                                     onChange={inputChange} />
                                             </div>
-                                            <span style={errorStyle}>{errForm.lastName}</span>
+                                            <span style={errorStyle}>{errForm.phone_number}</span>
 
                                         </div>
-                                        <div className="col-lg-6" style={{ margin: '0 0 5% 0' }}>
+
+                                        <div className="col-lg-12" style={{ margin: '0 0 5% 0' }}>
                                             <div className="form-group">
                                                 <input name="email" type="text" className="form-control"
                                                     placeholder="Email"
@@ -191,17 +164,6 @@ function Register(props) {
                                                     onChange={inputChange} />
                                             </div>
                                             <span style={errorStyle}>{errForm.email}</span>
-
-                                        </div>
-
-                                        <div className="col-lg-6">
-                                            <div className="form-group">
-                                                <input name="phone" type="text" className="form-control"
-                                                    placeholder="Phone Number"
-                                                    value={createForm.phone}
-                                                    onChange={inputChange} />
-                                            </div>
-                                            <span style={errorStyle}>{errForm.phone}</span>
 
                                         </div>
                                         <div className="col-lg-12" style={{ margin: '0 0 5% 0' }}>
@@ -216,12 +178,12 @@ function Register(props) {
                                         </div>
                                         <div className="col-lg-12" style={{ margin: '0 0 5% 0' }}>
                                             <div className="form-group">
-                                                <input name="repassword" type="password" className="form-control"
+                                                <input name="retype_password" type="password" className="form-control"
                                                     placeholder="Repassword"
-                                                    value={createForm.repassword}
+                                                    value={createForm.retype_password}
                                                     onChange={inputChange} />
                                             </div>
-                                            <span style={errorStyle}>{errForm.repassword}</span>
+                                            <span style={errorStyle}>{errForm.retype_password}</span>
 
                                         </div>
 
@@ -252,4 +214,4 @@ function Register(props) {
     );
 }
 
-export default Register;
+export default Register

@@ -5,7 +5,7 @@ import MasterLayout from '../views/Customers/components/masterLayout';
 import About from '../views/Customers/pages/about';
 import Department from "../views/Customers/pages/department";
 import Home from "../views/Customers/pages/home";
-import Login from '../views/Customers/pages/login';
+import Login from '../views/Customers/pages/Login';
 // import '../styleCustomers.css'
 import Account from "../views/Customers/pages/account";
 import Contact from "../views/Customers/pages/contact";

@@ -10,6 +10,7 @@ const UserUpdate = () => {
     const { userId } = useParams();
     const navigate = useNavigate();
     const [birthday, setBirthday] = useState()
+    const [active,setActive] = useState(null)
     const [createForm, setCreateForm] = useState({
         fullname: '',
         address: '',
@@ -22,13 +23,13 @@ const UserUpdate = () => {
     });
     
    
-
     async function getUserById(userId) {
         try {
             const response = await All_API.getUserById(userId);
             if (response?.status === 200) {
                 setCreateForm(response?.data?.data);
                 setBirthday(convertDate(response?.data?.data.birthday))
+                setActive(response?.data?.data?.is_active.toString())
             } else {
                 ToastError(response?.data.status);
                 navigate('/admin/userList');
@@ -49,7 +50,6 @@ const UserUpdate = () => {
             [name]: value
         }));
     };
-
     const updateUser = async(e) => {
         e.preventDefault();
         const userData = {
@@ -60,8 +60,8 @@ const UserUpdate = () => {
             birthday: birthday,
             gender: createForm.gender,
             role_id: createForm.role_id,
-            active: createForm.is_active === "true",
-            password: createForm.password !== "" ? createForm.password : ""
+            active: active === "true",
+            password: createForm.password  ? createForm.password : ""
         };
 
         try {
@@ -212,8 +212,8 @@ const UserUpdate = () => {
                                                         <label class="form-label">Active</label> <br />
                                                         <select class="form-control"
                                                             style={{ fontSize: 'unset' }}
-                                                            value={createForm?.is_active}
-                                                            onChange={inputChange}
+                                                            value={active}
+                                                            onChange={(e)=>setActive(e.target.value)}
                                                             name='is_active'>
                                                             <option value="true">Active</option>
                                                             <option value="false">Block</option>

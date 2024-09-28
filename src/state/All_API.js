@@ -1,6 +1,6 @@
 import axios from "axios";
 // import { API_BASE_URL, apiAdmin, apiUser } from "../../config/apiConfig";
-import { API_BASE_URL , apiAdmin} from "../config/apiConfig";
+import { API_BASE_URL , apiAdmin, apiUser} from "../config/apiConfig";
 
 
 
