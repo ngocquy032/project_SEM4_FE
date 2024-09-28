@@ -1,6 +1,6 @@
 import React from 'react'
 
-function bookAppoinment() {
+function BookAppoinment() {
     return (
         <div>
             <section className="page-title bg-1">
@@ -25,17 +25,17 @@ function bookAppoinment() {
 
             <section className="section appoinment">
                 <div className="container">
-                    <div className="row align-items-center">
-                        <div className="col-lg-6 ">
-                            <div className="appoinment-content">
-                                <img src="customer/images/about/img-3.jpg" alt="" className="img-fluid" />
-                                <div className="emergency">
-                                    <h2 className="text-lg"><i className="icofont-phone-circle text-lg"></i>+23 345
-                                        67980</h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-lg-6 col-md-10 ">
+                    <div className="row ">
+                    <div class="col-lg-4">
+          <div class="mt-3">
+            <div class="feature-icon mb-3">
+              <i class="icofont-support text-lg"></i>
+            </div>
+             <span class="h3">Call for an Emergency Service!</span>
+              <h2 class="text-color mt-3">+84 789 1256 </h2>
+          </div>
+      </div>
+                        <div className="col-lg-8 col-md-10 ">
                             <div className="appoinment-wrap mt-5 mt-lg-0">
                                 <h2 className="mb-2 title-color">Book appoinment</h2>
                                 <p className="mb-4">Mollitia dicta commodi est recusandae iste, natus eum asperiores
@@ -115,4 +115,4 @@ function bookAppoinment() {
     )
 }
 
-export default bookAppoinment
+export default BookAppoinment

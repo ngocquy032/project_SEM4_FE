@@ -1,10 +1,17 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { faCircleUser, faEye, faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import All_API from '../../../state/All_API';
 import { ToastError, ToastSuccess } from '../../../notification';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { GetUserAdmin } from '../../../state/Auth/authAdminSlice';
 
 const LoginAdmin = () => {
+    const navigate = useNavigate();
+    const userAdmin = useSelector(GetUserAdmin)
+
+
     const [createForm, setCreateForm] = useState({
         phone_number: '',
         password: '',
@@ -29,22 +36,27 @@ const LoginAdmin = () => {
 
     const onClickLogin = async (e) => {
         e.preventDefault();
-        console.log('createForm', createForm);
-        const response = await All_API.loginAPI(createForm);
         try {
+            const response = await All_API.loginAPI(createForm);
             if (response.data.status === "success") {
-                ToastSuccess(response.data.message)
                 localStorage.setItem("jwtAdmin", response.data.token);
+                ToastSuccess(response.data.message)
+                navigate('/admin')
             } else {
                 ToastError(response.data.message)
             }
-            console.log('Response from API:', response.data);
         } catch (error) {
             ToastError(error.response.data.message)
         }
 
 
     }
+
+    useEffect(() => {
+        if (userAdmin?.role.id === 2) {
+            navigate("/admin") 
+        }
+    }, [userAdmin, navigate]);
     return (
         <body class="hold-transition theme-primary bg-img" style={{ backgroundImage: `url("/admin/images/bg-1.jpg")` }}>
 
