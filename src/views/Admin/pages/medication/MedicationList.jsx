@@ -33,6 +33,8 @@ const MedicationList = () => {
   const [openUpdateModal, setOpenUpdateModal] = useState(false);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [loading, setLoading] = useState(false);
+  const timeoutRef = useRef(null);
+
 
   const handleLimitChange = (e) => setLimit(e.target.value);
   const handleDeleteOpen = () => {
@@ -61,6 +63,17 @@ const MedicationList = () => {
   };
   const handlePaginate = (event, value) => {
     setPage(value - 1); // Cập nhật số trang hiện tại khi người dùng chuyển trang
+  };
+
+  const handleSearchChange = (e) => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+
+    // Set a new timeout
+    timeoutRef.current = setTimeout(() => {
+      setKeyword(e.target.value);
+    }, 500);
   };
 
   async function deleteMedication(id) {
@@ -162,7 +175,7 @@ const MedicationList = () => {
                       <input
                         type="text"
                         id="search"
-                        onChange={(e) => setKeyword(e.target.value)}
+                        onChange={handleSearchChange}
                         className="schedule-filter-input inputsearch-admin"
                       />
                     </div>

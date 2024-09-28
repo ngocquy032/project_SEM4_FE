@@ -64,26 +64,12 @@ function Header(props) {
                                 </li>
                                 <li className="nav-item"><Link className="nav-link" to="/about" style={getLinkStyle("/about")}>About</Link></li>
                                 <li className="nav-item dropdown ">
-                                    <Link className="nav-link dropdown-toggle" to="/service" style={getLinkStyle("/service")}>Services</Link>
-                                    <ul className="dropdown-menu" aria-labelledby="dropdown02">
-                                        <li>
-                                            <Link to= "/bookingAmbulance" style={getLinkStyle("/bookingAmbulance")}><a className="dropdown-item" >Ambulance Booking </a></Link>
-                                        </li>
-                                        <li><a className="dropdown-item" href="department-single.html">Department Single</a></li>
-
-                                    </ul>
+                                    <Link className="nav-link dropdown-toggle" to="/service" style={getLinkStyle("/service")}>Medical Services</Link>
+                                   
                                 </li>
 
-                                <li className="nav-item dropdown">
-                                    <Link className="nav-link dropdown-toggle" to="/department" id="dropdown02"
-                                        data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false" style={getLinkStyle("/department")}>Department </Link>
-                                    {/* <ul className="dropdown-menu" aria-labelledby="dropdown02">
-                                        <li><a className="dropdown-item" href="department.html">Departments</a></li>
-                                        <li><a className="dropdown-item" href="department-single.html">Department
-                                            Single</a></li>
-                                    </ul> */}
-                                </li>
+                           
+                      
 
                                 <li className="nav-item dropdown">
                                     <Link className="nav-link dropdown-toggle" to="/doctors" id="dropdown03"

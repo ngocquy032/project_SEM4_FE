@@ -215,7 +215,7 @@ const All_API = {
             specialtyId,
             keyword
           } = data;
-        const response = axios.get(`${API_BASE_URL}doctors?limit=${limit}&page=${page}&specialtyId=&keyword=${keyword}`);
+        const response = axios.get(`${API_BASE_URL}doctors?limit=${limit}&page=${page}&specialtyId=${specialtyId}&name=${keyword}`);
         return response;
     },
 
@@ -224,7 +224,20 @@ const All_API = {
         return response;
     },
 
+    getDoctorById: (idDoctor) => {
+        const response = apiAdmin.get(`${API_BASE_URL}doctors/${idDoctor}`);
+        return response;
+    },
+
+    updateDoctor: (idDoctor, doctorData) => {
+        const response = apiAdmin.put(`${API_BASE_URL}doctors/${idDoctor}`, doctorData);
+        return response;
+    },
     
+    deleteDoctorById: (idDoctor) => {
+        const response = apiAdmin.delete(`${API_BASE_URL}doctors/${idDoctor}`);
+        return response;
+    },
 
 
     uploadImage:   (token, imageData) => {
@@ -238,6 +251,37 @@ const All_API = {
 
     },
     
+
+
+    getAllClinic: (data) => {
+        const {
+            page,
+            limit,
+            keyword
+          } = data;
+        const response = axios.get(`${API_BASE_URL}clinics?limit=${limit}&page=${page}&keyword=${keyword}`);
+        return response;
+    },
+
+    createClinic: (clinicData) => {
+        const response = apiAdmin.post(`${API_BASE_URL}clinics`, clinicData);
+        return response;
+    },
+
+    getClinicById: (idClinic) => {
+        const response = apiAdmin.get(`${API_BASE_URL}clinics/${idClinic}`);
+        return response;
+    },
+
+    updateClinic: (idClinic, clinicData) => {
+        const response = apiAdmin.put(`${API_BASE_URL}clinics/${idClinic}`, clinicData);
+        return response;
+    },
+
+    deleteClinicById: (idClinic) => {
+        const response = apiAdmin.delete(`${API_BASE_URL}clinics/${idClinic}`);
+        return response;
+    },
 
 
 
@@ -270,14 +314,25 @@ const All_API = {
         return response;
     },
 
-    getUserFull: () => {
-        
-        const response = apiAdmin.get(`${API_BASE_URL}users`);
+    getUserFull: (roleName) => {
+        const response = apiAdmin.get(`${API_BASE_URL}users/role?roleName=${roleName}`);
         return response;
     },
 
+    
 
+    getDoctorBySpecialty: (specialtyId) => {
+        
+        const response = axios.get(`${API_BASE_URL}doctors?specialtyId=${specialtyId}`);
+        return response;
+    },
 
+    
+    getScheduleByDoctor: (idDoctor, dateSchedule) => {
+        
+        const response = axios.get(`${API_BASE_URL}schedules/doctor?doctorId=${idDoctor}&dateSchedule=${dateSchedule}`);
+        return response;
+    },
 
 
 

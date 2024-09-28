@@ -62,7 +62,7 @@ const SildeBar = () => {
 				  </a>
 				  <ul className="treeview-menu">
 					<li><a onClick={()=> navigate('/admin/clinics/add')}><i className="icon-Commit"><span className="path1"></span><span className="path2"></span></i>Add Clinic</a></li>
-					<li><a onClick={()=> navigate('/admin/clinics/add')}><i className="icon-Commit"><span className="path1"></span><span className="path2"></span></i>List Clinic</a></li>
+					<li><a onClick={()=> navigate('/admin/clinics')}><i className="icon-Commit"><span className="path1"></span><span className="path2"></span></i>List Clinic</a></li>
 				  </ul>
 				</li>
 						

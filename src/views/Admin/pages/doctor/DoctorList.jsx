@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { faCircleUser, faEye, faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import All_API from '../../../../state/All_API';
@@ -24,6 +24,7 @@ const DoctorList = () => {
     const [keyword, setKeyword] = useState("");
     const [openDeleteModal, setOpenDeleteModal] = useState(false);
     const [loading, setLoading] = useState(false);
+    const timeoutRef = useRef(null);
 
 
 
@@ -64,14 +65,24 @@ const DoctorList = () => {
       };
       const handleSpecialtyChange = (e) => setSpecialtyId(e.target.value);
 
+      const handleSearchChange = (e) => {
+        if (timeoutRef.current) {
+          clearTimeout(timeoutRef.current);
+        }
     
-      async function deleteSpecialty(id) {
+        // Set a new timeout
+        timeoutRef.current = setTimeout(() => {
+          setKeyword(e.target.value);
+        }, 500);
+      };
+
+      async function deleteDoctor(id) {
         try {
-          const response = await All_API.deleteSpecialtyById(id);
+          const response = await All_API.deleteDoctorById(id);
           if (response.data.status === "success") {
             ToastSuccess(response.data.message);
             handleDeleteClose();
-            
+            handleLoading()
           } else {
             ToastError(response.data.message);
             handleDeleteClose();
@@ -174,7 +185,7 @@ const DoctorList = () => {
                         <input
                           type="text"
                           id="search"
-                          onChange={(e) => setKeyword(e.target.value)}
+                          onChange={handleSearchChange}
                           className="schedule-filter-input inputsearch-admin"
                         />
                       </div>
@@ -283,7 +294,7 @@ const DoctorList = () => {
             handleClose={handleDeleteClose}
             idObject={idObject}
             onDelete={handleLoading}
-            deleteFunction={deleteSpecialty}
+            deleteFunction={deleteDoctor}
           />
         )}
       </div>

@@ -1,5 +1,5 @@
-import React from 'react'
-import { Route, Routes, Link } from "react-router-dom";
+import React, { useEffect, useState } from 'react'
+import { Route, Routes, Link, useNavigate } from "react-router-dom";
 import Demo from "../views/Admin/demo";
 import '../assets/admins/css/styleAdmin.css'
 import MasterLayoutAdmin from "../views/Admin/componets/masterLayoutAdmin";
@@ -26,10 +26,45 @@ import UpdateSpecialty from '../views/Admin/pages/specialty/UpdateSpecialty';
 import ViewSpecialty from '../views/Admin/pages/specialty/ViewSpecialty';
 import DoctorList from '../views/Admin/pages/doctor/DoctorList';
 import AddDoctor from '../views/Admin/pages/doctor/AddDoctor';
+import UpdateDoctor from '../views/Admin/pages/doctor/UpdateDoctor';
+import ClinicList from '../views/Admin/pages/clinic/ClinicList';
+import AddClinic from '../views/Admin/pages/clinic/AddClinic';
+import UpdateClinic from '../views/Admin/pages/clinic/UpdateClinic';
+import ViewClinic from '../views/Admin/pages/clinic/ViewClinic';
+import { useDispatch } from 'react-redux';
+import { addUserAdmin } from '../state/Auth/authAdminSlice';
+import All_API from '../state/All_API';
 
 
 
 const AdminRouter = () => {
+  const jwt = localStorage.getItem("jwtAdmin");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [userLoaded, setUserLoaded] = useState(false); 
+
+  async function getUser(token) {
+    try{
+      const data = await All_API.getUserAPI(token)
+      dispatch(addUserAdmin(data.data.data))
+      if(data.data?.data.role.id === 2) {
+        setUserLoaded(false)
+      }else {
+        setUserLoaded(true)
+      }
+    }catch {
+      setUserLoaded(true)
+    } 
+  }
+
+  useEffect(() => {
+
+    getUser(jwt);
+    if (userLoaded) {
+      navigate('/admin/login');
+    }
+  }, [jwt, userLoaded]);
+
   return (
     <Routes>
 
@@ -69,10 +104,14 @@ const AdminRouter = () => {
         <Route path='/specialties/update/:idSpecialty' element={<UpdateSpecialty />} />
         <Route path='/specialties/:idSpecialty' element={<ViewSpecialty />} />
 
-
         <Route path='/doctors' element={<DoctorList />} />
         <Route path='/doctors/add' element={<AddDoctor />} />
+        <Route path='/doctors/update/:idDoctor' element={<UpdateDoctor />} />
 
+        <Route path='/clinics' element={<ClinicList />} />
+        <Route path='/clinics/add' element={<AddClinic />} />
+        <Route path='/clinics/update/:idClinic' element={<UpdateClinic />} />
+        <Route path='/clinics/:idClinic' element={<ViewClinic />} />
 
 
 

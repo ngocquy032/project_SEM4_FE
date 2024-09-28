@@ -1,7 +1,20 @@
 import React from 'react';
-import {Link} from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import {Link, useNavigate} from "react-router-dom";
+import { GetUserAdmin, removeUserAdmin } from '../../../state/Auth/authAdminSlice';
 
 function HeaderAdmin(props) {
+
+  const userAdmin = useSelector(GetUserAdmin)
+  const navigate = useNavigate();
+  const dispatch = useDispatch()
+
+  const handleLogout= () => {
+    localStorage.removeItem("jwtAdmin")
+    dispatch(removeUserAdmin(null))
+    navigate('/admin/login')
+    }
+
     return (
         <header className="main-header">
         <div className="d-flex align-items-center logo-box justify-content-start">	
@@ -39,8 +52,8 @@ function HeaderAdmin(props) {
                     </a>
                     <ul className="dropdown-menu animated flipInX">
                       <li className="user-body">
-                         <a className="dropdown-item" href="extra_profile.html"><i className="ti-user text-muted me-2"></i> Profile</a>
-                         <a className="dropdown-item" href="auth_login.html"><i className="ti-lock text-muted me-2"></i> Logout</a>
+                         <a className="dropdown-item" href='#'><i className="ti-user text-muted me-2"></i> Profile</a>
+                         <a className="dropdown-item" href="#" onClick={handleLogout}><i className="ti-lock text-muted me-2"></i> Logout</a>
                       </li>
                     </ul>
                 </li>	

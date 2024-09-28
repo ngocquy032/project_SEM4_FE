@@ -7,14 +7,14 @@ import { useNavigate } from 'react-router-dom';
 import { Pagination, Stack } from '@mui/material';
 import DeleteLayout from '../../componets/DeleteLayout';
 
-const SpecialtyList = () => {
+const ClinicList = () => {
 
 
     const displayStyle = {
         padding: '.25rem 0.5rem'
     }
     const navigate = useNavigate()
-    const [specialties, setSpecialties] = useState([]);
+    const [clinics, setClinics] = useState([]);
     const [idObject, setIdObject] = useState("");
     const [totalPages, setTotalPages] = useState(0);
     const [page, setPage] = useState(0);
@@ -27,12 +27,11 @@ const SpecialtyList = () => {
 
 
 
-
-    async function getSpecialtiesAll(data) {
+    async function getAllClinic(data) {
             try{
-              const response = await All_API.getAllSpecialty(data)
+              const response = await All_API.getAllClinic(data)
               if(response.data.status === "success") {
-                setSpecialties(response.data.data.specialtyList)
+                setClinics(response.data.data.clinicList)
                 setTotalPages(response.data.data.totalPages);
               }else {
                  
@@ -42,9 +41,11 @@ const SpecialtyList = () => {
             }
           }
 
+    
+
     const handleLimitChange = (e) => setLimit(e.target.value);
     const handlePaginate = (event, value) => {
-        setPage(value - 1); // Cập nhật số trang hiện tại khi người dùng chuyển trang
+        setPage(value - 1);
       };
       const handleDeleteOpen = () => {
         setOpenDeleteModal(true);
@@ -55,6 +56,7 @@ const SpecialtyList = () => {
       const handleLoading = () => {
         setLoading(!loading);
       };
+
       const handleSearchChange = (e) => {
         if (timeoutRef.current) {
           clearTimeout(timeoutRef.current);
@@ -66,14 +68,13 @@ const SpecialtyList = () => {
         }, 500);
       };
 
-      async function deleteSpecialty(id) {
+      async function deleteClinic(id) {
         try {
-          const response = await All_API.deleteSpecialtyById(id);
+          const response = await All_API.deleteClinicById(id);
           if (response.data.status === "success") {
             ToastSuccess(response.data.message);
             handleDeleteClose();
             handleLoading()
-            
           } else {
             ToastError(response.data.message);
             handleDeleteClose();
@@ -86,8 +87,8 @@ const SpecialtyList = () => {
 
      useEffect(()=> {
         const data = { page, limit, keyword };
-        getSpecialtiesAll(data)
-     }, [page, limit, keyword, loading])     
+        getAllClinic(data)
+     }, [page, limit,  keyword, loading])     
 
     return ( 
         <div class="content-wrapper">
@@ -98,7 +99,7 @@ const SpecialtyList = () => {
               <div class="me-auto ">
                 <div>
                   {" "}
-                  <h2 class="page-title">Specialty</h2>
+                  <h2 class="page-title">Clinic</h2>
                   <div class="d-inline-block align-items-center">
                     <nav>
                       <ol class="breadcrumb">
@@ -108,7 +109,7 @@ const SpecialtyList = () => {
                           </a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">
-                          Specialty List
+                        Clinic List
                         </li>
                       </ol>
                     </nav>
@@ -145,6 +146,7 @@ const SpecialtyList = () => {
   
                     {/* Các phần tử ở bên phải */}
                     <div className="schedule-filter-right">
+                  
                       {/* Search */}
                       <div className="schedule-filter-item">
                         <label htmlFor="search" className="schedule-filter-label">
@@ -165,22 +167,27 @@ const SpecialtyList = () => {
                         <thead>
                           <tr>
                             <th>ID</th>
-                            <th>Specialty Name</th>
+                            <th>Clinic Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
                             <th>Action</th>
                           </tr>
                         </thead>
                         <tbody>
-                          {specialties?.map((specialty) => (
+                          {clinics?.map((clinic) => (
                             <tr class="hover-primary">
-                              <td>#{specialty?.id}</td>
-                              <td>{specialty?.specialtyName}</td>
+                              <td>#{clinic?.id}</td>
+                              <td>{clinic?.clinicName}</td>
+                              <td>{clinic?.email}</td>
+                              <td>{clinic?.phone}</td>
+                           
                               <td>
                                 <div class="btn-group acion-admin-list">
                                   <a
                                     style={displayStyle}
                                     onClick={() =>
                                       navigate(
-                                        `/admin/specialties/${specialty?.id}`
+                                        `/admin/clinics/${clinic?.id}`
                                       )
                                     }
                                   >
@@ -194,7 +201,7 @@ const SpecialtyList = () => {
                                     style={displayStyle}
                                     onClick={() =>
                                       navigate(
-                                        `/admin/specialties/update/${specialty?.id}`
+                                        `/admin/clinics/update/${clinic?.id}`
                                       )
                                     }
                                   >
@@ -207,7 +214,7 @@ const SpecialtyList = () => {
                                   <a
                                     style={displayStyle}
                                     onClick={() => {
-                                      setIdObject(specialty?.id);
+                                      setIdObject(clinic?.id);
                                       handleDeleteOpen();
                                     }}
                                   >
@@ -254,11 +261,11 @@ const SpecialtyList = () => {
             handleClose={handleDeleteClose}
             idObject={idObject}
             onDelete={handleLoading}
-            deleteFunction={deleteSpecialty}
+            deleteFunction={deleteClinic}
           />
         )}
       </div>
     );
 };
 
-export default SpecialtyList
+export default ClinicList

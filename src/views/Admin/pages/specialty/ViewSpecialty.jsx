@@ -5,6 +5,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import All_API from '../../../../state/All_API';
 import { ToastError, ToastSuccess } from '../../../../notification';
 import { API_BASE_URL } from '../../../../config/apiConfig';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 const ViewSpecialty = () => {
 
@@ -13,7 +15,6 @@ const ViewSpecialty = () => {
         padding: '10px',
         width: '100%',
         textAlign: 'center',  // Center text in the input
-        height: '50px',  // Increase height for better UI
         display: 'flex',  // Flexbox for centering content
         alignItems: 'center',
         justifyContent: 'center',
@@ -150,16 +151,27 @@ const ViewSpecialty = () => {
                                             <div className="col-md-12 mb-3">
                                                 <div className="form-group">
                                                     <label style={labelStyle}>Description</label>
-                                                    <textarea
-                                                        name='description'
-                                                        className="form-control"
-                                                        style={inputStyle}
-                                                        rows="5"
-                                                        placeholder="Enter description"
-                                                        value={description}
-                                                        required
-                                                        disabled
-                                                    ></textarea>
+                                                    <CKEditor
+                            editor={ClassicEditor}
+                            data={description} // Gán dữ liệu mặc định từ state
+                            config={{
+                                ckfinder: {
+                                    uploadUrl: '/upload',
+                                },
+                                image: {
+                                    toolbar: [
+                                        'imageTextAlternative', '|',
+                                        'imageStyle:full', 'imageStyle:side'
+                                    ]
+                                },
+                            
+                            }}
+                           disabled
+                            onChange={(event, editor) => {
+                              const data = editor.getData(); // Lấy nội dung CKEditor
+                              setDescription(data); // Cập nhật giá trị vào state
+                            }}
+                          />
                                                 </div>
                                             </div>
                                         </div>

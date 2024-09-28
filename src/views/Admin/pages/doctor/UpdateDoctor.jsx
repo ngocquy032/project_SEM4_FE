@@ -1,14 +1,15 @@
 import React, { useState, useRef, useEffect } from "react";
 import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import All_API from "../../../../state/All_API";
 import { ToastError, ToastSuccess } from "../../../../notification";
 import Select from "react-select";
+import { API_BASE_URL } from "../../../../config/apiConfig";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
-const AddDoctor = () => {
+const UpdateDoctor = () => {
   const jwtAdmin = localStorage.getItem("jwtAdmin")
 
   // General styles for form layout consistency
@@ -50,6 +51,8 @@ const AddDoctor = () => {
     }),
   };
 
+  const { idDoctor } = useParams();
+
   const navigate = useNavigate();
   const [imagePreview, setImagePreview] = useState(null); // State to store image preview
   const fileInputRef = useRef(null); // Ref to handle file input
@@ -61,6 +64,10 @@ const AddDoctor = () => {
   const [qualification, setQualification] = useState("");
   const [experience, setExperience] = useState("");
   const [bio, setBio] = useState("");
+  const [doctorImageOld, setDoctorImageOld] = useState(null);
+  const [active,setActive] = useState(null)
+  
+
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -81,16 +88,24 @@ const AddDoctor = () => {
     const formData = new FormData();
     const doctorImage = fileInputRef.current.files[0];
 
-    if (!doctorImage) {
-      ToastError("Please upload an image.");
-      return;
-    }
-
     formData.append("file", doctorImage);
-    uploadImage(jwtAdmin, formData);
+
+    if (!doctorImage) {
+      const doctorData = {
+        user_id: user?.value,
+        specialty_id: specialtyId,
+        qualification: qualification,
+        experience: experience,
+        bio: bio,
+        active: active === "true"
+      };
+      updateDoctor(idDoctor, doctorData);
+    } else {
+      uploadImage(idDoctor, jwtAdmin, formData);
+    }
   };
 
-  async function uploadImage(token, imageData) {
+  async function uploadImage(idDoctor, token, imageData) {
     try {
       const response = await All_API.uploadImage(token, imageData);
 
@@ -105,9 +120,10 @@ const AddDoctor = () => {
         qualification: qualification,
         experience: experience,
         bio: bio,
+        active: active === "true"
       };
 
-      await createDoctor(doctorData);
+      await updateDoctor(idDoctor, doctorData);
     } catch (error) {
       const errorMessage =
         error.response?.data?.message || "Image upload failed";
@@ -115,9 +131,9 @@ const AddDoctor = () => {
     }
   }
 
-  async function createDoctor(doctorData) {
+  async function updateDoctor(idDoctor, doctorData) {
     try {
-      const response = await All_API.createDoctor(doctorData);
+      const response = await All_API.updateDoctor(idDoctor, doctorData);
       if (response.data.status === "success") {
         ToastSuccess(response.data.message);
         navigate("/admin/doctors");
@@ -126,7 +142,7 @@ const AddDoctor = () => {
       }
     } catch (error) {
       const errorMessage =
-        error.response?.data?.message || "Doctor create failed";
+        error.response?.data?.message || "Doctor update failed";
       ToastError(errorMessage);
     }
   }
@@ -155,9 +171,32 @@ const AddDoctor = () => {
     } catch {}
   }
 
+  async function getDoctorById(idObject) {
+    try {
+      const response = await All_API.getDoctorById(idObject);
+      if (response.data.status === "success") {
+        const dataNew = response.data.data;
+        setUser({ value: dataNew?.user.id, label: dataNew?.user.fullname });
+        setSpecialtyId(dataNew?.specialty?.id);
+        setDoctorImageOld(dataNew?.avatar);
+        setQualification(dataNew?.qualification);
+        setExperience(dataNew?.experience);
+        setBio(dataNew?.bio);
+        setActive(dataNew?.active)
+      } else {
+        ToastError(response.data.status);
+        navigate("/admin/doctors");
+      }
+    } catch (error) {
+      ToastError(error.response.data.message);
+      navigate("/admin/doctors");
+    }
+  }
+
   useEffect(() => {
     getFullUser();
     getAllSpecialty();
+    getDoctorById(idDoctor);
   }, []);
 
   const handleChange = (selectedOption) => {
@@ -241,7 +280,6 @@ const AddDoctor = () => {
                             accept=".png, .jpg, .jpeg"
                             ref={fileInputRef}
                             onChange={handleFileChange}
-                            required
                           />
                         </div>
                       </div>
@@ -253,23 +291,32 @@ const AddDoctor = () => {
                         >
                           <img
                             src={imagePreview}
-                            alt="Specialty Preview"
-                            style={{ maxWidth: "70%", height: "auto" }}
+                            alt="Doctor Preview"
+                            style={{
+                              maxWidth: "360px",
+                              height: "240px",
+                              objectFit: "cover",
+                            }}
                           />
-                          <div style={{ marginTop: "10px" }}>
-                            <button
-                              type="button"
-                              className="btn btn-danger"
-                              onClick={handleRemoveImage}
-                            >
-                              Remove Image
-                            </button>
-                          </div>
+                          <div style={{ marginTop: "10px" }}></div>
                         </div>
                       )}
 
+                      {imagePreview == null && doctorImageOld && (
+                        <div
+                          className="col-md-12 mb-3"
+                          style={{ textAlign: "center" }}
+                        >
+                          <img
+                            src={`${API_BASE_URL}images/view/${doctorImageOld}`}
+                            alt="Doctor Preview"
+                            style={{ maxWidth: "70%", height: "auto" }}
+                          />
+                          <div style={{ marginTop: "10px" }}></div>
+                        </div>
+                      )}
 
-                      <div className="col-md-12 mb-3">
+<div className="col-md-12 mb-3">
                         <div className="form-group">
                           <label class="form-label">Experience </label>
                           <input
@@ -298,14 +345,14 @@ const AddDoctor = () => {
                           ></textarea>
                         </div>
                       </div>
-                    
-
+                  
 
 
                       <div className="col-md-12 mb-3">
                         <div className="form-group">
                           <label class="form-label">Bio</label>
                           <CKEditor
+                            
                             editor={ClassicEditor}
                             data={bio} // Gán dữ liệu mặc định từ state
                             config={{
@@ -318,6 +365,7 @@ const AddDoctor = () => {
                                         'imageStyle:full', 'imageStyle:side'
                                     ]
                                 },
+                                
                             
                             }}
                            
@@ -328,14 +376,33 @@ const AddDoctor = () => {
                           />
                         </div>
                       </div>
+                
+
+              
+                      <div className="col-md-12 mb-3">
+                        <div className="form-group">
+                        <label class="form-label">Active</label> <br />
+                                                        <select class="form-control"
+                                                            style={{ fontSize: 'unset' }}
+                                                            value={active}
+                                                            onChange={(e)=>setActive(e.target.value)}
+                                                            name='is_active'
+                                                            className="schedule-filter-select select-admin-form">
+                                                            <option value="true">Active</option>
+                                                            <option value="false">Block</option>
+                                                        </select>
+                        </div>
+                      </div>
                     </div>
+
+                
 
                     <div className="box-footer" style={buttonGroupStyle}>
                       <button type="button" className="btn btn-warning">
                         <i className="ti-trash"></i> Cancel
                       </button>
                       <button type="submit" className="btn btn-primary">
-                        <i className="ti-save-alt"></i> Save
+                        <i className="ti-save-alt"></i> Update
                       </button>
                     </div>
                   </div>
@@ -349,4 +416,4 @@ const AddDoctor = () => {
   );
 };
 
-export default AddDoctor;
+export default UpdateDoctor;

@@ -1,11 +1,11 @@
 import React from 'react';
-import BookAppoinment from '../components/bookAppoinment';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 
 import('../../../assets/customers/css/style.css');
 
 
 function Home() {
+    const navigate = useNavigate();
     return (
         <div>
             {/*slide*/}
@@ -22,7 +22,7 @@ function Home() {
                                 <p className="mb-4 pr-5">A repudiandae ipsam labore ipsa voluptatum quidem quae
                                     laudantium quisquam aperiam maiores sunt fugit, deserunt rem suscipit placeat.</p>
                                 <div className="btn-container ">
-                                    <NavLink to='/bookAppoinment' 
+                                    <NavLink to='/service' 
                                        className="btn btn-main-2 btn-icon btn-round-full">Make appoinment <i
                                         className="icofont-simple-right ml-2  "></i></NavLink>
                                 </div>
@@ -43,9 +43,9 @@ function Home() {
                                     </div>
                                     <span>24 Hours Service</span>
                                     <h4 className="mb-3">Online Appoinment</h4>
-                                    <p className="mb-4">Get ALl time support for emergency.We have introduced the
+                                    <p className="mb-4">Get All time support for emergency.We have introduced the
                                         principle of family medicine.</p>
-                                    <Link to='/bookAppoinment'  className="btn btn-main btn-round-full">Make a
+                                    <Link to='/service'  className="btn btn-main btn-round-full">Make a
                                         appoinment</Link>
                                 </div>
 
@@ -56,12 +56,12 @@ function Home() {
                                     <span>Timing schedule</span>
                                     <h4 className="mb-3">Working Hours</h4>
                                     <ul class="w-hours list-unstyled">
-                                        <li class="d-flex justify-content-between">Sun - Wed : <span>8:00 - 17:00</span>
+                                        <li class="d-flex justify-content-between">Sun - Wed : <span>7:00 - 17:00</span>
                                         </li>
-                                        <li class="d-flex justify-content-between">Thu - Fri : <span>9:00 - 17:00</span>
+                                        <li class="d-flex justify-content-between">Thu - Fri : <span>8:00 - 17:00</span>
                                         </li>
                                         <li class="d-flex justify-content-between">Sat - sun
-                                            : <span>10:00 - 17:00</span></li>
+                                            : <span>9:00 - 17:00</span></li>
                                     </ul>
                                 </div>
 
@@ -71,7 +71,7 @@ function Home() {
                                     </div>
                                     <span>Emegency Cases</span>
                                     <h4 className="mb-3">1-800-700-6200</h4>
-                                    <p>Get ALl time support for emergency.We have introduced the principle of family
+                                    <p>Get All time support for emergency.We have introduced the principle of family
                                         medicine.Get Conneted with us for any urgency .</p>
                                 </div>
                             </div>
@@ -100,7 +100,7 @@ function Home() {
                                 <p className="mt-4 mb-5">We provide best leading medicle service Nulla perferendis
                                     veniam deleniti ipsum officia dolores repellat laudantium obcaecati neque.</p>
 
-                                <a href="service.html" className="btn btn-main-2 btn-round-full btn-icon">Services<i
+                                <a href='#' onClick={()=>navigate('/service')}className="btn btn-main-2 btn-round-full btn-icon">Services<i
                                     className="icofont-simple-right ml-3"></i></a>
                             </div>
                         </div>
@@ -241,122 +241,13 @@ function Home() {
                     </div>
                 </div>
             </section>
-            {/* Book appoinment */}
-            <BookAppoinment/>
             
 
 
 
 
             
-            {/*<section className="section testimonial-2 gray-bg">*/}
-            {/*    <div className="container">*/}
-            {/*        <div className="row justify-content-center">*/}
-            {/*            <div className="col-lg-7">*/}
-            {/*                <div className="section-title text-center">*/}
-            {/*                    <h2>We served over 5000+ Patients</h2>*/}
-            {/*                    <div className="divider mx-auto my-4"></div>*/}
-            {/*                    <p>Lets know moreel necessitatibus dolor asperiores illum possimus sint voluptates*/}
-            {/*                        incidunt molestias nostrum laudantium. Maiores porro cumque quaerat.</p>*/}
-            {/*                </div>*/}
-            {/*            </div>*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-
-            {/*    <div className="container">*/}
-            {/*        <div className="row align-items-center">*/}
-            {/*            <div className="col-lg-12 testimonial-wrap-2">*/}
-            {/*                <div className="testimonial-block style-2  gray-bg">*/}
-            {/*                    <i className="icofont-quote-right"></i>*/}
-
-            {/*                    <div className="testimonial-thumb">*/}
-            {/*                        <img src="customer/images/team/test-thumb1.jpg" alt="" className="img-fluid"/>*/}
-            {/*                    </div>*/}
-
-            {/*                    <div className="client-info ">*/}
-            {/*                        <h4>Amazing service!</h4>*/}
-            {/*                        <span>John Partho</span>*/}
-            {/*                        <p>*/}
-            {/*                            They provide great service facilty consectetur adipisicing elit. Itaque rem,*/}
-            {/*                            praesentium, iure, ipsum magnam deleniti a vel eos adipisci suscipit fugit*/}
-            {/*                            placeat.*/}
-            {/*                        </p>*/}
-            {/*                    </div>*/}
-            {/*                </div>*/}
-
-            {/*                <div className="testimonial-block style-2  gray-bg">*/}
-            {/*                    <div className="testimonial-thumb">*/}
-            {/*                        <img src="customer/images/team/test-thumb2.jpg" alt="" className="img-fluid"/>*/}
-            {/*                    </div>*/}
-
-            {/*                    <div className="client-info">*/}
-            {/*                        <h4>Expert doctors!</h4>*/}
-            {/*                        <span>Mullar Sarth</span>*/}
-            {/*                        <p>*/}
-            {/*                            They provide great service facilty consectetur adipisicing elit. Itaque rem,*/}
-            {/*                            praesentium, iure, ipsum magnam deleniti a vel eos adipisci suscipit fugit*/}
-            {/*                            placeat.*/}
-            {/*                        </p>*/}
-            {/*                    </div>*/}
-
-            {/*                    <i className="icofont-quote-right"></i>*/}
-            {/*                </div>*/}
-
-            {/*                <div className="testimonial-block style-2  gray-bg">*/}
-            {/*                    <div className="testimonial-thumb">*/}
-            {/*                        <img src="customer/images/team/test-thumb3.jpg" alt="" className="img-fluid"/>*/}
-            {/*                    </div>*/}
-
-            {/*                    <div className="client-info">*/}
-            {/*                        <h4>Good Support!</h4>*/}
-            {/*                        <span>Kolis Mullar</span>*/}
-            {/*                        <p>*/}
-            {/*                            They provide great service facilty consectetur adipisicing elit. Itaque rem,*/}
-            {/*                            praesentium, iure, ipsum magnam deleniti a vel eos adipisci suscipit fugit*/}
-            {/*                            placeat.*/}
-            {/*                        </p>*/}
-            {/*                    </div>*/}
-
-            {/*                    <i className="icofont-quote-right"></i>*/}
-            {/*                </div>*/}
-
-            {/*                <div className="testimonial-block style-2  gray-bg">*/}
-            {/*                    <div className="testimonial-thumb">*/}
-            {/*                        <img src="customer/images/team/test-thumb4.jpg" alt="" className="img-fluid"/>*/}
-            {/*                    </div>*/}
-
-            {/*                    <div className="client-info">*/}
-            {/*                        <h4>Nice Environment!</h4>*/}
-            {/*                        <span>Partho Sarothi</span>*/}
-            {/*                        <p className="mt-4">*/}
-            {/*                            They provide great service facilty consectetur adipisicing elit. Itaque rem,*/}
-            {/*                            praesentium, iure, ipsum magnam deleniti a vel eos adipisci suscipit fugit*/}
-            {/*                            placeat.*/}
-            {/*                        </p>*/}
-            {/*                    </div>*/}
-            {/*                    <i className="icofont-quote-right"></i>*/}
-            {/*                </div>*/}
-
-            {/*                <div className="testimonial-block style-2  gray-bg">*/}
-            {/*                    <div className="testimonial-thumb">*/}
-            {/*                        <img src="customer/images/team/test-thumb1.jpg" alt="" className="img-fluid"/>*/}
-            {/*                    </div>*/}
-
-            {/*                    <div className="client-info">*/}
-            {/*                        <h4>Modern Service!</h4>*/}
-            {/*                        <span>Kolis Mullar</span>*/}
-            {/*                        <p>*/}
-            {/*                            They provide great service facilty consectetur adipisicing elit. Itaque rem,*/}
-            {/*                            praesentium, iure, ipsum magnam deleniti a vel eos adipisci suscipit fugit*/}
-            {/*                            placeat.*/}
-            {/*                        </p>*/}
-            {/*                    </div>*/}
-            {/*                    <i className="icofont-quote-right"></i>*/}
-            {/*                </div>*/}
-            {/*            </div>*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*</section>*/}
+            
             <section className="section clients">
                 <div className="container">
                     <div className="row justify-content-center">

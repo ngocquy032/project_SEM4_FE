@@ -60,7 +60,7 @@ const AddSchedule = () => {
         const foundDoctor = doctors.find((doctor) => doctor.id === doctorIdexs);
 
         // Cập nhật thông tin bác sĩ được chọn
-        fetchDurationMinutes(foundDoctor?.specialty_id);  // Gọi API khi chọn start_time
+        fetchDurationMinutes(foundDoctor?.specialty?.id);  // Gọi API khi chọn start_time
 
     };
     const handleEndTimeChange = (e) => setEndTime(e.target.value)
@@ -87,6 +87,7 @@ const AddSchedule = () => {
       }
 
       async function fetchDurationMinutes(specialtyId) {
+        console.log(specialtyId)
         try{
           const response = await All_API.getSlotTime(specialtyId)
           setDurationMinutes(response.data.data[0].durationMinutes)
@@ -112,8 +113,6 @@ const AddSchedule = () => {
       const newHours = Math.floor(totalMinutes / 60) % 24; // Giới hạn trong khoảng 24 giờ
       const newMinutes = totalMinutes % 60;
     
-            console.log(newHours)
-            console.log(newMinutes + "phút")
       // Định dạng giờ và phút để có 2 chữ số
       const formattedHours = newHours.toString().padStart(2, '0');
       const formattedMinutes = newMinutes.toString().padStart(2, '0');

@@ -127,7 +127,7 @@ const UpdateSchedule = () => {
         const doctorId = parseInt(e.target.value);
         setDoctorId(doctorId);
         const foundDoctor = doctors.find((doctor) => doctor.id === doctorId);
-        fetchDurationMinutes(foundDoctor?.specialty_id);
+        fetchDurationMinutes(foundDoctor?.specialty?.id);
     };
 
     const handleEndTimeChange = (e) => setEndTime(e.target.value);

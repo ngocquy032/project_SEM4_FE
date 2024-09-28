@@ -1503,6 +1503,11 @@ a:focus {
     flex-direction: column;
 }
 
+.booking-form .form-group label{
+  font-size: 16px;
+  
+}
+
 .booking-form .time-selection {
     display: flex;
     flex-wrap: wrap;
@@ -1510,7 +1515,9 @@ a:focus {
 }
 
 .booking-form .time-slot {
-    padding: 10px 20px;
+    max-width: 110px !important;
+    min-width: 110px !important;
+    padding: 8px 12px;
     border: 1px solid #007bff;
     border-radius: 5px;
     cursor: pointer;
@@ -1518,6 +1525,7 @@ a:focus {
     flex: 1 0 21%;  /* Điều chỉnh giá trị này để thay đổi kích thước ô chữ nhật */
     margin: 5px;
     background-color: #f8f9fa;
+    font-size: 14px;
 }
 
 .booking-form .time-slot:hover {
@@ -1527,4 +1535,178 @@ a:focus {
 .booking-form .time-slot.selected {
     background-color: #ffc107;  /* Màu vàng khi được chọn */
     color: white;
+}
+
+
+.img-specilaty-client{
+  height: 252px;
+  object-fit: cover;
+}
+
+.content-specialty-tiltle{
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.content-specialty-tiltle .read-more{
+  margin-top: 22px;
+}
+
+
+
+.department-single-v2 {
+  padding-top: 60px !important;
+}
+
+.card-doctor-cle {
+  display: flex;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.img-doctor-cle {
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+}
+.btn-more-cle {
+  
+  margin-top: 8px;
+  text-align: center;
+
+}
+.btn-more-cle {
+  color: #64a3e6;
+  font-size: 15px;
+}
+
+.btn-more-cle:hover {
+  color: rgb(245, 60, 122);
+  cursor: pointer;
+}
+
+.doctor-rcle {
+  margin-left: 20px;
+}
+
+.doctor-exp-cle,
+.doctor-bio-cle {
+  font-size: 15px;
+}
+
+.doctor-exp-cle {
+  margin-bottom: 1px;
+}
+
+.doctor-bio-cle {
+  line-height: 20px;
+}
+
+.doctor-rcle {width: 70%;}
+
+.doctor-fullname-cle {
+  margin-bottom: 1px !important;
+}
+
+.date-schedule-cle {
+  margin-bottom: 0 !important;
+display: flex;
+flex-direction: row !important;
+}
+
+.title-address {
+  font-size: 17px;
+  margin-bottom: 4px;
+  line-height: 32px;
+  }
+
+.name-address, .address-details {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.name-address {
+  font-weight: 600;
+}
+
+.title-address {
+  color: #474343;
+}
+
+.flex-price-cle {
+  display: flex;
+}
+
+.card-doctors-cle  h4 a{
+  display: block;
+  text-align: center;
+
+  
+}
+
+.card-doctors-cle:hover  h4 a{
+  color: rgb(223, 75, 112);
+  cursor: pointer;
+}
+
+.card-doctors-cle .card-doctor-sp {
+  text-align: center;
+}
+
+.doctor-img-lt {
+  width: 255px;
+  height: 255px;
+  object-fit: cover;
+}
+
+.doctor-detail-lt {
+  width: 350px;
+  height: 350px;
+  object-fit: cover;
+}
+
+.doctor-detail-title {
+  text-align: center;
+}
+
+.font-doctor-detail {
+  font-size: 17px;
+}
+.date-schedule-cle > .react-datepicker-wrapper {
+  margin-left: 10px;
+  width: 90px;
+  margin-top: -2px;
+
+}
+.custom-datepicker {
+  text-align: center;
+  border: none; /* Bỏ border mặc định */
+  border-bottom: 2px solid #6f8ba4; /* Thêm gạch ngang */
+  color: #6f8ba4; /* Đổi màu giá trị thành xanh */
+  outline: none; /* Khi click vào, không hiện viền */
+  font-weight: 600;
+  width: 90px;
+  height: 26px !important;
+}
+
+.custom-datepicker:focus {
+  outline: none; /* Bỏ viền khi focus */
+  border-bottom: 2px solid blue; /* Gạch ngang khi focus */
+}
+
+.doctor-qualification {
+  padding-top: 70px !important;
+  padding-bottom: 70px;
+}
+
+.doctor-skills {
+  padding:10px;
+}
+
+
+.time-selection > .disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }

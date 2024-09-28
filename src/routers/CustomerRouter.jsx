@@ -1,22 +1,19 @@
 import React from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
-import BookAppoinment from '../views/Customers/components/bookAppoinment';
+import BookAppoinment from '../views/Customers/components/BookAppoinment';
 import MasterLayout from '../views/Customers/components/masterLayout';
 import About from '../views/Customers/pages/about';
-import Department from "../views/Customers/pages/department";
 import Home from "../views/Customers/pages/home";
 import Login from '../views/Customers/pages/login';
 // import '../styleCustomers.css'
 import Account from "../views/Customers/pages/account";
 import Contact from "../views/Customers/pages/contact";
 import DepartmentDetails from "../views/Customers/pages/departmentDetails"
-import Doctors from '../views/Customers/pages/doctors';
 import Register from "../views/Customers/pages/register";
 import Service from '../views/Customers/pages/service';
-import BookingForm from '../views/Customers/components/bookingForm';
 import Blog from'../views/Customers/pages/blog'
-import DoctorDetails from '../views/Customers/pages/doctorDetails';
-import BookingAmbulance from '../views/Customers/pages/BookingAmbulance';
+import DoctorDetails from '../views/Customers/pages/DoctorDetails';
+import DoctorList from '../views/Customers/pages/DoctorList';
 
 
 
@@ -37,17 +34,15 @@ const CustomerRouter = () => {
         <Route path='/register' element={<Register />} />
         <Route index element={<Home />} />
         <Route path='/about' element={<About />} />
-        <Route path='/bookAppoinment' element={<BookAppoinment />} />
-        <Route path='/doctors' element={ <Doctors/>}/>
+        <Route path='/booking/:idSchedule' element={<BookAppoinment />} />
+        <Route path='/doctors' element={ <DoctorList/>}/>
+        <Route path='/doctors/:idDoctor' element={ <DoctorDetails/>}/>
+
         <Route path='/contact' element={ <Contact/>}/>
-        <Route path='/department' element={ <Department/>}/>
         <Route path='/account' element={ <Account/>}/>
         <Route path='/service' element={ <Service/>}/>
-        <Route path='/departmentDetails' element={ <DepartmentDetails/>}/>
-        <Route path='/bookingForm' element={ <BookingForm/>}/>
+        <Route path='/service/specialty/:idNameSpecialty' element={ <DepartmentDetails/>}/>
         <Route path='/blog' element={ <Blog/>}/>
-        <Route path='/doctorDetails' element={ <DoctorDetails/>}/>
-        <Route path='/bookingAmbulance' element={ <BookingAmbulance/>}/>
 
 
 
