@@ -10,7 +10,7 @@ const UserUpdate = () => {
     const { userId } = useParams();
     const navigate = useNavigate();
     const [birthday, setBirthday] = useState()
-    const [active,setActive] = useState(null)
+    const [active, setActive] = useState(null)
     const [createForm, setCreateForm] = useState({
         fullname: '',
         address: '',
@@ -21,8 +21,8 @@ const UserUpdate = () => {
         role_id: '',
         is_active: ''
     });
-    
-   
+
+
     async function getUserById(userId) {
         try {
             const response = await All_API.getUserById(userId);
@@ -50,7 +50,7 @@ const UserUpdate = () => {
             [name]: value
         }));
     };
-    const updateUser = async(e) => {
+    const updateUser = async (e) => {
         e.preventDefault();
         const userData = {
             fullname: createForm.fullname,
@@ -61,15 +61,15 @@ const UserUpdate = () => {
             gender: createForm.gender,
             role_id: createForm.role_id,
             active: active === "true",
-            password: createForm.password  ? createForm.password : ""
+            password: createForm.password ? createForm.password : ""
         };
 
         try {
             const response = await All_API.updateUserByAdmin(userId, userData);
-        if(response.data.status === "success") {
-            ToastSuccess(response.data.message)
-            navigate('/admin/userList')
-            }else{
+            if (response.data.status === "success") {
+                ToastSuccess(response.data.message)
+                navigate('/admin/userList')
+            } else {
                 ToastError(response.data.message)
             }
         } catch (error) {
@@ -104,7 +104,7 @@ const UserUpdate = () => {
                     <div class="row">
                         <div class=" col-12">
                             <div class="box">
-                              
+
                                 {/* <!-- /.box-header --> */}
                                 <form class="form">
                                     <div class="box-body">
@@ -162,7 +162,7 @@ const UserUpdate = () => {
                                                         <label class="form-label">BirthDay</label>
                                                         <input type="date" class="form-control"
                                                             value={birthday || ''}
-                                                            onChange={(e)=> setBirthday(e.target.value)}
+                                                            onChange={(e) => setBirthday(e.target.value)}
                                                             name='birthday' />
                                                     </div>
                                                 </div>
@@ -175,7 +175,7 @@ const UserUpdate = () => {
                                                             value={createForm?.gender}
                                                             onChange={inputChange}
                                                             name='gender'>
-                                                           <option ></option>
+                                                            <option ></option>
                                                             <option value="Male">Male</option>
                                                             <option value="Female">Female</option>
                                                         </select>
@@ -213,7 +213,7 @@ const UserUpdate = () => {
                                                         <select class="form-control"
                                                             style={{ fontSize: 'unset' }}
                                                             value={active}
-                                                            onChange={(e)=>setActive(e.target.value)}
+                                                            onChange={(e) => setActive(e.target.value)}
                                                             name='is_active'>
                                                             <option value="true">Active</option>
                                                             <option value="false">Block</option>

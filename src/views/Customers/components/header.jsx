@@ -1,11 +1,12 @@
 import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from "react-router-dom";
 
 
 function Header(props) {
     const location = useLocation();
+    const [showDropdown, setShowDropdown] = useState(false);
     const getLinkStyle = (path) => {
         return location.pathname === path ? { color: 'red' } : {};
     };
@@ -16,6 +17,31 @@ function Header(props) {
         zIndex: 1000,
         backgroundColor: '#fff',
         boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)'
+    };
+    // Handlers to show/hide dropdown on hover
+    const handleMouseEnter = () => {
+        setShowDropdown(true);
+    };
+
+    const handleMouseLeave = () => {
+        setShowDropdown(false);
+    };
+
+    const dropdownStyle = {
+        position: 'absolute',
+        top: '40px', // adjust based on icon size
+        right: '0',
+        backgroundColor: '#fff',
+        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+        padding: '10px',
+        borderRadius: '5px',
+        zIndex: 1000
+    };
+
+    const dropdownListStyle = {
+        listStyle: 'none',
+        padding: '0',
+        margin: '0'
     };
     return (
         <div style={headerStyle} >
@@ -65,11 +91,11 @@ function Header(props) {
                                 <li className="nav-item"><Link className="nav-link" to="/about" style={getLinkStyle("/about")}>About</Link></li>
                                 <li className="nav-item dropdown ">
                                     <Link className="nav-link dropdown-toggle" to="/service" style={getLinkStyle("/service")}>Medical Services</Link>
-                                   
+
                                 </li>
 
-                           
-                      
+
+
 
                                 <li className="nav-item dropdown">
                                     <Link className="nav-link dropdown-toggle" to="/doctors" id="dropdown03"
@@ -89,14 +115,54 @@ function Header(props) {
                         </div>
 
                     </div>
-                    <div style={{ fontSize: '30px' }}>
+                    <div style={{ fontSize: '30px', }}>
                         <ul className="navbar-nav ml-auto">
-                            <li className="nav-item"><Link className="nav-link" to="/account" style={getLinkStyle("/account")}> <FontAwesomeIcon
-                                icon={faCircleUser} /></Link></li>
+                            {/* <li className="nav-item">
+                                <Link className="nav-link" to="/account" style={getLinkStyle("/account")}>
+                                    <FontAwesomeIcon icon={faCircleUser} />
+
+                                </Link>
+                            </li> */}
+                            <li className="nav-item dropdown ">
+                                <Link className="nav-link" to="/account" style={getLinkStyle("/account")}>
+                                    <FontAwesomeIcon icon={faCircleUser} />
+
+                                </Link>
+                                {/* <ul className="dropdown-menu" aria-labelledby="dropdown02">
+                                    <li>
+                                        <Link to="/bookingAmbulance" style={getLinkStyle("/bookingAmbulance")}><a className="dropdown-item" >Ambulance Booking </a></Link>
+                                    </li>
+                                    <li><a className="dropdown-item" href="department-single.html">Department Single</a></li>
+                                </ul> */}
+                            </li>
+
                         </ul>
 
 
                     </div>
+
+                    {/* <div style={{ fontSize: '30px', position: 'relative' }}>
+                        <ul className="navbar-nav ml-auto">
+                            <li className="nav-item"
+                                onMouseEnter={handleMouseEnter}
+                                onMouseLeave={handleMouseLeave}
+                                // style={{ cursor: 'pointer' }}?
+                                style={getLinkStyle("/account")}>
+
+                                <FontAwesomeIcon icon={faCircleUser} />
+
+                                {showDropdown && (
+                                    <div style={dropdownStyle}>
+                                        <ul style={dropdownListStyle}>
+                                            <li><Link to="/profile">Profile</Link></li>
+                                            <li><Link to="/settings">Settings</Link></li>
+                                            <li><Link to="/logout">Logout</Link></li>
+                                        </ul>
+                                    </div>
+                                )}
+                            </li>
+                        </ul>
+                    </div> */}
                 </nav>
             </header>
         </div>

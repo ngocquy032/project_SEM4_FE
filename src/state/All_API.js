@@ -25,6 +25,12 @@ const All_API = {
 
     },
 
+    updateUserByUser: (userId, userData) => {
+        const response = apiUser.put(`${API_BASE_URL}users/details/${userId}`, userData);
+        return response;
+    },
+
+
 
 
     getAllUsers: (data) => {

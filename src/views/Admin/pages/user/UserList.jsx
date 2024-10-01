@@ -30,48 +30,48 @@ const UserList = () => {
 
     const handleDeleteOpen = () => {
         setOpenDeleteModal(true);
-        };
-      const handleDeleteClose = () => {
+    };
+    const handleDeleteClose = () => {
         setOpenDeleteModal(false);
-      };
+    };
 
-      const handleLimitChange = (e) => setLimit(e.target.value);
-      const handleSearchChange = (e) => {
+    const handleLimitChange = (e) => setLimit(e.target.value);
+    const handleSearchChange = (e) => {
         if (timeoutRef.current) {
             clearTimeout(timeoutRef.current);
-          }
-      
-          // Set a new timeout
-          timeoutRef.current = setTimeout(() => {
+        }
+
+        // Set a new timeout
+        timeoutRef.current = setTimeout(() => {
             setKeyword(e.target.value);
-          }, 500);
-      };
+        }, 500);
+    };
 
-      const handlePaginate = (event, value) => {
+    const handlePaginate = (event, value) => {
         setPage(value - 1); // Cập nhật số trang hiện tại khi người dùng chuyển trang
-      };
+    };
 
-      async function deleteUser(id) {
-        try{
-          const response = await All_API.deleteUserById(id)
-          if(response.data.status === "success") {
-            ToastSuccess(response.data.message)
-            handleLoading()
+    async function deleteUser(id) {
+        try {
+            const response = await All_API.deleteUserById(id)
+            if (response.data.status === "success") {
+                ToastSuccess(response.data.message)
+                handleLoading()
+                handleDeleteClose()
+            } else {
+                ToastError(response.data.message)
+                handleDeleteClose()
+            }
+        } catch (error) {
+            ToastError(error.response.data.message);
             handleDeleteClose()
-          }else {
-            ToastError(response.data.message)
-            handleDeleteClose()
-          }
-        }catch (error) {
-              ToastError(error.response.data.message);
-          handleDeleteClose()
-      
+
         }
-      }
+    }
 
-      const handleLoading = ()=> {
+    const handleLoading = () => {
         setLoading(!loading)
-        }
+    }
 
     useEffect(() => {
         const fetchUsers = async () => {
@@ -98,7 +98,7 @@ const UserList = () => {
         // navigate('/admin/userDetails')
 
     }
-    const handleEditUser = (userId) =>{
+    const handleEditUser = (userId) => {
         navigate(`/admin/userUpdate/${userId}`)
     }
     // Tạo một mảng các phần tử React bằng cách sử dụng forEach
@@ -117,13 +117,13 @@ const UserList = () => {
                         <a style={displayStyle} href="#" onClick={(e) => { e.preventDefault(); handleViewDetails(user?.id); }}>
                             <FontAwesomeIcon icon={faEye} />
                         </a>
-                        <a style={displayStyle} href="#" onClick={(e) =>{e.preventDefault(); handleEditUser(user?.id); }}>
+                        <a style={displayStyle} href="#" onClick={(e) => { e.preventDefault(); handleEditUser(user?.id); }}>
                             <FontAwesomeIcon icon={faPen} />
                         </a>
-                        <a style={displayStyle} href="#" onClick={()=>{
-                                                        setIdObject(user?.id)
-                                                        handleDeleteOpen()
-                                                      }}
+                        <a style={displayStyle} href="#" onClick={() => {
+                            setIdObject(user?.id)
+                            handleDeleteOpen()
+                        }}
                         >
                             <FontAwesomeIcon icon={faTrash} />
                         </a>
@@ -160,37 +160,37 @@ const UserList = () => {
                     <div class="row"  >
                         <div class="col-12">
                             <div class="box">
-                            <div className="schedule-filter-container">
-      {/* Select Limit (bên trái) */}
-      <div className="schedule-filter-limit">
-        <label htmlFor="limit" className="schedule-filter-label">Limit</label>
-        <select
-          id="limit"
-          value={limit}
-          onChange={handleLimitChange}
-          className="schedule-filter-select"
-        >
-          <option value={5}>5</option>
-          <option value={10}>10</option>
-          <option value={20}>20</option>
-        </select>
-      </div>
+                                <div className="schedule-filter-container">
+                                    {/* Select Limit (bên trái) */}
+                                    <div className="schedule-filter-limit">
+                                        <label htmlFor="limit" className="schedule-filter-label">Limit</label>
+                                        <select
+                                            id="limit"
+                                            value={limit}
+                                            onChange={handleLimitChange}
+                                            className="schedule-filter-select"
+                                        >
+                                            <option value={5}>5</option>
+                                            <option value={10}>10</option>
+                                            <option value={20}>20</option>
+                                        </select>
+                                    </div>
 
-      {/* Các phần tử ở bên phải */}
-      <div className="schedule-filter-right">
-     
-        {/* Search */}
-        <div className="schedule-filter-item">
-          <label htmlFor="search" className="schedule-filter-label">Search</label>
-          <input
-            type="text"
-            id="search"
-            onChange={handleSearchChange}
-            className="schedule-filter-input inputsearch-admin"
-          />
-        </div>
-      </div>
-    </div>
+                                    {/* Các phần tử ở bên phải */}
+                                    <div className="schedule-filter-right">
+
+                                        {/* Search */}
+                                        <div className="schedule-filter-item">
+                                            <label htmlFor="search" className="schedule-filter-label">Search</label>
+                                            <input
+                                                type="text"
+                                                id="search"
+                                                onChange={handleSearchChange}
+                                                className="schedule-filter-input inputsearch-admin"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="box-body">
                                     <div class="table-responsive rounded card-table">
                                         <table class="table border-no" id="example1">
@@ -237,28 +237,28 @@ const UserList = () => {
                                         </table>
                                     </div>
                                     <Stack
-                    spacing={2}
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <Pagination
-                      count={totalPages}
-                      page={page+1}
-                      onChange={handlePaginate}
-                    />
-                  </Stack>
+                                        spacing={2}
+                                        style={{
+                                            display: "flex",
+                                            justifyContent: "center",
+                                            alignItems: "center",
+                                        }}
+                                    >
+                                        <Pagination
+                                            count={totalPages}
+                                            page={page + 1}
+                                            onChange={handlePaginate}
+                                        />
+                                    </Stack>
                                 </div>
-                            
+
                             </div>
                         </div>
                     </div>
                 </section>
                 {/* <!-- /.content --> */}
             </div>
-            {openDeleteModal && <DeleteLayout  open={openDeleteModal} handleClose={handleDeleteClose} idObject={idObject} deleteFunction={deleteUser} onDelete={handleLoading}/>}
+            {openDeleteModal && <DeleteLayout open={openDeleteModal} handleClose={handleDeleteClose} idObject={idObject} deleteFunction={deleteUser} onDelete={handleLoading} />}
 
         </div>
 
