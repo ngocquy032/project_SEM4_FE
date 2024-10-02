@@ -9,7 +9,7 @@ const Profile = ({ onUpdate }) => {
   const token = localStorage.getItem('jwt');
   const [userId, setUserId] = useState(null);
   const navigate = useNavigate();
-  
+
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -39,114 +39,115 @@ const Profile = ({ onUpdate }) => {
 
 
   return (
-    <div>
-      <div class="content-header">
-        <div class="d-flex align-items-center">
-          <div class="me-auto">
-            <h2 class="page-title">Users</h2>
-            <div class="d-inline-block align-items-center">
-              <nav>
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a><FontAwesomeIcon icon={faCircleUser} /></a>
-                  </li>
-                  <li class="breadcrumb-item active" aria-current="page">UserDetail</li>
-                </ol>
-              </nav>
+    <div class="content-wrapper" style={{ margin: '5% 15% 0 15%' }}>
+      <div class="container-full">
+        <div class="content-header">
+          <div class="d-flex align-items-center">
+            <div class="me-auto">
+              <h2 class="page-title">Users</h2>
+              <div class="d-inline-block align-items-center">
+                <nav>
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a><FontAwesomeIcon icon={faCircleUser} /></a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">UserDetail</li>
+                  </ol>
+                </nav>
+              </div>
             </div>
+
           </div>
-
         </div>
-      </div>
-      <div class="tab-pane " >
-        <div class="p-15">
+        <div class="tab-pane " >
+          <div class="p-15">
 
 
-          <section class="content">
-            <div class="row">
-              <div class=" col-12">
-                <div class="box">
-                  <div class="box-header with-border">
-                  </div>
-                  {/* <!-- /.box-header --> */}
-                  <form class="form">
-                    <div class="box-body">
-                      <h4 class="box-title text-info mb-0"><i class="ti-user me-15"></i> User Info
-                      </h4>
-                      <div class="my-15">
-                        <div class="row">
-                          <div class="col-md-6">
-                            <div class="form-group">
-                              <label class="form-label">Full Name</label>
-                              <input type="text" class="form-control"
-                                placeholder="Full Name"
-                                value={createForm?.fullname || 'N/A'}
-                                // onChange={inputChange}
-                                name='fullname'
-                                disabled
-                              />
+            <section class="content">
+              <div class="row">
+                <div class=" col-12">
+                  <div class="box">
+                    <div class="box-header with-border">
+                    </div>
+                    {/* <!-- /.box-header --> */}
+                    <form class="form">
+                      <div class="box-body">
+                        <h4 class="box-title text-info mb-0"><i class="ti-user me-15"></i> User Info
+                        </h4>
+                        <div class="my-15">
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label class="form-label">Full Name</label>
+                                <input type="text" class="form-control"
+                                  placeholder="Full Name"
+                                  value={createForm?.fullname || 'N/A'}
+                                  // onChange={inputChange}
+                                  name='fullname'
+                                  disabled
+                                />
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label class="form-label">Address</label>
+                                <input type="text" class="form-control"
+                                  placeholder="Address"
+                                  value={createForm?.address || 'N/A'}
+                                  // onChange={inputChange}
+                                  name='address'
+                                  disabled />
+                              </div>
                             </div>
                           </div>
-                          <div class="col-md-6">
-                            <div class="form-group">
-                              <label class="form-label">Address</label>
-                              <input type="text" class="form-control"
-                                placeholder="Address"
-                                value={createForm?.address || 'N/A'}
-                                // onChange={inputChange}
-                                name='address'
-                                disabled />
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label class="form-label">E-mail</label>
+                                <input type="text" class="form-control"
+                                  placeholder="E-mail"
+                                  value={createForm?.email || 'N/A'}
+                                  // onChange={inputChange}
+                                  name='email'
+                                  disabled />
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label class="form-label">Contact Number</label>
+                                <input type="text" class="form-control"
+                                  placeholder="Phone"
+                                  value={createForm?.phone_number || 'N/A'}
+                                  // onChange={inputChange}
+                                  name='phone_number'
+                                  disabled />
+                              </div>
                             </div>
                           </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-md-6">
-                            <div class="form-group">
-                              <label class="form-label">E-mail</label>
-                              <input type="text" class="form-control"
-                                placeholder="E-mail"
-                                value={createForm?.email || 'N/A'}
-                                // onChange={inputChange}
-                                name='email'
-                                disabled />
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label class="form-label">Birthday</label>
+                                <input type="text" class="form-control"
+                                  placeholder="E-mail"
+                                  value={createForm?.birthday || 'N/A'}
+                                  // onChange={inputChange}
+                                  name='birthday'
+                                  disabled />
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label class="form-label">Gender</label>
+                                <input type="text" class="form-control"
+                                  placeholder="Phone"
+                                  value={createForm?.gender || 'N/A'}
+                                  // onChange={inputChange}
+                                  name='gender'
+                                  disabled />
+                              </div>
                             </div>
                           </div>
-                          <div class="col-md-6">
-                            <div class="form-group">
-                              <label class="form-label">Contact Number</label>
-                              <input type="text" class="form-control"
-                                placeholder="Phone"
-                                value={createForm?.phone_number || 'N/A'}
-                                // onChange={inputChange}
-                                name='phone_number'
-                                disabled />
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-md-6">
-                            <div class="form-group">
-                              <label class="form-label">Birthday</label>
-                              <input type="text" class="form-control"
-                                placeholder="E-mail"
-                                value={createForm?.birthday || 'N/A'}
-                                // onChange={inputChange}
-                                name='birthday'
-                                disabled />
-                            </div>
-                          </div>
-                          <div class="col-md-6">
-                            <div class="form-group">
-                              <label class="form-label">Gender</label>
-                              <input type="text" class="form-control"
-                                placeholder="Phone"
-                                value={createForm?.gender || 'N/A'}
-                                // onChange={inputChange}
-                                name='gender'
-                                disabled />
-                            </div>
-                          </div>
-                        </div>
-                        {/* <div class="row">
+                          {/* <div class="row">
                           <div class="col-md-3">
                             <div class="form-group">
                               <label class="form-label">BirthDay</label>
@@ -182,9 +183,9 @@ const Profile = ({ onUpdate }) => {
                             </div>
                           </div>
                         </div> */}
-                      </div>
+                        </div>
 
-                      {/* <div class="my-15">
+                        {/* <div class="my-15">
                         <div class="box-footer">
                           <button type="button" class="btn btn-warning me-1" onClick={onUpdate}>
                             <i class="ti-trash"></i> Update
@@ -192,18 +193,19 @@ const Profile = ({ onUpdate }) => {
 
                         </div>
                       </div> */}
-                    </div>
-                  </form >
+                      </div>
+                    </form >
+                  </div>
                 </div>
               </div>
-            </div>
-          </section>
+            </section>
+          </div>
+
         </div>
 
+
+
       </div>
-
-
-
     </div>
   )
 }

@@ -1,6 +1,6 @@
 import axios from "axios";
 // import { API_BASE_URL, apiAdmin, apiUser } from "../../config/apiConfig";
-import { API_BASE_URL , apiAdmin, apiUser} from "../config/apiConfig";
+import { API_BASE_URL, apiAdmin, apiUser } from "../config/apiConfig";
 
 
 
@@ -27,6 +27,15 @@ const All_API = {
 
     updateUserByUser: (userId, userData) => {
         const response = apiUser.put(`${API_BASE_URL}users/details/${userId}`, userData);
+        return response;
+    },
+    // get bookingUser
+    getBookingUser: (token, userId) => {
+        const response = axios.get(`${API_BASE_URL}bookings/user/${userId}`, {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        });
         return response;
     },
 
@@ -67,7 +76,7 @@ const All_API = {
 
     // User
     // post User in Admin
-    createUser: (createForm)=>{
+    createUser: (createForm) => {
         const response = apiAdmin.post(`${API_BASE_URL}users`, createForm)
         return response
     },
@@ -79,11 +88,11 @@ const All_API = {
             page,
             limit,
             keyword
-          } = data;
+        } = data;
         const response = apiAdmin.get(`${API_BASE_URL}schedules?limit=${limit}&page=${page}&specialtyId=${specialtyId}&doctorId=${doctorId}&dateSchedule=${dateSchedule}&keyword=${keyword}`);
         return response;
     },
-    
+
     createSchedule: (scheduleData) => {
         const response = apiAdmin.post(`${API_BASE_URL}schedules`, scheduleData);
         return response;
@@ -99,14 +108,14 @@ const All_API = {
         return response;
     },
 
-    
+
     deleteScheduleById: (scheduleId) => {
         const response = apiAdmin.delete(`${API_BASE_URL}schedules/${scheduleId}`);
         return response;
     },
 
 
-    
+
 
     getAllTimeSlot: () => {
         const response = apiAdmin.get(`${API_BASE_URL}time-slots`);
@@ -117,7 +126,7 @@ const All_API = {
         const response = apiAdmin.post(`${API_BASE_URL}time-slots`, timeSlotData);
         return response;
     },
-    
+
     gettimeSlotById: (timeSlotId) => {
         const response = apiAdmin.get(`${API_BASE_URL}time-slots/${timeSlotId}`);
         return response;
@@ -135,11 +144,10 @@ const All_API = {
             page,
             limit,
             keyword
-          } = data;
+        } = data;
         const response = apiAdmin.get(`${API_BASE_URL}bookings?limit=${limit}&page=${page}&dateBooking=${dateBooking}&keyword=${keyword}&status=${status}`);
         return response;
     },
-
 
     getBookingByIdAdmin: (idBooking) => {
         const response = apiAdmin.get(`${API_BASE_URL}bookings/${idBooking}`);
@@ -157,11 +165,11 @@ const All_API = {
             page,
             limit,
             keyword
-          } = data;
+        } = data;
         const response = axios.get(`${API_BASE_URL}medications?limit=${limit}&page=${page}&keyword=${keyword}`);
         return response;
     },
-    
+
     createMedication: (medicationData) => {
         const response = apiAdmin.post(`${API_BASE_URL}medications`, medicationData);
         return response;
@@ -182,13 +190,13 @@ const All_API = {
         return response;
     },
 
-    
+
     getAllSpecialty: (data) => {
         const {
             page,
             limit,
             keyword
-          } = data;
+        } = data;
         const response = axios.get(`${API_BASE_URL}specialties?limit=${limit}&page=${page}&keyword=${keyword}`);
         return response;
     },
@@ -220,7 +228,7 @@ const All_API = {
             limit,
             specialtyId,
             keyword
-          } = data;
+        } = data;
         const response = axios.get(`${API_BASE_URL}doctors?limit=${limit}&page=${page}&specialtyId=${specialtyId}&name=${keyword}`);
         return response;
     },
@@ -239,15 +247,15 @@ const All_API = {
         const response = apiAdmin.put(`${API_BASE_URL}doctors/${idDoctor}`, doctorData);
         return response;
     },
-    
+
     deleteDoctorById: (idDoctor) => {
         const response = apiAdmin.delete(`${API_BASE_URL}doctors/${idDoctor}`);
         return response;
     },
 
 
-    uploadImage:   (token, imageData) => {
-        const response =  axios.post(`${API_BASE_URL}images/uploads`,imageData,  {
+    uploadImage: (token, imageData) => {
+        const response = axios.post(`${API_BASE_URL}images/uploads`, imageData, {
             headers: {
                 "Authorization": `Bearer ${token}`,
                 'Content-Type': 'multipart/form-data'
@@ -256,7 +264,7 @@ const All_API = {
         return response;
 
     },
-    
+
 
 
     getAllClinic: (data) => {
@@ -264,7 +272,7 @@ const All_API = {
             page,
             limit,
             keyword
-          } = data;
+        } = data;
         const response = axios.get(`${API_BASE_URL}clinics?limit=${limit}&page=${page}&keyword=${keyword}`);
         return response;
     },
@@ -295,27 +303,27 @@ const All_API = {
 
 
     getDoctorFull: () => {
-        
+
         const response = axios.get(`${API_BASE_URL}doctors`);
         return response;
     },
 
     getSpecialtyFull: () => {
-        
+
         const response = axios.get(`${API_BASE_URL}specialties`);
         return response;
     },
 
 
     getClinicFull: () => {
-        
+
         const response = axios.get(`${API_BASE_URL}clinics`);
         return response;
     },
 
-    
+
     getSlotTime: (specialtyId) => {
-        
+
         const response = axios.get(`${API_BASE_URL}time-slots/specialty/${specialtyId}`);
         return response;
     },
@@ -325,17 +333,17 @@ const All_API = {
         return response;
     },
 
-    
+
 
     getDoctorBySpecialty: (specialtyId) => {
-        
+
         const response = axios.get(`${API_BASE_URL}doctors?specialtyId=${specialtyId}`);
         return response;
     },
 
-    
+
     getScheduleByDoctor: (idDoctor, dateSchedule) => {
-        
+
         const response = axios.get(`${API_BASE_URL}schedules/doctor?doctorId=${idDoctor}&dateSchedule=${dateSchedule}`);
         return response;
     },
@@ -369,5 +377,5 @@ const All_API = {
     //     }
     //   }
 
-} 
+}
 export default All_API;
