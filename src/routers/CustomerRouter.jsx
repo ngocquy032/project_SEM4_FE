@@ -9,7 +9,7 @@ import Login from '../views/Customers/pages/Login';
 import Account from "../views/Customers/pages/account";
 import Contact from "../views/Customers/pages/contact";
 import DepartmentDetails from "../views/Customers/pages/departmentDetails"
-import Register from "../views/Customers/pages/register";
+import Register from "../views/Customers/pages/Register";
 import Service from '../views/Customers/pages/service';
 import Blog from '../views/Customers/pages/blog'
 import DoctorDetails from '../views/Customers/pages/DoctorDetails';
@@ -17,19 +17,12 @@ import DoctorList from '../views/Customers/pages/DoctorList';
 import UpdateAccount from '../views/Customers/components/account/UpdateAccount';
 import Profile from '../views/Customers/components/account/Profile';
 import BookingList from '../views/Customers/components/account/BookingList';
+import BookingSuccess from '../views/Customers/components/BookingSuccess';
 
 
 
 
 const CustomerRouter = () => {
-  // const navigate = useNavigate();
-  // useEffect(() => {
-  //   const token = localStorage.getItem('jwt');
-  //   if (!token) {
-
-  //     navigate('/login')
-  //   }
-  // }, [navigate]);
 
   return (
     <>
@@ -39,28 +32,30 @@ const CustomerRouter = () => {
 
         {/* components không có header và footer */}
 
-
-        {/* components có chung header và footer */}
-        <Route path='/' element={<MasterLayout />}>
-          <Route path='/login' element={<Login />} />
-          <Route path='/register' element={<Register />} />
-          <Route index element={<Home />} />
-          <Route path='/about' element={<About />} />
-          <Route path='/booking/:idSchedule' element={<BookAppoinment />} />
-          <Route path='/doctors' element={<DoctorList />} />
-          <Route path='/doctors/:idDoctor' element={<DoctorDetails />} />
-
-          <Route path='/contact' element={<Contact />} />
-          <Route path='/account' element={<Account />} />
-          <Route path='/service' element={<Service />} />
-          <Route path='/service/specialty/:idNameSpecialty' element={<DepartmentDetails />} />
-          <Route path='/blog' element={<Blog />} />
-          <Route path='/profile' element={<Profile />} />
-          <Route path='/bookingList' element={<BookingList />} />
+   
 
 
 
-          <Route path='/updateUser/' element={< UpdateAccount />} />
+         
+      {/* components có chung header và footer */}
+      <Route path='/' element={<MasterLayout />}>
+        <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
+        <Route index element={<Home />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/booking/:idSchedule' element={<BookAppoinment />} />
+        <Route path='/booking/result/:idBooking' element={<BookingSuccess />} />
+        <Route path='/booking/success' element={<BookingSuccess />} />
+        <Route path='/doctors' element={ <DoctorList/>}/>
+        <Route path='/doctors/:idDoctor' element={ <DoctorDetails/>}/>
+        <Route path='/contact' element={ <Contact/>}/>
+        <Route path='/account' element={ <Account/>}/>
+        <Route path='/service' element={ <Service/>}/>
+        <Route path='/service/specialty/:idNameSpecialty' element={ <DepartmentDetails/>}/>
+        <Route path='/blog' element={ <Blog/>}/>
+        <Route path='/profile' element={<Profile />} />
+        <Route path='/bookingList' element={<BookingList />} />
+        <Route path='/updateUser/' element={< UpdateAccount />} />
 
 
 

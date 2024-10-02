@@ -1,7 +1,11 @@
 import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState } from 'react';
-import { Link, useLocation } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import { addUser, GetUser, removeUser } from "../../../state/Auth/authUserSlice";
+import All_API from "../../../state/All_API";
+import { ToastError, ToastSuccess } from "../../../notification";
 
 
 function Header(props) {
@@ -43,6 +47,56 @@ function Header(props) {
         padding: '0',
         margin: '0'
     };
+
+    const jwt = localStorage.getItem("jwt");
+    const user = useSelector(GetUser)
+    const dispatch = useDispatch();
+    const [userLoaded, setUserLoaded] = useState(false); 
+    const navigate = useNavigate()
+
+    const { idSchedule } = useParams();
+
+
+    async function getUser(token) {
+        try{
+          const data = await All_API.getUserAPI(token)
+          dispatch(addUser(data.data.data))
+          if(data.data?.data.role.id === 1) {
+            setUserLoaded(false)
+          }else {
+            setUserLoaded(true)
+          }
+        }catch {
+          setUserLoaded(true)
+          localStorage.removeItem('jwt')
+        } 
+      }
+
+      useEffect(()=> {
+        if(jwt) {
+          getUser(jwt)
+        }
+      },[jwt, userLoaded])
+    
+    
+      useEffect(()=>{
+        
+        if(location.pathname==="/login" || location.pathname==="/register") {
+          if(user !== null) {
+            navigate('/')
+          }
+        }
+     
+
+      },[user]) 
+
+      const handleLogout= ()=> {
+        localStorage.removeItem("jwt")
+        dispatch(removeUser())
+        ToastSuccess("Logout in successfully.")
+    
+      }
+
     return (
         <div style={headerStyle} >
             <header>
