@@ -84,7 +84,7 @@ const BookingList = ({ onBookingAction }) => {
     return (
 
         <div>
-            <div class="content-wrapper" style={{ margin: '5% 15% 0 15%' }}>
+            <div class="content-wrapper">
                 <div class="container-full">
                     {/* <!-- Content Header (Page header) --> */}
                     <div class="content-header">
