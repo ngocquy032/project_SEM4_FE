@@ -4,6 +4,7 @@ import moment from "moment";
 import React, { Fragment, useEffect, useState } from "react";
 import All_API from "../../../state/All_API";
 import { convertToTimeString } from "../../Admin/componets/ConvertData";
+import { useNavigate } from "react-router-dom";
 
 const ScheduleDoctorLayout = ({ idDoctor }) => {
   const [selectedDate, setSelectedDate] = useState(
@@ -11,6 +12,7 @@ const ScheduleDoctorLayout = ({ idDoctor }) => {
   );
   const [selectedTime, setSelectedTime] = useState(null);
   const [schedules, setSchedules] = useState([]);
+  const navigate = useNavigate()
 
   const handleDateChange = (date) => {
     const formattedDate = date ? date.toISOString().split("T")[0] : null;
@@ -58,7 +60,9 @@ const ScheduleDoctorLayout = ({ idDoctor }) => {
   <div
     key={schedule?.id}
     className={`time-slot ${selectedTime === schedule?.id ? "selected" : ""} ${schedule?.booking_limit === schedule?.number_booked ? "disabled" : ""}`}
-    onClick={() => schedule?.booking_limit !== schedule?.number_booked && handleTimeClick(schedule?.id)}
+    onClick={() => {schedule?.booking_limit !== schedule?.number_booked && handleTimeClick(schedule?.id)  
+                navigate(`/booking/${schedule?.id}`)
+    }}
     style={{ pointerEvents: schedule?.booking_limit === schedule?.number_booked ? "none" : "auto" }}
   >
     {convertToTimeString(schedule?.start_time)} -{" "}

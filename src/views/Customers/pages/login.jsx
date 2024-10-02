@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { ToastError, ToastSuccess } from '../../../notification';
 import All_API from '../../../state/All_API';
 
@@ -9,6 +9,7 @@ const Login = () => {
         color: 'red',
     };
 
+    const navigate = useNavigate()
     // createForm
     const [createForm, setCreateForm] = useState({
         phone_number: '',
@@ -59,16 +60,7 @@ const Login = () => {
         return valid;
     }
 
-    // const checkLogin = async () => {
-
-    // if (createForm.phone_number !== Account.phone_number || createForm.password !== Account.password) {
-    //     ToastError('Incorrect phone_number number or password please try again');
-
-    // } else {
-    //     ToastSuccess('okok')
-    //     console.log('payload', createForm);
-    // }
-    // }
+   
 
     const login = async (e) => {
         e.preventDefault();
@@ -78,10 +70,10 @@ const Login = () => {
                 if (response.data.status === "success") {
                     ToastSuccess(response.data.message)
                     localStorage.setItem("jwt", response.data.token);
+                    navigate('/')
                 } else {
                     ToastError(response.data.message)
                 }
-                // console.log('Response from API:', response.data);
             } catch (error) {
                 ToastError(error.response.data.message)
             }

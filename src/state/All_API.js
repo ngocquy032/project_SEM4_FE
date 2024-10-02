@@ -337,6 +337,28 @@ const All_API = {
 
 
 
+  createBooking: (bookingData) => {
+        const response = apiUser.post(`${API_BASE_URL}bookings`, bookingData);
+        return response;
+    },
+
+
+
+    getUrlBank: (bookingId, total)=> {
+        const amount = total * 24000;
+        const roundedAmount = Math.round(amount);
+        const response =  apiUser.get(`/payment/vn-pay?bookingId=${bookingId}&amount=${roundedAmount}`)
+        return response;
+    },
+
+    payBookingSuccess: (bookingId, vnp_TransactionNo, vnp_ResponseCode)=> {
+        const response =  apiUser.put(`/bookings/payBooking/${bookingId}?vnp_TransactionNo=${vnp_TransactionNo}&vnp_ResponseCode=${vnp_ResponseCode}`)
+        return response;
+    },
+
+
+
+
     // updateUser:  (userId, userData) => {
     //     const response =  apiUser.put(`${API_BASE_URL}users/details/${userId}`, userData);
     // return response;

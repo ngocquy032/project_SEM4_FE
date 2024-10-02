@@ -4,8 +4,7 @@ export const API_BASE_URL =  "http://localhost:8082/api/v1/"
 
 
 const jwt = localStorage.getItem("jwt")
-// const jwtAdmin = localStorage.getItem("jwtAdmin")
-const jwtAdmin = "eyJhbGciOiJIUzI1NiJ9.eyJwaG9uZU51bWJlciI6IjAxMjM0NTY3OCIsInVzZXJJZCI6Miwic3ViIjoiMDEyMzQ1Njc4IiwiZXhwIjoxNzI5MzI3MDY2fQ.0Rcc9YSdKGN_JLtn6cHzGPqi9T-X7pwio4O2L_XiCsc"
+const jwtAdmin = localStorage.getItem("jwtAdmin")
 
 
 export const apiAdmin = axios.create({
