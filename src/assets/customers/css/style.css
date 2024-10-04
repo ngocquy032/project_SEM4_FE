@@ -1896,3 +1896,157 @@ justify-content: center;
 .pay-failt-sc {
   color: rgb(209, 14, 14);
 }
+
+
+
+.appoits-content {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+
+}
+
+.appoits-card {
+ justify-content: center;
+  background-color: #fff;
+  border-radius: 10px;
+  width: 700px;
+  padding: 20px;
+  margin-top: 10px;
+  padding: 30px 40px;
+}
+.appoits-card-header {
+  align-items: center;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.appoits-card-header img {
+  margin-top: 10px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+.appoits-card-header .title-app-sc {
+  margin-top: 6px;
+  font-size: 18px;
+  color: #00bcd4;
+}
+.appoits-card-body {
+  margin-bottom: 20px;
+}
+.appoits-card-body p {
+  margin: 5px 0;
+  font-size: 16px;
+}
+.appoits-card-body p a {
+
+  color: #00bcd4;
+  text-decoration: none;
+}
+.appoits-time, .appoits-date {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+
+}
+.appoits-time i, .appoits-date i {
+  color: #e12454;
+  margin-right: 10px;
+}
+.appoits-button {
+  text-align: center;
+  margin: 20px 0;
+}
+.appoits-button button {
+  background-color: #058831;
+  border: none;
+  color: #fff;
+  padding: 6px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  float: left;
+}
+.appoits-rejected button{
+  background-color: #e12454;
+}
+
+.appoits-pending button {
+  background-color: #ecb911;
+}
+
+
+.appoits-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #e0e0e0;
+  padding-top: 10px;
+}
+.appoits-card-footer a {
+  color: #00bcd4;
+  text-decoration: none;
+}
+
+.appoits-time > .appoits-icon-sc,
+.appoits-date> .appoits-icon-sc{
+  width: 20px;
+  height: 20px;
+  margin-top: -3px;
+  margin-right: 6px;
+}
+
+
+
+.view-history {
+  color: #00bcd4 !important;
+  
+}
+
+.view-history:hover {
+  cursor: pointer;
+  color: #0774f1 !important;
+}
+
+
+
+
+
+
+.medical2-card {
+  width: 500px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  padding: 20px;
+}
+.medical2-header {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+  background-color: #4CAF50; /* Green background */
+  color: white; /* White text */
+  padding: 10px;
+  border-radius: 8px 8px 0 0; /* Rounded corners on top */
+}
+.medical2-diagnosis {
+  font-weight: bold;
+}
+.medical2-prescriptions {
+  margin-top: 10px;
+}
+.medical2-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+.medical2-table th, .medical2-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+.medical2-table th {
+  background-color: #f2f2f2;
+  text-align: left;
+}

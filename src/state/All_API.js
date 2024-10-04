@@ -370,6 +370,11 @@ const All_API = {
         return response;
     },
 
+    getBookingDetailUser: (userId,bookingId )=> {
+        const response =  apiUser.get(`/bookings/user/${userId}/detail?bookingId=${bookingId}`)
+        return response;
+    },
+
 
 
 

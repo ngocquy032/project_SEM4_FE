@@ -82,7 +82,7 @@ const ScheduleDoctorLayout = ({ idDoctor }) => {
         )}
         {schedules.length > 0 && (
           <div className="flex-price-cle">
-            <p className="title-address">Price: </p>
+            <p className="title-address">Costs: </p>
             <p className="address-details ml-2"> ${schedules[0]?.price}</p>
           </div>
         )}
