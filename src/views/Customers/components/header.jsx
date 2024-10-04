@@ -126,7 +126,7 @@ function Header(props) {
                 <nav className="navbar navbar-expand-lg navigation" id="navbar">
                     <div className="container">
                         <a className="navbar-brand" href="">
-                            <img src="customer/images/logo.png" alt="" className="img-fluid" />
+                            <img src="/customer/images/logo.png" alt="" className="img-fluid" />
                         </a>
 
                         <button className="navbar-toggler collapsed" type="button" data-toggle="collapse"
@@ -182,12 +182,7 @@ function Header(props) {
                                     <FontAwesomeIcon icon={faCircleUser} />
 
                                 </Link>
-                                {/* <ul className="dropdown-menu" aria-labelledby="dropdown02">
-                                    <li>
-                                        <Link to="/bookingAmbulance" style={getLinkStyle("/bookingAmbulance")}><a className="dropdown-item" >Ambulance Booking </a></Link>
-                                    </li>
-                                    <li><a className="dropdown-item" href="department-single.html">Department Single</a></li>
-                                </ul> */}
+                              
                             </li>
 
                         </ul>

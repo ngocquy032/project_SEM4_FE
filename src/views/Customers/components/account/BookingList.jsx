@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react'
 import { faCircleUser, faEye, faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import BookingDetails from './BookingDetails';
-import BookingUpdate from './BookingUpdate';
 import { useNavigate } from 'react-router-dom';
 import { Pagination, Stack } from '@mui/material';
 import All_API from '../../../../state/All_API';

@@ -16,8 +16,8 @@ import DoctorDetails from '../views/Customers/pages/DoctorDetails';
 import DoctorList from '../views/Customers/pages/DoctorList';
 import UpdateAccount from '../views/Customers/components/account/UpdateAccount';
 import Profile from '../views/Customers/components/account/Profile';
-import BookingList from '../views/Customers/components/account/BookingList';
 import BookingSuccess from '../views/Customers/components/BookingSuccess';
+import BookingDetails from '../views/Customers/components/account/BookingDetails';
 
 
 
@@ -54,8 +54,8 @@ const CustomerRouter = () => {
         <Route path='/service/specialty/:idNameSpecialty' element={ <DepartmentDetails/>}/>
         <Route path='/blog' element={ <Blog/>}/>
         <Route path='/profile' element={<Profile />} />
-        <Route path='/bookingList' element={<BookingList />} />
         <Route path='/updateUser/' element={< UpdateAccount />} />
+        <Route path='/account/bookings/:idBooking' element={<BookingDetails />} />
 
 
 
