@@ -90,12 +90,6 @@ function Header(props) {
 
       },[user]) 
 
-      const handleLogout= ()=> {
-        localStorage.removeItem("jwt")
-        dispatch(removeUser())
-        ToastSuccess("Logout in successfully.")
-    
-      }
 
     return (
         <div style={headerStyle} >
@@ -125,7 +119,7 @@ function Header(props) {
                 </div>
                 <nav className="navbar navbar-expand-lg navigation" id="navbar">
                     <div className="container">
-                        <a className="navbar-brand" href="">
+                        <a className="navbar-brand" href="/">
                             <img src="/customer/images/logo.png" alt="" className="img-fluid" />
                         </a>
 
@@ -163,6 +157,9 @@ function Header(props) {
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={getLinkStyle("/blog")}>Blog </Link>
                                 </li>
                                 <li className="nav-item"><Link className="nav-link" to="/contact" style={getLinkStyle("/contact")}>Contact</Link></li>
+
+                                {!user &&  <li className="nav-item"><Link className="nav-link" to="/login" style={getLinkStyle("/login")}>Login</Link></li>
+                            }
                             </ul>
 
 
@@ -171,19 +168,15 @@ function Header(props) {
                     </div>
                     <div style={{ fontSize: '30px', }}>
                         <ul className="navbar-nav ml-auto">
-                            {/* <li className="nav-item">
+                          
+                           {user &&  <li className="nav-item dropdown ">
                                 <Link className="nav-link" to="/account" style={getLinkStyle("/account")}>
                                     <FontAwesomeIcon icon={faCircleUser} />
 
                                 </Link>
-                            </li> */}
-                            <li className="nav-item dropdown ">
-                                <Link className="nav-link" to="/account" style={getLinkStyle("/account")}>
-                                    <FontAwesomeIcon icon={faCircleUser} />
-
-                                </Link>
+                    
                               
-                            </li>
+                            </li>}
 
                         </ul>
 

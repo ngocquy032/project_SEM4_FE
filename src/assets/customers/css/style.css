@@ -1903,17 +1903,26 @@ justify-content: center;
   display: flex;
   justify-content: center;
   margin-bottom: 40px;
-
 }
 
-.appoits-card {
+.crcs-6 {
+  padding-left: 20px;
+}
+
+.appoits-card  {
  justify-content: center;
   background-color: #fff;
   border-radius: 10px;
-  width: 700px;
-  padding: 20px;
   margin-top: 10px;
-  padding: 30px 40px;
+  padding: 30px 10px 30px 40px;
+}
+
+.presctr-card {
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 10px;
+  margin-top: 10px;
+  padding: 30px 40px 30px 10px;
 }
 .appoits-card-header {
   align-items: center;
@@ -2050,3 +2059,225 @@ justify-content: center;
   background-color: #f2f2f2;
   text-align: left;
 }
+
+
+.list-bk-user {
+  margin-left: 6px !important;
+}
+
+
+.profile-user-sc {
+  margin-top: 10px !important;
+}
+
+
+.appoits-view > button {
+  background-color: #007bff !important;
+  margin-right: 10px;
+}
+
+.btn-bk-user-ac > button{
+   font-size: 14px;
+   padding: 4px 10px;
+
+}
+.btn-bk-user-ac:hover button {
+  opacity: 0.8;
+  
+}
+
+.appoits-rejected > button:disabled {
+  background-color: #ccc; 
+  color: #666;            
+  cursor: not-allowed;    
+  opacity: 0.6;        
+}
+
+
+
+
+
+.manage-patient-container {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 22px 40px;
+}
+.manage-patient-title {
+  margin-top: 20px;
+}
+.manage-patient-date-input {
+  margin: 20px 0;
+}
+.manage-patient-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+.manage-patient-table, .manage-patient-table th, .manage-patient-table td {
+  border: 1px solid black;
+}
+.manage-patient-table th, .manage-patient-table td {
+  padding: 10px;
+  text-align: center;
+}
+.manage-patient-actions{
+  display: flex;
+  border: none !important;
+  align-items: center;
+}
+
+
+.manage-patient-actions button {
+  margin: 0 5px;
+  padding: 1px 10px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  height: 40px;
+  border-radius: 6px;
+}
+
+.manage-patient-actions button:hover {
+  opacity: 0.8;
+}
+
+.manage-patient-create-prescriptions {
+  background-color: #007bff;
+}
+.manage-patient-cancel {
+  background-color: #06a14c;
+}
+
+.manage-patient-create-prescriptions {
+  width: 160px;
+}
+
+.btn-view-dc {
+  color: #00aaff !important;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-view-dc:hover {
+  color: #0066ff !important;
+}
+
+
+
+
+
+
+
+
+.list-schedule-dc {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;  /* khoảng cách giữa các ô nhập liệu */
+  width: 100%;
+}
+
+.list-schedule-dc .form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.list-schedule-dc .time-selection {
+  margin-left: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.list-schedule-dc .time-slot {
+  max-width: 110px !important;
+  min-width: 110px !important;
+  padding: 8px 12px;
+  border: 1px solid #007bff;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  flex: 1 0 21%;  /* Điều chỉnh giá trị này để thay đổi kích thước ô chữ nhật */
+  margin: 5px;
+  background-color: #f8f9fa;
+  font-size: 14px;
+}
+
+.list-schedule-dc .time-slot:hover {
+  background-color: #e2e6ea;
+}
+
+.list-schedule-dc .time-slot.selected {
+  background-color: #ffc107;  /* Màu vàng khi được chọn */
+  color: white;
+}
+
+.nav-page-dc {
+  margin-bottom: 20px;
+}
+
+.manage-patient-table tbody .bk-address-dc {
+  max-width:  150px !important;
+  white-space: nowrap ; 
+  overflow: hidden; 
+  text-overflow: ellipsis ; 
+}
+
+.bk-reason-dc {
+  max-width:  186px !important;
+  white-space: nowrap ; 
+  overflow: hidden; 
+  text-overflow: ellipsis ; 
+}
+
+
+
+
+.prescrt-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 20px;
+}
+.prescrt-container input, .prescrt-container select {
+  padding: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.prescrt-container input
+ {
+  height: 32px;
+
+ }
+
+.prescrt-container input[type="number"] {
+  width: 50px;
+}
+.prescrt-container input[type="text"] {
+  width: 160px;
+}
+.prescrt-container .delete-icon {
+  color: red;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+
+/* button {
+  padding: 10px 20px;
+  margin: 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #45a049;
+} */

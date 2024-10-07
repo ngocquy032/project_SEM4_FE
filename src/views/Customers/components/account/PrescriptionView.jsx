@@ -1,8 +1,10 @@
 import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Box, Modal } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import All_API from "../../../../state/All_API";
+import { ToastError } from "../../../../notification";
 
 const PrescriptionView = ({ handleClose, open , idBooking}) => {
   const style = {
@@ -18,6 +20,28 @@ const PrescriptionView = ({ handleClose, open , idBooking}) => {
     outline: "none",
   };
 
+  const [history, setHistory] = useState()
+  const navigate = useNavigate()
+
+
+  async function getBookingById(bookingId) {
+    try {
+        const response = await All_API.getHistoryByUser(bookingId);
+        if (response.data.status === "success") {
+          setHistory(response.data.data)
+        } else {
+            ToastError(response.data.status);
+            handleClose()
+        }
+    } catch (error) {
+        ToastError(error.response.data.message);
+        handleClose()
+    }
+}
+
+useEffect(()=> {
+  getBookingById(idBooking)
+}, [])
 
   return (
     <div>
@@ -37,7 +61,7 @@ const PrescriptionView = ({ handleClose, open , idBooking}) => {
            <div class="medical2-card">
                       <div class="medical2-header">Medical Result</div>
                       <div class="medical2-diagnosis">
-                        Diagnosis: <span>Hypertension</span>
+                        Diagnosis: <span>{history?.diagnosis}</span>
                       </div>
                       <div class="medical2-prescriptions">
                         <div>
@@ -49,16 +73,14 @@ const PrescriptionView = ({ handleClose, open , idBooking}) => {
                             <th>Unit</th>
                             <th>Usage</th>
                           </tr>
-                          <tr>
-                            <td>Amoxicillin</td>
-                            <td>10.0</td>
-                            <td>500mg daily for 7 days</td>
+                          {history?.prescriptions.map((prescription)=> (
+                            <tr>
+                            <td>{prescription?.medicine}</td>
+                            <td>{prescription?.unit}</td>
+                            <td>{prescription?.desciptionUsage}</td>
                           </tr>
-                          <tr>
-                            <td>Cough Syrup</td>
-                            <td>5.0</td>
-                            <td>10ml every 8 hours</td>
-                          </tr>
+                          ))}
+                        
                         </table>
                       </div>
                     </div>

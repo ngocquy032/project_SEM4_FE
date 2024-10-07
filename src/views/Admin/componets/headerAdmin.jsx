@@ -19,7 +19,7 @@ function HeaderAdmin(props) {
         <header className="main-header">
         <div className="d-flex align-items-center logo-box justify-content-start">	
             {/* <!-- Logo --> */}
-            <a href="index.html" className="logo">
+            <a href="/admin" className="logo">
               {/* <!-- logo--> */}
              
               <div className="logo-lg">

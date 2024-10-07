@@ -22,7 +22,7 @@ const SildeBar = () => {
 			  {/* <!-- sidebar menu--> */}
 			  <ul className="sidebar-menu" data-widget="tree">			
 				<li className="treeview ">
-				  <a href="#">
+				  <a href="/admin">
 				  <img src="/admin/images/icons/dasboard.png" alt="" className='icon-admin-nav'/>
 
 					<span>Dashboard</span>

@@ -1,6 +1,6 @@
 import axios from "axios";
 // import { API_BASE_URL, apiAdmin, apiUser } from "../../config/apiConfig";
-import { API_BASE_URL, apiAdmin, apiUser } from "../config/apiConfig";
+import { API_BASE_URL, apiAdmin, apiDoctor, apiUser } from "../config/apiConfig";
 
 
 
@@ -376,6 +376,39 @@ const All_API = {
     },
 
 
+    rejectedBookingUser: (userId,bookingId )=> {
+        const response =  apiUser.put(`/bookings/user/${userId}/detail?bookingId=${bookingId}`)
+        return response;
+    },
+
+
+    getHistoryByUser: (bookingId)=> {
+        const response =  apiUser.get(`/histories/${bookingId}`)
+        return response;
+    },
+
+    getInfoDoctorByUserId: (userId)=> {
+        const response =  apiDoctor.put(`/doctors/user/${userId}`)
+        return response;
+    },
+
+
+    getBookingByScheduleDoctor: (data) => {
+        const {
+            page,
+            limit,
+            keyword, 
+            scheduleId
+        } = data;
+        const response = apiDoctor.get(`${API_BASE_URL}bookings/doctor?limit=${limit}&page=${page}&scheduleId=${scheduleId}&keyword=${keyword}`);
+        return response;
+    },
+
+
+    getBookingByDoctor: (bookingId )=> {
+        const response =  apiDoctor.get(`/bookings/${bookingId}`)
+        return response;
+    },
 
 
     // updateUser:  (userId, userData) => {

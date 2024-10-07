@@ -43,10 +43,10 @@ const Login = () => {
         const regexPhome = /(((\+|)84)|0)(3|5|7|8|9)+([0-9]{8})\b/
         // check validate Email
         if (createForm.phone_number.trim() === '') {
-            err.phone_number = "* phone_number is requied *"
+            err.phone_number = "* Phone number is requied *"
             valid = false;
         } else if (!regexPhome.test(createForm.phone_number)) {
-            err.phone_number = "* Please enter a valid phone_number *"
+            err.phone_number = "* Please enter a valid Phone number *"
             valid = false;
         }
 

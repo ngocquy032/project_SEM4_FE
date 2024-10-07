@@ -4,6 +4,9 @@ import UpdateAccount from '../components/account/UpdateAccount';
 import { useNavigate } from 'react-router-dom';
 import ScrollTop from '../../../scrollTop';
 import BookingList from '../components/account/BookingList';
+import { useDispatch } from 'react-redux';
+import { removeUser } from '../../../state/Auth/authUserSlice';
+import { ToastSuccess } from '../../../notification';
 // import Home from './Home';
 // import Profile from './Profile';
 // import Messages from './Messages';
@@ -11,6 +14,7 @@ import BookingList from '../components/account/BookingList';
 function Account() {
 	const [activeTab, setActiveTab] = useState('profile');  // Quản lý trạng thái của tab hiện tại
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 
 	// Hàm để thay đổi tab khi người dùng click
 	const handleTabClick = (tabName) => {
@@ -31,6 +35,15 @@ function Account() {
 		}
 	};
 
+
+	
+	const handleLogout= ()=> {
+        localStorage.removeItem("jwt")
+        dispatch(removeUser())
+        ToastSuccess("Logout in successfully.")
+		navigate('/login')
+    
+      }
 	return (
 		<div>
 			{/* Section tiêu đề của trang Account */}
@@ -40,8 +53,7 @@ function Account() {
 					<div className="row">
 						<div className="col-md-12">
 							<div className="block text-center">
-								<span className="text-white">Account</span>
-								<h1 className="text-capitalize mb-5 text-lg">Get in Account</h1>
+								<h1 className="text-capitalize mb-5 text-lg">Account Page</h1>
 							</div>
 						</div>
 					</div>
@@ -79,7 +91,7 @@ function Account() {
 												<span className="hidden-sm-up">
 													<i className="ion-person"></i>
 												</span>
-												<span className="hidden-xs-down">UpdateUser</span>
+												<span className="hidden-xs-down">Update Profile</span>
 											</a>
 										</li>
 
@@ -92,12 +104,12 @@ function Account() {
 												<span className="hidden-sm-up">
 													<i className="ion-home"></i>
 												</span>
-												<span className="hidden-xs-down">BookingList</span>
+												<span className="hidden-xs-down">List Booking</span>
 											</a>
 										</li>
 
 										<li className="nav-item">
-											<a
+											<a onClick={()=> handleLogout()}
 												className={`nav-link ${activeTab === 'messages' ? 'active' : ''}`}
 												style={{ backgroundColor: activeTab === 'messages' ? '#e12454' : 'white', color: activeTab === 'messages' ? 'white' : 'black' }}
 											
@@ -105,7 +117,7 @@ function Account() {
 												<span className="hidden-sm-up">
 													<i className="ion-email"></i>
 												</span>
-												<span className="hidden-xs-down">LogOut</span>
+												<span className="hidden-xs-down">Logout</span>
 											</a>
 										</li>
 									</ul>

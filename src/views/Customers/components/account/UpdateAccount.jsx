@@ -33,11 +33,8 @@ const UpdateAccount = ({ onSuccess }) => {
                     setUserId(response.data.data.id);
                     setBirthday(convertDate(response?.data?.data.birthday))
                 }
-                console.log('response', response)
-                console.log("setCreateForm", setCreateForm)
 
             } catch (error) {
-                console.error('Failed to fetch user details:', error);
             }
 
         }
@@ -82,18 +79,18 @@ const UpdateAccount = ({ onSuccess }) => {
     }
 
     return (
-        <div class="content-wrapper" style={{ margin: '5% 15% 0 15%'}}>
+        <div class="content-wrapper profile-user-sc" style={{ margin: '5% 15% 0 15%'}}>
             <div class="container-full">
                 <div class="content-header">
                     <div class="d-flex align-items-center">
                         <div class="me-auto">
-                            <h2 class="page-title">Users</h2>
+                            <h2 class="page-title">Profile</h2>
                             <div class="d-inline-block align-items-center">
                                 <nav>
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a><FontAwesomeIcon icon={faCircleUser} /></a>
                                         </li>
-                                        <li class="breadcrumb-item active" aria-current="page">UpdateUser</li>
+                                        <li class="breadcrumb-item active" aria-current="page">Update Profile</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -111,7 +108,7 @@ const UpdateAccount = ({ onSuccess }) => {
                                         {/* <!-- /.box-header --> */}
                                         <form class="form">
                                             <div class="box-body">
-                                                <h4 class="box-title text-info mb-0"><i class="ti-user me-15"></i> User Info
+                                                <h4 class="box-title text-info mb-0"><i class="ti-user me-15"></i> Profile Info
                                                 </h4>
                                                 <div class="my-15">
                                                     <div class="row">

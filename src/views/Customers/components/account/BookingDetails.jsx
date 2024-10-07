@@ -33,11 +33,11 @@ const BookingDetails = () => {
             setBooking(response.data.data)
         } else {
             ToastError(response.data.status);
-            navigate('/admin/bookings');
+            navigate('/account');
         }
     } catch (error) {
         ToastError(error.response.data.message);
-        navigate('/admin/bookings');
+        navigate('/account');
     }
 }
 
