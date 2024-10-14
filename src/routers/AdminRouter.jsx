@@ -34,6 +34,8 @@ import ViewClinic from '../views/Admin/pages/clinic/ViewClinic';
 import { useDispatch } from 'react-redux';
 import { addUserAdmin } from '../state/Auth/authAdminSlice';
 import All_API from '../state/All_API';
+import RefundInvoiceList from '../views/Admin/pages/refundInvoice/RefundInvoiceList';
+import ContactList from '../views/Admin/pages/contact/ContactList';
 
 
 
@@ -113,7 +115,9 @@ const AdminRouter = () => {
         <Route path='/clinics/update/:idClinic' element={<UpdateClinic />} />
         <Route path='/clinics/:idClinic' element={<ViewClinic />} />
 
+        <Route path='/refund-invoices' element={<RefundInvoiceList />} />
 
+        <Route path='/contacts' element={<ContactList />} />
 
         
 

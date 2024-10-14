@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Profile from '../components/account/Profile';
 import UpdateAccount from '../components/account/UpdateAccount';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import ScrollTop from '../../../scrollTop';
 import BookingList from '../components/account/BookingList';
 import { useDispatch } from 'react-redux';
@@ -15,6 +15,7 @@ function Account() {
 	const [activeTab, setActiveTab] = useState('profile');  // Quản lý trạng thái của tab hiện tại
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
+	const location = useLocation()
 
 	// Hàm để thay đổi tab khi người dùng click
 	const handleTabClick = (tabName) => {
@@ -44,6 +45,12 @@ function Account() {
 		navigate('/login')
     
       }
+
+	  useEffect(()=> {
+		if(location.pathname === "/account/bookings") {
+			setActiveTab("bookingList")
+		}
+	  }, [location.pathname])
 	return (
 		<div>
 			{/* Section tiêu đề của trang Account */}
@@ -74,7 +81,12 @@ function Account() {
 											<a
 												className={`nav-link ${activeTab === 'profile' ? 'active' : ''}`}
 												style={{ backgroundColor: activeTab === 'profile' ? '#e12454' : 'white', color: activeTab === 'profile' ? 'white' : 'black' }}
-												onClick={() => handleTabClick('profile')}
+												onClick={() => 
+													{
+														handleTabClick('profile')
+														navigate('/account')
+													}
+												}
 											>
 												<span className="hidden-sm-up">
 													<i className="ion-person"></i>
@@ -86,7 +98,11 @@ function Account() {
 											<a
 												className={`nav-link ${activeTab === 'update' ? 'active' : ''}`}
 												style={{ backgroundColor: activeTab === 'update' ? '#e12454' : 'white', color: activeTab === 'update' ? 'white' : 'black' }}
-												onClick={() => handleTabClick('update')}
+												onClick={() => {
+													handleTabClick('update')
+													navigate('/account')
+												}
+												}
 											>
 												<span className="hidden-sm-up">
 													<i className="ion-person"></i>
@@ -99,7 +115,7 @@ function Account() {
 											<a
 												className={`nav-link ${activeTab === 'bookingList' ? 'active' : ''}`}
 												style={{ backgroundColor: activeTab === 'bookingList' ? '#e12454' : 'white', color: activeTab === 'bookingList' ? 'white' : 'black' }}
-												onClick={() => handleTabClick('bookingList')}
+												onClick={() => navigate('/account/bookings')}
 											>
 												<span className="hidden-sm-up">
 													<i className="ion-home"></i>

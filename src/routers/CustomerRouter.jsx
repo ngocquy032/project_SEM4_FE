@@ -56,6 +56,7 @@ const CustomerRouter = () => {
         <Route path='/profile' element={<Profile />} />
         <Route path='/updateUser/' element={< UpdateAccount />} />
         <Route path='/account/bookings/:idBooking' element={<BookingDetails />} />
+        <Route path='/account/bookings' element={<Account />} />
 
 
 

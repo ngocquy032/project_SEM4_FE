@@ -81,6 +81,20 @@ const ScheduleList = () => {
     }
   }
 
+  async function extendSchedulesForNextWeek() {
+    try{
+    const response = await All_API.extendSchedulesForNextWeek()
+    if(response.data.status === "success") {
+      ToastSuccess(response.data.message)
+      handleLoading()
+    }else {
+      ToastError(response.data.message)
+    }
+    }catch (error){
+    ToastError(error.response.data.message)
+    }
+  }
+
   const handlePaginate = (event, value) => {
     setPage(value - 1); // Cập nhật số trang hiện tại khi người dùng chuyển trang
   };
@@ -143,10 +157,16 @@ const ScheduleList = () => {
                     <li class="breadcrumb-item active" aria-current="page">
                       Schedule List
                     </li>
+                  
                   </ol>
+                 
                 </nav>
               </div>
+             
             </div>
+            <button type='submit'  onClick={()=>extendSchedulesForNextWeek()}
+                                     className="btn btn-main btn-round-full  fl-sc-ad">Extend Next Week <i
+                                        className="icofont-simple-right  "></i></button>
           </div>
         </div>
 
@@ -175,6 +195,8 @@ const ScheduleList = () => {
 
                   {/* Các phần tử ở bên phải */}
                   <div className="schedule-filter-right">
+
+                
                     {/* Select DoctorId */}
                     <div className="schedule-filter-item">
                       <label

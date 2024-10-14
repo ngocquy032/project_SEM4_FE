@@ -299,6 +299,53 @@ const All_API = {
 
 
 
+    getAllInvoice: (data) => {
+        const {
+            dateRefund,
+            status,
+            page,
+            limit,
+            keyword
+        } = data;
+        const response = apiAdmin.get(`${API_BASE_URL}refundInvoices?limit=${limit}&page=${page}&dateRefund=${dateRefund}&keyword=${keyword}&status=${encodeURIComponent(status)}`);
+        return response;
+    },
+
+    confirmRefunded: (invoiceId) => {
+        const response = apiAdmin.put(`${API_BASE_URL}refundInvoices/refunded/${invoiceId}`);
+        return response;
+    },
+
+    sendContact: (messageData)=> {
+        const response =  axios.post(`${API_BASE_URL}contacts`, messageData);
+        return response;
+    },
+
+    getAllContact: (data)=> {
+        const {
+            page,
+            limit,
+            keyword,
+            status
+          } = data;
+        const response =  apiAdmin.get(`${API_BASE_URL}contacts?page=${page}&limit=${limit}&keyword=${keyword}&status=${status}`);
+        return response;
+    },
+
+    getContactById: (id) => {
+        const response =  apiAdmin.get(`/contacts/${id}`)
+        return response;
+    },
+    
+    updateContact: (id, contactData ) => {
+        const response =  apiAdmin.put(`/contacts/${id}`, contactData)
+        return response;
+    },
+
+    deleteContact: (id ) => {
+        const response =  apiAdmin.delete(`/contacts/${id}`)
+        return response;
+    },
 
 
 
@@ -376,8 +423,8 @@ const All_API = {
     },
 
 
-    rejectedBookingUser: (userId,bookingId )=> {
-        const response =  apiUser.put(`/bookings/user/${userId}/detail?bookingId=${bookingId}`)
+    RefundBookingUser: (userId,bookingId, DataBank )=> {
+        const response =  apiUser.put(`${API_BASE_URL}bookings/user/${userId}/detail?bookingId=${bookingId}`, DataBank)
         return response;
     },
 
@@ -387,10 +434,19 @@ const All_API = {
         return response;
     },
 
+    
+    changeScheduleByUser: (userId,bookingId, idSchedule )=> {
+        const response =  apiUser.put(`${API_BASE_URL}bookings/user/${userId}/change?bookingId=${bookingId}&scheduleId=${idSchedule}`)
+        return response;
+    },
+
+
+
     getInfoDoctorByUserId: (userId)=> {
         const response =  apiDoctor.put(`/doctors/user/${userId}`)
         return response;
     },
+    
 
 
     getBookingByScheduleDoctor: (data) => {
@@ -409,6 +465,51 @@ const All_API = {
         const response =  apiDoctor.get(`/bookings/${bookingId}`)
         return response;
     },
+
+
+    updateHistory: (idBooking,historyData )=> {
+        const response =  apiDoctor.put(`/histories/${idBooking}`, historyData)
+        return response;
+    },
+
+    getHistoryByBookingId: (bookingId )=> {
+        const response =  apiDoctor.get(`/histories/${bookingId}`)
+        return response;
+    },
+
+    getAllMedicine: ()=> {
+        const response =  axios.get(`${API_BASE_URL}medications`)
+        return response;
+    },
+
+    sendEmailMedicine: (medicalExRs)=> {
+        const response =  apiDoctor.post(`${API_BASE_URL}email/medicalResult`, medicalExRs)
+        return response;
+    },
+
+
+    getRsInvoice: (bookingId)=> {
+        const response =  apiUser.get(`${API_BASE_URL}refundInvoices/booking/${bookingId}`)
+        return response;
+    },
+
+    getHistoryByAdmin: (bookingId)=> {
+        const response =  apiAdmin.get(`/histories/${bookingId}`)
+        return response;
+    },
+
+    getRsInvoiceByAdmin: (bookingId)=> {
+        const response =  apiAdmin.get(`${API_BASE_URL}refundInvoices/booking/${bookingId}`)
+        return response;
+    },
+
+    extendSchedulesForNextWeek: ()=> {
+        const response =  apiAdmin.post(`${API_BASE_URL}schedules/extend`)
+        return response;
+    },
+
+
+
 
 
     // updateUser:  (userId, userData) => {

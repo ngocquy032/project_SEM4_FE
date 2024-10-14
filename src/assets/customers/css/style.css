@@ -1904,17 +1904,23 @@ justify-content: center;
   justify-content: center;
   margin-bottom: 40px;
 }
+.appoits-ct-mx {
+  max-width: 850px;
+
+}
 
 .crcs-6 {
   padding-left: 20px;
 }
+
+.appoits-ft-cd {}
 
 .appoits-card  {
  justify-content: center;
   background-color: #fff;
   border-radius: 10px;
   margin-top: 10px;
-  padding: 30px 10px 30px 40px;
+  padding: 30px 40px 30px 40px;
 }
 
 .presctr-card {
@@ -2143,11 +2149,9 @@ justify-content: center;
   opacity: 0.8;
 }
 
-.manage-patient-create-prescriptions {
-  background-color: #007bff;
-}
+
 .manage-patient-cancel {
-  background-color: #06a14c;
+  background-color: #007bff;
 }
 
 .manage-patient-create-prescriptions {
@@ -2250,15 +2254,22 @@ justify-content: center;
 
 .prescrt-container input
  {
-  height: 32px;
+  height: 38px;
 
+ }
+ .prescrt-container select {
+  height: 36px;
+  color: #8a8888;
  }
 
 .prescrt-container input[type="number"] {
   width: 50px;
+  color: #8a8888;
+
 }
 .prescrt-container input[type="text"] {
-  width: 160px;
+  width: 220px;
+
 }
 .prescrt-container .delete-icon {
   color: red;
@@ -2266,18 +2277,294 @@ justify-content: center;
   cursor: pointer;
 }
 
+.sl-presctr {
+  height: 26px;
+position: relative;
+top: -5px;
+max-width: 160px;
+min-width: 160px;
+}
 
-/* button {
-  padding: 10px 20px;
-  margin: 20px;
-  background-color: #4CAF50;
+.sl-presctr .css-13cymwt-control , .css-13cymwt-control .css-hlgwow, 
+.css-13cymwt-control .css-1wy0on6{
+  height: 26px;
+}
+.css-13cymwt-control .css-hlgwow .css-1jqq78o-placeholder {
+  margin-top: 0px;
+}
+
+.css-13cymwt-control .css-hlgwow .css-19bb58m input{
+  height: 26px !important;
+  width: 30px;
+ 
+}
+.css-13cymwt-control .css-hlgwow {
+  padding: 0 8px;
+}
+
+.css-13cymwt-control .css-hlgwow .css-19bb58m{
+  margin: 0 ;
+  padding: 0 ;
+}
+
+.css-13cymwt-control .css-1wy0on6 {
+  margin-top: 4px;
+}
+
+
+ .add-prescrtr {
+  padding: 4px 10px;
+  background-color: #223a66;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 14px;
+}
+
+.add-prescrtr:hover {
+  background-color: #e12454;
+} 
+
+.css-13cymwt-control {
+  max-width: 160px !important;
+  min-width: 160px !important;
+}
+
+.diagnosis-tx-dc {
+
+}
+
+.css-13cymwt-control {
+  max-width: 160px !important;
+  min-width: 160px !important;
+}
+
+.diagnosis-tx-dc:disabled {
+  background-color: #f4f4f8;
+}
+
+
+.mt-dcss {
+  padding-top: 110px
+}
+
+
+
+
+/* Css FormBank */
+/* Css FormBank */
+
+
+
+.custombk-card-container {
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.custombk-card-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.custombk-form-group {
+  margin-bottom: 15px;
+}
+
+.custombk-form-group label {
+  font-size: 14px;
+  color: #333;
+}
+
+.custombk-form-group input,
+.custombk-form-group select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
   font-size: 16px;
 }
 
-button:hover {
-  background-color: #45a049;
-} */
+.custombk-form-group input:focus,
+.custombk-form-group select:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.custombk-card-preview {
+  background: linear-gradient(135deg, #007bff, #00aaff);
+  color: white;
+  padding: 20px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  text-align: left;
+  font-size: 16px;
+}
+
+.custombk-card-preview .custombk-bank-name {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.custombk-card-preview .custombk-account-number {
+  font-size: 20px;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.custombk-card-preview .custombk-holder-name {
+  font-size: 16px;
+}
+
+.custombk-btn-submit {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.custombk-btn-submit:hover {
+  background-color: #0056b3;
+}
+
+.appoits-waitrefund > button{
+  background-color: #17a2b8 ;
+}
+
+.appoits-refunded > button {
+  background-color: #007bff ;
+
+}
+
+
+
+
+/* Css Refund Invoice */
+/* Css Refund Invoice */
+
+.customRI-invoice-card {
+  border-radius: 10px;
+  padding: 20px;
+  width: 400px;
+  margin: 20px auto;
+  margin-bottom: 10px;
+}
+
+.customRI-invoice-title {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.customRI-invoice-info {
+  margin: 10px 0;
+}
+
+.customRI-info-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.customRI-info-label {
+  font-weight: bold;
+  color: #555;
+}
+
+.c-info-value {
+  color: #333;
+}
+
+
+.customRI-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #333;
+}
+
+.customRI-invoice-button {
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  padding: 6px;
+  background-color: #28a745; /* Màu xanh lá cây */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.customRI-invoice-button:hover {
+  background-color: #218838; /* Màu xanh lá cây đậm hơn khi hover */
+}
+
+.box-btn-cancel {
+justify-content: center;  width: 100%;
+}
+
+
+.btn-chage-sc {
+  z-index: 100;
+  position: relative;
+  top: 0;
+  left: -260px;
+  margin-bottom: -40px;
+}
+
+
+.note-chage-sc {
+  color: red;
+}
+
+.note-header-sc {
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+}
+  
+
+
+.box-hd-appoints{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #E8E8E8;
+  color: #000;
+
+}
+
+.box-hd-appoints .b2-hd-txt{
+  margin-right: 10px;
+}
+
+.b2-hd-appoints {
+  width: 220px;
+  color: #000;
+}
+
+.b2-hd-appoints .appoits-time, .b2-hd-appoints .appoits-date {
+  margin: 0;
+}
+
+.b2-hd-appoints .appoits-time {
+  margin-top: 10px;
+}
+
+.b2-hd-appoints .appoits-date {
+  margin-bottom: 10px;
+}

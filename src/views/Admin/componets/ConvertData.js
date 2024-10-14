@@ -46,3 +46,23 @@ export function convertDatePut(dateStr) {
   const [day, month, year] = dateStr.split('-');
   return `${year}-${month}-${day}`;
 }
+
+
+
+export const ConvertDateTime= (dateArray) =>{
+  if (!Array.isArray(dateArray)) {
+      return null
+  }
+  let [year, month, day, hours, minutes, seconds] = dateArray;
+
+  // Chuyển đổi các giá trị thành chuỗi với độ dài cố định
+  month = String(month).padStart(2, '0');
+  day = String(day).padStart(2, '0');
+  hours = String(hours).padStart(2, '0');
+  minutes = String(minutes).padStart(2, '0');
+  seconds = String(seconds).padStart(2, '0');
+
+  // Kết hợp các giá trị vào chuỗi theo định dạng yyyy-MM-dd'T'HH:mm:ss
+  let formattedDateTime = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
+  return formattedDateTime;
+}

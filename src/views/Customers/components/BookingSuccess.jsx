@@ -106,7 +106,7 @@ const BookingSuccess = () => {
             </p>
           </div>
           <div className="appointment-btn-sc">
-            <button className="btn btn-main btn-round-full btn-book-conf ic-appoint-sc" onClick={()=> navigate(`/account/booking/${idBookingSuccess}`)}> 
+            <button className="btn btn-main btn-round-full btn-book-conf ic-appoint-sc" onClick={()=> navigate(`/account/bookings/${idBookingSuccess}`)}> 
               See detailed appointment schedule here!
               <i className="icofont-simple-right  "></i>
             </button>

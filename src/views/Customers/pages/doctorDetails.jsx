@@ -19,7 +19,6 @@ const DoctorDetails = () => {
 
 
 
-    console.log(doctor)
 
     async function getDoctorById(idObject) {
         try {

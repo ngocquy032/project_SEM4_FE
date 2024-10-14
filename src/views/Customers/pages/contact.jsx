@@ -1,6 +1,35 @@
 import React from 'react';
+import { ToastError, ToastSuccess } from '../../../notification';
+import All_API from '../../../state/All_API';
 
-function Contact(props) {
+function Contact() {
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const data = new FormData(e.currentTarget)
+  
+        const messageData = {
+            name: data.get("name"),
+            email: data.get("email"),
+            message: data.get("message"),
+        }
+
+        sentContact(messageData)
+        e.target.reset();
+
+    }
+    async function sentContact(messageData) {
+        try{
+          const response = await All_API.sendContact(messageData)
+          if(response.data.status === "success") {
+            ToastSuccess(response.data.message)
+          }else {
+            ToastError(response.data.message)
+          }
+        }catch (error){
+          ToastError(error.response.data.message)
+        }
+      }
+
     return (
         <div>
 
@@ -68,7 +97,7 @@ function Contact(props) {
                     </div>
                     <div className="row">
                         <div className="col-lg-12 col-md-12 col-sm-12">
-                            <form id="contact-form" className="contact__form ">
+                            <form id="contact-form" className="contact__form " onSubmit={handleSubmit}>
                                 <div className="row">
                                     <div className="col-12">
                                         <div className="alert alert-success contact__msg" style={{display: "none"}}
@@ -82,7 +111,8 @@ function Contact(props) {
                                     <div className="col-lg-6">
                                         <div className="form-group">
                                             <input name="name" id="name" type="text" className="form-control"
-                                                   placeholder="Your Full Name"/>
+                                                  placeholder="Your Full Name"/>
+
                                         </div>
                                     </div>
 
@@ -92,18 +122,8 @@ function Contact(props) {
                                                    placeholder="Your Email Address"/>
                                         </div>
                                     </div>
-                                    <div className="col-lg-6">
-                                        <div className="form-group">
-                                            <input name="subject" id="subject" type="text" className="form-control"
-                                                   placeholder="Your Query Topic"/>
-                                        </div>
-                                    </div>
-                                    <div className="col-lg-6">
-                                        <div className="form-group">
-                                            <input name="phone" id="phone" type="text" className="form-control"
-                                                   placeholder="Your Phone Number"/>
-                                        </div>
-                                    </div>
+                                    
+                                   
                                 </div>
 
                                 <div className="form-group-2 mb-4">

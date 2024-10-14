@@ -13,6 +13,9 @@ import All_API from "../../../../state/All_API";
 import { ToastError, ToastSuccess } from "../../../../notification";
 import { useSelector } from "react-redux";
 import { GetUser } from "../../../../state/Auth/authUserSlice";
+import { compareDateSchedule, compareDateTimeSchedule } from "../CovertFunction";
+import FormBankModal from "./FormBankModal";
+import FormChangeSchedule from "./FormChangeSchedule";
 
 
 const BookingList = () => {
@@ -30,33 +33,54 @@ const BookingList = () => {
   const timeoutRef = useRef(null);
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("");
-  const user = useSelector(GetUser)
+  const user = useSelector(GetUser);
+  const [FormBank, setFormBank] = useState(false);
+  const [FormRefundSc, setFormRefundSc] = useState(false);
+  const [bookingOb, setBookingOb] = useState(null)
+
 
   const handlePaginate = (event, value) => {
     setPage(value - 1); // Cập nhật số trang hiện tại khi người dùng chuyển trang
   };
 
 
+  
 
   const handleLoading = () => {
     setLoading(!loading);
   };
 
-  async function rejectedBooking(userId, idBooking) {
-    const status = "rejected"
-    try {
-      const response = await All_API.rejectedBookingUser(userId,idBooking);
-      if (response.data.status === "success") {
-        ToastSuccess(response.data.message);
-        handleLoading()
-      } else {
-        ToastError(response.data.message);
-      }
-    } catch (error) {
-      ToastError(error.response.data.message);
+  const handleFormBankOpen = () => {
+    setFormBank(true);
+  };
+
+  const handleFormBankClose = () => {
+    setFormBank(false);
+  };
+  
+  const handleFormRefundScOpen = () => {
+    setFormRefundSc(true);
+  };
+
+  const handleFormRefundScClose = () => {
+    setFormRefundSc(false);
+  };
+
+  const handleRefund = (userId, booking)=> {
+    const diffInHours = compareDateTimeSchedule(booking)
+    if (diffInHours < 2) {
+      ToastError("No refunds are possible if the appointment time is less than 2 hours. You can change your appointment time once.")
+      handleFormRefundScOpen()
+    } else {
+      handleFormBankOpen()
     }
+
+
   }
 
+
+
+  
   const handleLimitChange = (e) => setLimit(e.target.value);
   const handleDateChange = (e) => setDateBooking(e.target.value);
   const handleStatusChange = (e) => setStatus(e.target.value);
@@ -71,6 +95,9 @@ const BookingList = () => {
       setKeyword(e.target.value);
     }, 500);
   };
+
+
+  
 
   useEffect(() => {
     const fetchUserAndBookings = async () => {
@@ -227,11 +254,16 @@ const BookingList = () => {
                                     booking?.status === "pending"
                                       ? "badge badge-warning"
                                       : booking?.status === "paid"
-                                      ? "badge badge-success"
-                                      : booking?.status === "rejected"
-                                      ? "badge badge-danger"
-                                      : ""
+                                        ? "badge badge-success"
+                                        : booking?.status === "rejected"
+                                          ? "badge badge-danger"
+                                          : booking?.status === "Wait Refund"
+                                            ? "badge badge-info"
+                                            : booking?.status === "Refunded"
+                                              ? "badge badge-primary"
+                                              : ""
                                   }
+                                  
                                 >
                                   {booking?.status?.toUpperCase()}
                                 </span>
@@ -251,10 +283,13 @@ const BookingList = () => {
 
                                   <div className="appoits-button appoits-rejected btn-bk-user-ac">
                                     <button
-                                      disabled={booking?.status !== "pending"}
-                                      onClick={() => rejectedBooking(user?.id, booking?.id)}
+                                      disabled={booking?.status !== "paid" || compareDateSchedule(booking)}
+                                      onClick={() => {
+                                        setBookingOb(booking)
+                                        handleRefund(user?.id, booking)
+                                      }}
                                     >
-                                      Cancel
+                                      Refund
                                     </button>
                                   </div>
                                 </div>
@@ -288,6 +323,26 @@ const BookingList = () => {
           {/* <!-- /.content --> */}
         </div>
       </div>
+
+      {FormBank && (
+        <FormBankModal
+          open={FormBank}
+          handleClose={handleFormBankClose}
+          booking={bookingOb}
+          isLoad={handleLoading}
+          userId={user?.id}
+        />
+      )}
+
+{FormRefundSc && (
+        <FormChangeSchedule
+          open={FormRefundSc}
+          handleClose={handleFormRefundScClose}
+          booking={bookingOb}
+          isLoad={handleLoading}
+          userId={user?.id}
+        />
+      )}
     </div>
   );
 };

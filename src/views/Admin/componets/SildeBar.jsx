@@ -32,12 +32,7 @@ const SildeBar = () => {
 				  </a>
 				
 				</li>
-				<li>
-				  <a href="appointments.html">
-					<i className="icon-Barcode-read"><span className="path1"></span><span className="path2"></span></i>
-					<span>Appointments</span>
-				  </a>
-				</li>			
+					
 				<li className={`treeview ${openItem === 1 ? 'active menu-open' : ''}`}>
 				<a onClick={()=> handleItem(1)}>
 				<img src="/admin/images/icons/users.png" alt="" className='icon-admin-nav'/>
@@ -95,10 +90,57 @@ const SildeBar = () => {
 				  </ul>
 				</li>
 				
-
-			
+				<li className={`treeview ${openItem === 5 ? 'active menu-open' : ''}`}>
+				<a onClick={()=> handleItem(5)}>
+				<img src="/admin/images/icons/calendar.png" alt="" className='icon-admin-nav'/>
+				<span>Schedules</span>
+					<span className="pull-right-container">
+					<img className=" pull-right icon-down" src='/admin/images/icons/down-arrow.png' alt=''/>
+					</span>
+				  </a>
+				  <ul className="treeview-menu">
+					<li><a onClick={()=> navigate('/admin/schedules/add')}><i className="icon-Commit"><span className="path1"></span><span className="path2"></span></i>Add Schedule</a></li>
+					<li><a onClick={()=> navigate('/admin/schedules')}><i className="icon-Commit"><span className="path1"></span><span className="path2"></span></i>List Schedule</a></li>
+				  </ul>
+				</li>
 
 				
+				<li className={`treeview ${openItem === 6 ? 'active menu-open' : ''}`}>
+				<a onClick={()=> handleItem(6)}>
+				<img src="/admin/images/icons/clock.png" alt="" className='icon-admin-nav'/>
+				<span>Time Slots</span>
+					<span className="pull-right-container">
+					<img className=" pull-right icon-down" src='/admin/images/icons/down-arrow.png' alt=''/>
+					</span>
+				  </a>
+				  <ul className="treeview-menu">
+					<li><a onClick={()=> navigate('/admin/timeSlots/add')}><i className="icon-Commit"><span className="path1"></span><span className="path2"></span></i>Add Time Slot</a></li>
+					<li><a onClick={()=> navigate('/admin/timeSlots')}><i className="icon-Commit"><span className="path1"></span><span className="path2"></span></i>List Time Slot</a></li>
+				  </ul>
+				</li>
+				
+			
+				<li className='treeview'>
+				  <a onClick={()=> navigate('/admin/bookings')}>
+				  <img src="/admin/images/icons/booking.png" alt="" className='icon-admin-nav'/>
+					<span className="path1"></span><span className="path2"></span>
+					<span>Bookings</span>
+				  </a>
+				</li>	
+				<li className='treeview'>
+				  <a onClick={()=> navigate('/admin/refund-invoices')}>
+				  <img src="/admin/images/icons/cashback.png" alt="" className='icon-admin-nav'/>
+					<span className="path1"></span><span className="path2"></span>
+					<span>Refund Invoice</span>
+				  </a>
+				</li>	
+				<li className='treeview'>
+				  <a onClick={()=> navigate('/admin/contacts')}>
+				  <img src="/admin/images/icons/contact.png" alt="" className='icon-admin-nav'/>
+					<span className="path1"></span><span className="path2"></span>
+					<span>Contacts</span>
+				  </a>
+				</li>	
 			
 			
 			

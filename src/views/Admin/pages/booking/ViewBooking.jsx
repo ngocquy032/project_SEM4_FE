@@ -5,14 +5,39 @@ import { useNavigate, useParams } from 'react-router-dom';
 import All_API from '../../../../state/All_API';
 import { ToastError, ToastSuccess } from '../../../../notification';
 import { convertToDateString, convertToTimeString } from '../../componets/ConvertData';
+import PrescriptionAdmin from './PrescriptionAdmin';
+import RefundInvoiceAdmin from './RefundInvoiceAdmin';
 
 const ViewBooking = () => {
     const { idBooking } = useParams();
     const navigate = useNavigate();
     const [booking, setBooking] = useState(null);
  
-  
+    const [openViewModal, setOpenViewModal] = useState(false);
+    const [refundModal, setRefundModal] = useState(false);
+    const [loading, setLoading] = useState(false);
 
+  
+  
+    const handleViewOpen = () => {
+      setOpenViewModal(true);
+    };
+  
+    const handleViewClose = () => {
+      setOpenViewModal(false);
+    };
+  
+    const handleRefundModalOpen = () => {
+      setRefundModal(true);
+    };
+  
+    const handleRefundModalClose = () => {
+      setRefundModal(false);
+    };
+
+    const handleLoading = () => {
+        setLoading(!loading);
+      };
 
   
     async function getBookingById(idBooking) {
@@ -20,7 +45,6 @@ const ViewBooking = () => {
             const response = await All_API.getBookingByIdAdmin(idBooking);
             if (response.data.status === "success") {
                 setBooking(response.data.data)
-                console.log(response.data.data)
             } else {
                 ToastError(response.data.status);
                 navigate('/admin/bookings');
@@ -34,7 +58,7 @@ const ViewBooking = () => {
    
     useEffect(() => {
         getBookingById(idBooking)
-    }, []);
+    }, [loading]);
 
     
  
@@ -271,6 +295,26 @@ const ViewBooking = () => {
                                         </div> 
 
                                         </div>
+                                        {(booking?.status === "paid") && (
+              <div class="appoits-card-footer">
+              <div>Medical Exam Results</div>
+              <a className="view-history" onClick={()=>handleViewOpen()} >View</a>
+          </div>
+             )}
+
+              
+            {(booking?.status === "Wait Refund") && (
+              <div class="appoits-card-footer">
+              <div>Refund Information</div>
+              <a className="view-history" onClick={()=>handleRefundModalOpen()} >View</a>
+          </div>
+             )}
+                 {(booking?.status === "Refunded") && (
+              <div class="appoits-card-footer">
+              <div>Refund Information</div>
+              <a className="view-history" onClick={()=>handleRefundModalOpen()} >View</a>
+          </div>
+             )}
                                     </div>
                                     <div className="box-footer">
                                     <button type="button" onClick={()=> navigate('/admin/bookings')} class="btn btn-warning me-10 ">
@@ -283,6 +327,21 @@ const ViewBooking = () => {
                     </div>
                 </section>
             </div>
+            {openViewModal && (
+        <PrescriptionAdmin
+          open={openViewModal}
+          handleClose={handleViewClose}
+          idBooking={idBooking}
+        />
+      )}
+
+      {refundModal && (
+        <RefundInvoiceAdmin
+          open={refundModal}
+          handleClose={handleRefundModalClose}
+          bookingId={idBooking}
+        />
+      )}
         </div>
     );
 };

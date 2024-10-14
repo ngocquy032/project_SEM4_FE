@@ -212,12 +212,16 @@ const BookingList = () => {
                               <span
                                 className={
                                   booking?.status === "pending"
-                                    ? "badge badge-warning"
-                                    : booking?.status === "paid"
+                                  ? "badge badge-warning"
+                                  : booking?.status === "paid"
                                     ? "badge badge-success"
                                     : booking?.status === "rejected"
-                                    ? "badge badge-danger"
-                                    : ""
+                                      ? "badge badge-danger"
+                                      : booking?.status === "Wait Refund"
+                                        ? "badge badge-info"
+                                        : booking?.status === "Refunded"
+                                          ? "badge badge-primary"
+                                          : ""
                                 }
                               >
                                 {booking?.status?.toUpperCase()}

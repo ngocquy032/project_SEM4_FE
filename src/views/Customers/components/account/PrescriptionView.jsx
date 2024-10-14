@@ -43,6 +43,7 @@ useEffect(()=> {
   getBookingById(idBooking)
 }, [])
 
+
   return (
     <div>
       <Modal

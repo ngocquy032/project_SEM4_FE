@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import { GetUser } from '../../../../state/Auth/authUserSlice';
 import { convertToDateString, convertToTimeString } from '../../../Admin/componets/ConvertData';
 import PrescriptionView from './PrescriptionView';
+import RefundInvoiceView from './RefundInvoiceView';
 
 
 const BookingDetails = () => {
@@ -16,6 +17,7 @@ const BookingDetails = () => {
   const {idBooking} = useParams()
   const user = useSelector(GetUser)
   const [openViewModal, setOpenViewModal] = useState(false);
+  const [refundModal, setRefundModal] = useState(false);
 
 
   const handleViewOpen = () => {
@@ -24,6 +26,14 @@ const BookingDetails = () => {
 
   const handleViewClose = () => {
     setOpenViewModal(false);
+  };
+
+  const handleRefundModalOpen = () => {
+    setRefundModal(true);
+  };
+
+  const handleRefundModalClose = () => {
+    setRefundModal(false);
   };
   
   async function getBookingById(userId,bookingId) {
@@ -49,8 +59,8 @@ useEffect(() => {
   return (
       <div class="content-wrapper" style={{ margin: "5% 15% 0 15%" }}>
         <div class="container-full">
-          <div className="appoits-content">
-           <div class="appoits-card card">
+          <div className="appoits-content ">
+           <div class="appoits-card card appoits-ct-mx">
            <div className="row ">
            <div class="appoits-card-header col-lg-3">
                  <img src="https://storage.googleapis.com/a1aa/image/dUwTsAFeZFwaV6ne1fMiovWfwMkSsu2hskTzCLzAUHKnNVMOB.jpg" alt="Doctor icon"/>
@@ -85,26 +95,67 @@ useEffect(() => {
                   <div class="appoits-button appoits-pending">
                      <button>Pending</button>
                  </div>
-                 ) : (
+                 ) : booking?.status === "rejected" ? (
                   <div class="appoits-button appoits-rejected">
                   <button>Rejected</button>
               </div>
+                 ): booking?.status === "Wait Refund" ? 
+                  (
+                  <div class="appoits-button appoits-waitrefund">
+                     <button>Wait Refund</button>
+                 </div>  ) : (
+                  <div class="appoits-button appoits-refunded">
+                     <button>Refunded</button>
+                 </div>
                  )}
              </div>
+             
            </div>
-            
            
-             <div class="appoits-card-footer">
-                 <div>Medical Exam Results</div>
-                 <a className="view-history" onClick={()=>handleViewOpen()} >View</a>
-             </div>
-         </div></div>
+                
+          <div>
+               
+       
+          </div>
+                 <div className='appoits-ft-cd'>
+                 {(booking?.status === "paid") && (
+              <div class="appoits-card-footer">
+              <div>Medical Exam Results</div>
+              <a className="view-history" onClick={()=>handleViewOpen()} >View</a>
+          </div>
+             )}
+
+              
+            {(booking?.status === "Wait Refund") && (
+              <div class="appoits-card-footer">
+              <div>Refund Information</div>
+              <a className="view-history" onClick={()=>handleRefundModalOpen()} >View</a>
+          </div>
+             )}
+                 {(booking?.status === "Refunded") && (
+              <div class="appoits-card-footer">
+              <div>Refund Information</div>
+              <a className="view-history" onClick={()=>handleRefundModalOpen()} >View</a>
+          </div>
+             )}
+                 </div>
+         </div>
+         
+         </div>
         </div>
         {openViewModal && (
         <PrescriptionView
           open={openViewModal}
           handleClose={handleViewClose}
           idBooking={idBooking}
+        />
+      )}
+
+      {refundModal && (
+        <RefundInvoiceView
+          open={refundModal}
+          handleClose={handleRefundModalClose}
+          bookingId={idBooking}
         />
       )}
 
