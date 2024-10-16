@@ -32223,3 +32223,17 @@ img.away, img.busy, img.offline, img.online {
 .fl-sc-ad {
   margin-left: auto;
 }
+
+.icon-ad-ds {
+  height: 80px;
+  padding: 0 10px;
+}
+
+
+.chart-ad-ds{
+  padding-top: 0 !important;
+}
+
+.chart-ad-ds-hd {
+  padding-bottom: 0 !important;
+}

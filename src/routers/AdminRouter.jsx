@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { Route, Routes, Link, useNavigate } from "react-router-dom";
-import Demo from "../views/Admin/demo";
 import '../assets/admins/css/styleAdmin.css'
 import MasterLayoutAdmin from "../views/Admin/componets/masterLayoutAdmin";
 import UserList from '../views/Admin/pages/user/UserList';
@@ -36,6 +35,8 @@ import { addUserAdmin } from '../state/Auth/authAdminSlice';
 import All_API from '../state/All_API';
 import RefundInvoiceList from '../views/Admin/pages/refundInvoice/RefundInvoiceList';
 import ContactList from '../views/Admin/pages/contact/ContactList';
+import Dashboard from '../views/Admin/Dashboard';
+import ViewDoctor from '../views/Admin/pages/doctor/ViewDoctor';
 
 
 
@@ -75,7 +76,7 @@ const AdminRouter = () => {
 
       {/* components có chung header và footer */}
       <Route path='/' element={<MasterLayoutAdmin />}>
-        <Route index element={<Demo />} />
+        <Route index element={<Dashboard />} />
         <Route path='/userList' element={<UserList />} />
         <Route path='/userAdd' element={<UserAdd />} />
         <Route path='/userDetails/:userId' element={<UserDetails />} />
@@ -109,6 +110,8 @@ const AdminRouter = () => {
         <Route path='/doctors' element={<DoctorList />} />
         <Route path='/doctors/add' element={<AddDoctor />} />
         <Route path='/doctors/update/:idDoctor' element={<UpdateDoctor />} />
+        <Route path='/doctors/:idDoctor' element={<ViewDoctor />} />
+
 
         <Route path='/clinics' element={<ClinicList />} />
         <Route path='/clinics/add' element={<AddClinic />} />

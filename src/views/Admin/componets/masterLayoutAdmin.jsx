@@ -4,7 +4,6 @@ import { Outlet } from "react-router-dom";
 import FooterAdmin from "./footerAdmin";
 import HeaderAdmin from "./headerAdmin";
 import SildeBar from "./SildeBar";
-import Demo from "../demo";
 
 
 function MasterLayoutAdmin() {

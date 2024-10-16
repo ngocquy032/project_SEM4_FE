@@ -508,7 +508,11 @@ const All_API = {
         return response;
     },
 
-
+    
+    getAllBookingForWeek: ()=> {
+        const response =  apiAdmin.get(`${API_BASE_URL}bookings/last7days`)
+        return response;
+    },
 
 
 
