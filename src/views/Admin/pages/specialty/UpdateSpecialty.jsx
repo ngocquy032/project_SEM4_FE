@@ -157,7 +157,7 @@ const UpdateSpecialty = () => {
                                         <li className="breadcrumb-item">
                                             <FontAwesomeIcon icon={faCircleUser} />
                                         </li>
-                                        <li className="breadcrumb-item active" aria-current="page">Add Specialty</li>
+                                        <li className="breadcrumb-item active" aria-current="page">Update Specialty</li>
                                     </ol>
                                 </nav>
                             </div>

@@ -10,6 +10,7 @@ import LoginDoctor from '../views/Doctor/pages/LoginDoctor';
 import { addInfoDoctor } from '../state/Auth/infoDoctorSlice';
 import BookingPatientDetail from '../views/Doctor/pages/BookingPatientDetail';
 import DoctorSchedule from '../views/Doctor/pages/DoctorSchedule';
+import ListHistoryBookedPatient from '../views/Doctor/pages/ListHistoryBookedPatient';
 
 
 
@@ -65,6 +66,7 @@ const DoctorRouter = () => {
       <Route path='/patients' element={<PatientsList />} />
       <Route path='/patients/:idBooking' element={<BookingPatientDetail />} />
       <Route path='/schedules' element={<DoctorSchedule />} />
+      <Route path='/patients/history/:idUser' element={<ListHistoryBookedPatient />} />
 
 
 

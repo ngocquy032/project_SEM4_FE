@@ -241,7 +241,7 @@ const BookingList = () => {
                           </tr>
                         </thead>
                         <tbody>
-                          {bookingList?.map((booking) => (
+                          {bookingList?.reverse()?.map((booking) => (
                             <tr class="hover-primary">
                               <td>#{booking?.id}</td>
                               <td>{booking?.user.fullname}</td>
@@ -289,7 +289,7 @@ const BookingList = () => {
                                         handleRefund(user?.id, booking)
                                       }}
                                     >
-                                      Refund
+                                      Cancel
                                     </button>
                                   </div>
                                 </div>

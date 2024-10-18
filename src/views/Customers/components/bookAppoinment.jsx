@@ -189,8 +189,11 @@ function BookAppoinment() {
                                                             
                                                         </div>
                                                         <p className='clinic-adrs'>{schedule?.clinic_address}</p>
+                                                        <p className="address-details cost-bk-dc">Costs: ${schedule?.price} </p>
                                                         </div>
                                                
+          
+
                                                     </div>
                                     </div>
                                 </div>

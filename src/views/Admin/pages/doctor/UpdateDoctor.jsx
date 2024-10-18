@@ -217,7 +217,7 @@ const UpdateDoctor = () => {
                       <FontAwesomeIcon icon={faCircleUser} />
                     </li>
                     <li className="breadcrumb-item active" aria-current="page">
-                      Add Doctor
+                      Update Doctor
                     </li>
                   </ol>
                 </nav>

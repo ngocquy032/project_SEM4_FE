@@ -32237,3 +32237,16 @@ img.away, img.busy, img.offline, img.online {
 .chart-ad-ds-hd {
   padding-bottom: 0 !important;
 }
+
+.hs-view-dc {
+  margin-left: 86%;
+}
+
+.flx-view-hs{
+  display: flex;
+  justify-content: space-between
+}
+
+.btn-back-sc {
+  margin-left: 110px;
+}

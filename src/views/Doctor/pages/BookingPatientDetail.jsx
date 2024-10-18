@@ -163,6 +163,8 @@ const BookingPatientDetail = () => {
       setPrescriptions(history.prescriptions);
     }
   }, [history, isLoad]);
+
+  console.log(booking)
   return (
     <div class="content-wrapper">
                    {awaitLoad && <Loading />}
@@ -172,8 +174,21 @@ const BookingPatientDetail = () => {
         <div class="content-header">
           <div class="d-flex align-items-center">
             <div class="me-auto">
+            <div>
+             
+              </div>
+            <div className="flx-view-hs">
+            <button type='submit'  onClick={()=>navigate(`/doctor/patients`)}
+                                     className="btn btn-main btn-round-full   ">Back <i
+                                        className="icofont-simple-right  "></i></button>
+              <button type='submit'  onClick={()=>navigate(`/doctor/patients/history/${booking?.user.id}`)}
+                                     className="btn btn-main btn-round-full ">View History <i
+                                        className="icofont-simple-right  "></i></button>
+              </div>
               <section class="content">
+                
                 <div class="row">
+                  
                   <div class="col-12">
                     <div class="box">
                       <div className="row ">

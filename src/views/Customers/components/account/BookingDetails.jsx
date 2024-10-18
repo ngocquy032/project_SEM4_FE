@@ -41,6 +41,7 @@ const BookingDetails = () => {
         const response = await All_API.getBookingDetailUser(userId,bookingId);
         if (response.data.status === "success") {
             setBooking(response.data.data)
+            console.log(response)
         } else {
             ToastError(response.data.status);
             navigate('/account');
@@ -59,7 +60,11 @@ useEffect(() => {
   return (
       <div class="content-wrapper" style={{ margin: "5% 15% 0 15%" }}>
         <div class="container-full">
+        <button type='submit'  onClick={()=>navigate(-1)}
+                                     className="btn btn-main btn-round-full  fl-sc-ad btn-back-sc ">Back<i
+                                        className="icofont-simple-right  "></i></button>
           <div className="appoits-content ">
+            
            <div class="appoits-card card appoits-ct-mx">
            <div className="row ">
            <div class="appoits-card-header col-lg-3">

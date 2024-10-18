@@ -35,7 +35,7 @@ const Service = () => {
               <div class="block text-center">
                 <span class="text-white">Our services</span>
                 <h1 class="text-capitalize mb-5 text-lg">
-                  All Department Care Department
+                  All Department  
                 </h1>
               </div>
             </div>

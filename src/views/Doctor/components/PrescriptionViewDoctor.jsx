@@ -25,13 +25,13 @@ const PrescriptionViewDoctor = ({ handleClose, open , idBooking}) => {
   const navigate = useNavigate()
 
 
-  async function getHistoryByUser(bookingId) {
+  async function getHistoryByDoctor(bookingId) {
     try {
-        const response = await All_API.getHistoryByUser(bookingId);
-        if (response.data.status === "success") {
-          setHistory(response.data.data)
+        const response = await All_API.getHistoryByDoctor(bookingId);
+        if (response?.data.status === "success") {
+          setHistory(response?.data?.data)
         } else {
-            ToastError(response.data.status);
+            ToastError(response?.data.status);
             handleClose()
         }
     } catch (error) {
@@ -41,7 +41,7 @@ const PrescriptionViewDoctor = ({ handleClose, open , idBooking}) => {
 }
 
 useEffect(()=> {
-    getHistoryByUser(idBooking)
+  getHistoryByDoctor(idBooking)
 }, [])
 
   return (

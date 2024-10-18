@@ -408,17 +408,17 @@ const All_API = {
     getUrlBank: (bookingId, total)=> {
         const amount = total * 24000;
         const roundedAmount = Math.round(amount);
-        const response =  apiUser.get(`/payment/vn-pay?bookingId=${bookingId}&amount=${roundedAmount}`)
+        const response =  apiUser.get(`${API_BASE_URL}payment/vn-pay?bookingId=${bookingId}&amount=${roundedAmount}`)
         return response;
     },
 
     payBookingSuccess: (bookingId, vnp_TransactionNo, vnp_ResponseCode)=> {
-        const response =  apiUser.put(`/bookings/payBooking/${bookingId}?vnp_TransactionNo=${vnp_TransactionNo}&vnp_ResponseCode=${vnp_ResponseCode}`)
+        const response =  apiUser.put(`${API_BASE_URL}bookings/payBooking/${bookingId}?vnp_TransactionNo=${vnp_TransactionNo}&vnp_ResponseCode=${vnp_ResponseCode}`)
         return response;
     },
 
     getBookingDetailUser: (userId,bookingId )=> {
-        const response =  apiUser.get(`/bookings/user/${userId}/detail?bookingId=${bookingId}`)
+        const response =  apiUser.get(`${API_BASE_URL}bookings/user/${userId}/detail?bookingId=${bookingId}`)
         return response;
     },
 
@@ -430,7 +430,7 @@ const All_API = {
 
 
     getHistoryByUser: (bookingId)=> {
-        const response =  apiUser.get(`/histories/${bookingId}`)
+        const response =  apiUser.get(`${API_BASE_URL}histories/${bookingId}`)
         return response;
     },
 
@@ -441,9 +441,13 @@ const All_API = {
     },
 
 
+    getHistoryByDoctor: (bookingId)=> {
+        const response =  apiDoctor.get(`${API_BASE_URL}histories/${bookingId}`)
+        return response;
+    },
 
     getInfoDoctorByUserId: (userId)=> {
-        const response =  apiDoctor.put(`/doctors/user/${userId}`)
+        const response =  apiDoctor.put(`${API_BASE_URL}doctors/user/${userId}`)
         return response;
     },
     
@@ -456,24 +460,24 @@ const All_API = {
             keyword, 
             scheduleId
         } = data;
-        const response = apiDoctor.get(`${API_BASE_URL}bookings/doctor?limit=${limit}&page=${page}&scheduleId=${scheduleId}&keyword=${keyword}`);
+        const response = apiDoctor.get(`${API_BASE_URL}bookings/doctor?limit=${limit}&page=${page}&scheduleId=${scheduleId}&keyword=${keyword}&status=paid`);
         return response;
     },
 
 
     getBookingByDoctor: (bookingId )=> {
-        const response =  apiDoctor.get(`/bookings/${bookingId}`)
+        const response =  apiDoctor.get(`${API_BASE_URL}bookings/${bookingId}`)
         return response;
     },
 
 
     updateHistory: (idBooking,historyData )=> {
-        const response =  apiDoctor.put(`/histories/${idBooking}`, historyData)
+        const response =  apiDoctor.put(`${API_BASE_URL}histories/${idBooking}`, historyData)
         return response;
     },
 
     getHistoryByBookingId: (bookingId )=> {
-        const response =  apiDoctor.get(`/histories/${bookingId}`)
+        const response =  apiDoctor.get(`${API_BASE_URL}histories/${bookingId}`)
         return response;
     },
 
@@ -494,7 +498,7 @@ const All_API = {
     },
 
     getHistoryByAdmin: (bookingId)=> {
-        const response =  apiAdmin.get(`/histories/${bookingId}`)
+        const response =  apiAdmin.get(`${API_BASE_URL}histories/${bookingId}`)
         return response;
     },
 
@@ -513,6 +517,12 @@ const All_API = {
         const response =  apiAdmin.get(`${API_BASE_URL}bookings/last7days`)
         return response;
     },
+
+    getHistoryByPatient: (userId) => {
+        const response = apiDoctor.get(`${API_BASE_URL}bookings/history/user/${userId}?status=paid`)
+        return response;
+    },
+
 
 
 

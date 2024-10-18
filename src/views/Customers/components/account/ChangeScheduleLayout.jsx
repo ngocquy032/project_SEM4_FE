@@ -4,8 +4,9 @@ import moment from "moment";
 import React, { Fragment, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import All_API from "../../../../state/All_API";
-import { convertToTimeString } from "../../../Admin/componets/ConvertData";
+import { convertDataToDateString, convertToTimeString } from "../../../Admin/componets/ConvertData";
 import { ToastError, ToastSuccess } from "../../../../notification";
+import { isTimePassed, isTimePassed2 } from "../CovertFunction";
 
 const ChangeScheduleLayout = ({ idDoctor, idSchedule, handleClose, userId, bookingId, isLoad }) => {
     const buttonGroupStyle = {
@@ -91,9 +92,13 @@ const ChangeScheduleLayout = ({ idDoctor, idSchedule, handleClose, userId, booki
           <div className="time-selection">
           {schedules.map((schedule) => (
   <div
-    key={schedule?.id}
-    className={`time-slot ${selectedTime === schedule?.id ? "selected" : ""} ${schedule?.booking_limit === schedule?.number_booked || schedule?.id === idSchedule ? "disabled" : ""}`}
-    onClick={() => {schedule?.booking_limit !== schedule?.number_booked && schedule?.id !== idSchedule  && handleTimeClick(schedule?.id)  }}
+  key={schedule?.id}
+  className={`time-slot ${selectedTime === schedule?.id ? "selected" : ""} 
+      ${schedule?.booking_limit === schedule?.number_booked || isTimePassed(convertDataToDateString(schedule?.date_schedule), convertToTimeString(schedule?.start_time))  ? "disabled" : ""}`}
+
+  onClick={() => {schedule?.booking_limit !== schedule?.number_booked && isTimePassed2(convertDataToDateString(schedule?.date_schedule), convertToTimeString(schedule?.start_time))  && handleTimeClick(schedule?.id)  
+            
+  }}
     style={{ pointerEvents: schedule?.booking_limit === schedule?.number_booked ? "none" : "auto" }}
   >
     {convertToTimeString(schedule?.start_time)} -{" "}

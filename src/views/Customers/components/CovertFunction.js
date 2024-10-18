@@ -23,3 +23,21 @@ export function compareDateTimeSchedule(booking) {
     }
 
 
+
+    export function isTimePassed(date_schedule, start_time)  {
+        const currentTime = new Date();
+        const currentPlusTwoHours = new Date(currentTime.getTime() + 2 * 60 * 60 * 1000);
+
+        const scheduledDateTime = new Date(`${date_schedule}T${start_time}:00`);
+        return currentPlusTwoHours >  scheduledDateTime;
+        
+    };
+
+    
+    export function isTimePassed2(date_schedule, start_time)  {
+        const currentTime = new Date();
+        const currentPlusTwoHours = new Date(currentTime.getTime() + 2 * 60 * 60 * 1000);
+        const scheduledDateTime = new Date(`${date_schedule}T${start_time}:00`);
+        return currentPlusTwoHours <  scheduledDateTime;
+        
+    };
