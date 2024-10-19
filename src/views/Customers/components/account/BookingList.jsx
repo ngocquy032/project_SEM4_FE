@@ -206,6 +206,8 @@ const BookingList = () => {
                           <option value="pending">PENDING</option>
                           <option value="paid">PAID</option>
                           <option value="rejected">REJECTED</option>
+                          <option value="Wait Refund">WAIT REFUND</option>
+                          <option value="Refunded">REFUNDED</option>
                         </select>
                       </div>
                       {/* Search */}

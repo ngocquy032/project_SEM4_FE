@@ -145,7 +145,7 @@ const All_API = {
             limit,
             keyword
         } = data;
-        const response = apiAdmin.get(`${API_BASE_URL}bookings?limit=${limit}&page=${page}&dateBooking=${dateBooking}&keyword=${keyword}&status=${status}`);
+        const response = apiAdmin.get(`${API_BASE_URL}bookings?limit=${limit}&page=${page}&dateBooking=${dateBooking}&keyword=${keyword}&status=${encodeURIComponent(status)}`);
         return response;
     },
 
