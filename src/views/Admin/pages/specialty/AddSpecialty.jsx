@@ -42,6 +42,7 @@ const AddSpeciaty = () => {
   const fileInputRef = useRef(null); // Ref to handle file input
   const [specialtyName, setSpecialtyName] = useState("");
   const [description, setDescription] = useState("");
+  const [price, setPrice] = useState(0)
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -82,6 +83,7 @@ const AddSpeciaty = () => {
         specialty_name: specialtyName,
         specialty_image: response.data.data,
         description: description,
+        price: price
       };
 
       await createSpecialty(specialtyData);
@@ -195,6 +197,22 @@ const AddSpeciaty = () => {
                         </div>
                       )}
 
+                        <div className="col-md-12 mb-3">
+                        <div className="form-group">
+                          <label style={labelStyle}>Specialty Price </label>
+                          <input
+                            name="price"
+                            type="number"
+                            min={0}
+                            value={price}
+                            onChange={(e) => setPrice(e.target.value)}
+                            className="form-control"
+                            style={inputStyle}
+                            placeholder="Enter specialty name"
+                            required
+                          />
+                        </div>
+                      </div>
                       <div className="col-md-12 mb-3">
                         <div className="form-groupadmin-customs-editor">
                           <label style={labelStyle}>Description</label>

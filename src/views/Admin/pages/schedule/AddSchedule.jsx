@@ -18,6 +18,7 @@ const AddSchedule = () => {
     const [startTime, setStartTime] = useState('');
     const [endTime, setEndTime] = useState('');
     const [durationMinutes, setDurationMinutes] = useState(0);
+    const [price,setPrice] = useState(0);
 
 
 
@@ -31,7 +32,7 @@ const AddSchedule = () => {
             start_time: data.get("start_time"),
             end_time: data.get("end_time"),
             date_schedule: data.get("dateSchedule"),
-            price: data.get("price"),
+            price: price,
             booking_limit: data.get("booking_limit"),
 		};
 		createSchedule(scheduleData)
@@ -62,11 +63,13 @@ const AddSchedule = () => {
         // Cập nhật thông tin bác sĩ được chọn
         fetchDurationMinutes(foundDoctor?.specialty?.id);  // Gọi API khi chọn start_time
 
+        getDoctorById(doctorIdexs)
     };
     const handleEndTimeChange = (e) => setEndTime(e.target.value)
     const handleClinicChange = (e) => setClinicId(e.target.value);
     const handleDateChange = (e) => setDateSchedule(e.target.value);
   
+
 
     async function getAllDoctor() {
         try{
@@ -87,10 +90,18 @@ const AddSchedule = () => {
       }
 
       async function fetchDurationMinutes(specialtyId) {
-        console.log(specialtyId)
         try{
           const response = await All_API.getSlotTime(specialtyId)
           setDurationMinutes(response.data.data[0].durationMinutes)
+        }catch {
+          
+        }
+      }
+
+      async function getDoctorById(doctorId) {
+        try{
+          const response = await All_API.getDoctorById(doctorId)
+          setPrice(response?.data?.data?.specialty?.price)
         }catch {
           
         }
@@ -212,7 +223,7 @@ const AddSchedule = () => {
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label class="form-label">Price</label>
-                                                        <input type="number" name='price' id='price' min={0} className='schedule-filter-input select-admin-form' required/>
+                                                        <input type="number" value={price} onChange={(e)=> setPrice(e.target.value)} name='price' id='price' min={0} className='schedule-filter-input select-admin-form' required/>
                                                         </div>
                                                 </div>
                                             </div>

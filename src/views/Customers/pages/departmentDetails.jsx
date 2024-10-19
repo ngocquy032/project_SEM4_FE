@@ -112,6 +112,10 @@ const DepartmentDetails = () => {
                                         <a >Sunday</a>
                                         <span>Closed</span>
                                     </li>
+                                    <li className="d-flex justify-content-between align-items-center">
+                                        <a >Costs</a>
+                                        <span>${specialty?.price}</span>
+                                    </li>
                                 </ul>
 
                                 <div className="department-address mt-4">
