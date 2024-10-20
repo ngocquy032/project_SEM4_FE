@@ -336,7 +336,7 @@ const UpdateBooking = () => {
                               className="schedule-filter-select select-admin-form"
                               name="status"
                               required
-                              disabled={status === "paid"}
+                              disabled={status !== "pending" }
                             >
                               <option value="pending">PENDING</option>
                               <option value="paid">PAID</option>

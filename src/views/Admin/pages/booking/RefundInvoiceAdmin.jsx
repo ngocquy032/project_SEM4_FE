@@ -2,6 +2,7 @@ import { Box, Modal } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import All_API from '../../../../state/All_API';
 import { ToastError, ToastSuccess } from '../../../../notification';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const RefundInvoiceAdmin = ({ handleClose, open , bookingId, onLoad}) => {
     const style = {
@@ -17,6 +18,8 @@ const RefundInvoiceAdmin = ({ handleClose, open , bookingId, onLoad}) => {
         outline: "none",
       };
       const [invoice, setInvoice] = useState(null)
+      const location = useLocation();
+      const navigate = useNavigate()
 
       async function getRsInvoice(bookingId) {
         try {
@@ -38,6 +41,9 @@ const RefundInvoiceAdmin = ({ handleClose, open , bookingId, onLoad}) => {
             const response = await All_API.confirmRefunded(invoiceId);
             if (response.data.status === "success") {
                 ToastSuccess(response.data.message)
+                if(location.pathname.includes('/admin/bookings/')) {
+                  window.location.reload()
+                }
                 handleClose()
                 onLoad()
             } else {

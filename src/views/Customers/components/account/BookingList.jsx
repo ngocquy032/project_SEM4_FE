@@ -286,7 +286,7 @@ const BookingList = () => {
 
                                   <div className="appoits-button appoits-rejected btn-bk-user-ac">
                                     <button
-                                      disabled={booking?.status !== "paid" || compareDateSchedule(booking)}
+                                      disabled={booking?.status !== "paid" || compareDateSchedule(booking) || booking?.change_count !== 0 }
                                       onClick={() => {
                                         setBookingOb(booking)
                                         handleRefund(user?.id, booking)

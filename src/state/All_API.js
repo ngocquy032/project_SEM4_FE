@@ -99,7 +99,7 @@ const All_API = {
     },
 
     getScheduleById: (scheduleId) => {
-        const response = apiAdmin.get(`${API_BASE_URL}schedules/${scheduleId}`);
+        const response = axios.get(`${API_BASE_URL}schedules/${scheduleId}`);
         return response;
     },
 
