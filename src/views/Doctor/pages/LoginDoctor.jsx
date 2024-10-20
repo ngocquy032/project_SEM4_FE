@@ -54,7 +54,7 @@ const LoginDoctor = () => {
 
     useEffect(() => {
         if (userDoctor?.role.id === 3) {
-            navigate("/doctor") 
+            navigate("/doctor/patients") 
         }
     }, [userDoctor, navigate]);
     return (
@@ -91,7 +91,7 @@ const LoginDoctor = () => {
 
                                                     <div className="col-lg-12" style={{ margin: '0 0 5% 0' }}>
                                                         <div className="form-group">
-                                                            <input name="password" type="text"
+                                                            <input name="password" type="password"
                                                                 className="form-control"
                                                                 placeholder="Password"
                                                                 value={createForm.password}

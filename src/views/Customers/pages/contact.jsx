@@ -55,21 +55,21 @@ function Contact() {
                             <div className="contact-block mb-4 mb-lg-0">
                                 <i className="icofont-live-support"></i>
                                 <h5>Call Us</h5>
-                                +823-4565-13456
+                                19001731
                             </div>
                         </div>
                         <div className="col-lg-4 col-sm-6 col-md-6">
                             <div className="contact-block mb-4 mb-lg-0">
                                 <i className="icofont-support-faq"></i>
                                 <h5>Email Us</h5>
-                                contact@mail.com
+                                NovenaHN@gmail.com
                             </div>
                         </div>
                         <div className="col-lg-4 col-sm-6 col-md-6">
                             <div className="contact-block mb-4 mb-lg-0">
                                 <i className="icofont-location-pin"></i>
                                 <h5>Location</h5>
-                                North Main Street,Brooklyn Australia
+                               Ba Dinh District, Hanoi
                             </div>
                         </div>
                     </div>
@@ -77,7 +77,7 @@ function Contact() {
             </section>
 
             <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28312.599070075932!2d105.75802003476565!3d21.06064900000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3134552a788249df%3A0xd442cb949c5bcf2f!2zTmdoLiAxMTkvNjQgxJAuIEPhu5UgTmh14bq_LCBD4buVIE5odeG6vywgQuG6r2MgVOG7qyBMacOqbSwgSMOgIE7hu5lpLCBWaeG7h3QgTmFt!5e1!3m2!1svi!2s!4v1722012442012!5m2!1svi!2s"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3214.942668087064!2d105.77972177448096!3d21.028825087777868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab00954decbf%3A0xdb4ee23b49ad50c8!2zRlBUIEFwdGVjaCBIw6AgTuG7mWkgLSBI4buHIHRo4buRbmcgxJHDoG8gdOG6oW8gbOG6rXAgdHLDrG5oIHZpw6puIHF14buRYyB04bq_!5e1!3m2!1svi!2s!4v1729450307093!5m2!1svi!2s"
                 width="100%" height="650" style={{border: 0}} allowFullScreen="" loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade">
 

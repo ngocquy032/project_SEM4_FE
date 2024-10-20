@@ -100,9 +100,8 @@ function Header(props) {
                             <div className="col-lg-6">
                                 <ul className="top-bar-info list-inline-item pl-0 mb-0">
                                     <li className="list-inline-item"><a style={{ color: '#fff', fontFamily: 'Roboto', fontSize: 14 }} href="mailto:support@gmail.com"><i
-                                        className="icofont-support-faq mr-2"></i>support@novena.com</a></li>
-                                    <li className="list-inline-item" style={{ color: '#fff', fontFamily: 'Roboto', fontSize: 14 }}><i className="icofont-location-pin mr-2"></i>Address
-                                        Ta-134/A, New York, USA
+                                        className="icofont-support-faq mr-2"></i>NovenaHN@gmail.com</a></li>
+                                    <li className="list-inline-item" style={{ color: '#fff', fontFamily: 'Roboto', fontSize: 14 }}><i className="icofont-location-pin mr-2"></i>Ngoc Khanh Ward, Ba Dinh District, Hanoi
                                     </li>
                                 </ul>
                             </div>
@@ -110,7 +109,7 @@ function Header(props) {
                                 <div className="text-lg-right top-right-bar mt-2 mt-lg-0">
                                     <a href="tel:+23-345-67890">
                                         <span>Call Now : </span>
-                                        <span className="h4" style={{ fontFamily: 'Exo', fontWeight: 700, fontSize: 20.8 }} >823-4565-13456</span>
+                                        <span className="h4" style={{ fontFamily: 'Exo', fontWeight: 700, fontSize: 20.8 }} >19001731</span>
                                     </a>
                                 </div>
                             </div>

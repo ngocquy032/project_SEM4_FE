@@ -13,7 +13,7 @@ function Footer(props) {
                         <div className="col-lg-4 mr-auto col-sm-6">
                             <div className="widget mb-5 mb-lg-0">
                                 <div className="logo mb-4">
-                                    <img src="customer/images/logo.png" alt="" className="img-fluid"/>
+                                    <img src="/customer/images/logo.png" alt="" className="img-fluid"/>
                                 </div>
                                 <p>Tempora dolorem voluptatum nam vero assumenda voluptate, facilis ad eos obcaecati
                                     tenetur veritatis eveniet distinctio possimus.</p>
@@ -72,7 +72,7 @@ function Footer(props) {
                                     <h4  className="mt-2">
                                         <a href="tel:+23-345-67890" style={{ color: '#222', fontFamily: 'Exo', fontWeight: 700, fontSize: 20.8}}>
 
-                                        Support@email.com</a></h4>
+                                        NovenaHN@gmail.com</a></h4>
                                 </div>
 
                                 <div className="footer-contact-block">
@@ -80,7 +80,7 @@ function Footer(props) {
                                         <i className="icofont-support mr-3"></i>
                                         <span className="h6 mb-0">Mon to Fri : 08:30 - 18:00</span>
                                     </div>
-                                    <h4 className="mt-2"><a href="tel:+23-345-67890" style={{ color: '#222', fontFamily: 'Exo', fontWeight: 700, fontSize: 20.8}}>+23-456-6588</a></h4>
+                                    <h4 className="mt-2"><a href="tel:+23-345-67890" style={{ color: '#222', fontFamily: 'Exo', fontWeight: 700, fontSize: 20.8}}>19001731</a></h4>
                                 </div>
                             </div>
                         </div>
