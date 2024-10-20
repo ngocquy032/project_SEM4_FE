@@ -290,6 +290,16 @@ const ViewBooking = () => {
                                                            disabled />
                                                     </div>
                                             </div>
+
+                                            <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="form-label">Reason</label>
+                                                        <textarea type="text" class="form-control"
+                                                            value={booking?.reason}
+                                                            name='reason' 
+                                                           disabled />
+                                                    </div>
+                                            </div>
                                           
                                           
                                         </div> 

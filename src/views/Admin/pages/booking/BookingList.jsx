@@ -45,7 +45,6 @@ const BookingList = () => {
       setTotalPages(response.data.data.totalPages);
     } catch {}
   }
-
   const handlePaginate = (event, value) => {
     setPage(value - 1); // Cập nhật số trang hiện tại khi người dùng chuyển trang
   };

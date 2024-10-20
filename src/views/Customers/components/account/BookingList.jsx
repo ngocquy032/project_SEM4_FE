@@ -78,6 +78,7 @@ const BookingList = () => {
 
   }
 
+  bookingList.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
 
 
   
@@ -243,7 +244,7 @@ const BookingList = () => {
                           </tr>
                         </thead>
                         <tbody>
-                          {bookingList?.reverse()?.map((booking) => (
+                          {bookingList?.map((booking) => (
                             <tr class="hover-primary">
                               <td>#{booking?.id}</td>
                               <td>{booking?.user.fullname}</td>
