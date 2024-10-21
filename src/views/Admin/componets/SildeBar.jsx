@@ -135,12 +135,20 @@ const SildeBar = () => {
 				  </a>
 				</li>	
 				<li className='treeview'>
+				  <a onClick={()=> navigate('/admin/medications')}>
+				  <img src="/admin/images/icons/medication.png" alt="" className='icon-admin-nav'/>
+					<span className="path1"></span><span className="path2"></span>
+					<span>Medication</span>
+				  </a>
+				</li>	
+				<li className='treeview'>
 				  <a onClick={()=> navigate('/admin/contacts')}>
 				  <img src="/admin/images/icons/contact.png" alt="" className='icon-admin-nav'/>
 					<span className="path1"></span><span className="path2"></span>
 					<span>Contacts</span>
 				  </a>
 				</li>	
+				
 			
 			
 			

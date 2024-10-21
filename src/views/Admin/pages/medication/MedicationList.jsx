@@ -198,20 +198,7 @@ const MedicationList = () => {
                             <td>{medication?.medicationName}</td>
                             <td>
                               <div class="btn-group acion-admin-list">
-                                <a
-                                  style={displayStyle}
-                                  onClick={() =>
-                                    navigate(
-                                      `/admin/timeSlots/${medication?.id}`
-                                    )
-                                  }
-                                >
-                                  {" "}
-                                  <FontAwesomeIcon
-                                    icon={faEye}
-                                    className="icon-actionAD"
-                                  />
-                                </a>
+                            
                                 <a
                                   style={displayStyle}
                                   onClick={() => {
