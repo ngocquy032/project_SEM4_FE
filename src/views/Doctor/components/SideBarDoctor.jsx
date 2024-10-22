@@ -45,6 +45,20 @@ const SideBarDoctor = () => {
                   <span className="pull-right-container"></span>
                 </a>
               </li>
+
+              <li className="treeview ">
+                <a onClick={() => navigate("/doctor/profile")}>
+                  <img
+                    src="/admin/images/icons/doctor.png"
+                    alt=""
+                    className="icon-admin-nav"
+                  />
+
+                  <span>Profile</span>
+                  <span className="pull-right-container"></span>
+                </a>
+              </li>
+
             </ul>
 
             <div className="sidebar-widgets mt-dcss">
