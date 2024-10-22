@@ -188,7 +188,7 @@ const UpdateAccount = ({ onSuccess }) => {
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label class="form-label">Passwod</label>
-                                                                <input type="text" class="form-control"
+                                                                <input type="password" class="form-control"
                                                                     // value={createForm?.password}
                                                                     onChange={inputChange}
                                                                     name='password' />
