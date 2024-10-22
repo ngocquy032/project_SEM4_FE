@@ -234,7 +234,7 @@ const BookingList = () => {
                         <thead>
                           <tr>
                             <th>ID</th>
-                            <th>Full Name</th>
+                            <th>Specialty</th>
                             <th>Amount</th>
                             <th>Payment Method</th>
                             <th>Payment Code</th>
@@ -247,7 +247,7 @@ const BookingList = () => {
                           {bookingList?.map((booking) => (
                             <tr class="hover-primary">
                               <td>#{booking?.id}</td>
-                              <td>{booking?.user.fullname}</td>
+                              <td>{booking?.schedule.specialty_name}</td>
                               <td>${booking?.amount}</td>
                               <td>{booking?.payment_method}</td>
                               <td>{booking?.payment_code}</td>
