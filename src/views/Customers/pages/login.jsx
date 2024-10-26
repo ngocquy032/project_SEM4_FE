@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { ToastError, ToastSuccess } from '../../../notification';
+import All_API from '../../../state/All_API';
 
 const Login = () => {
     const errorStyle = {
@@ -8,28 +9,23 @@ const Login = () => {
         color: 'red',
     };
 
-    const Account = {
-        phone: "0833691560",
-        password: '123'
-    }
-
-
+    const navigate = useNavigate()
     // createForm
     const [createForm, setCreateForm] = useState({
-        phone: '',
+        phone_number: '',
         password: '',
-        role: 1
+        role_id: 1
     });
 
     const [errForm, setErrForm] = useState({
-        phone: '',
+        phone_number: '',
         password: ''
     });
 
     // clearForm
     const clearForm = () => {
         setCreateForm({
-            phone: '',
+            phone_number: '',
             password: '',
 
         })
@@ -46,11 +42,11 @@ const Login = () => {
         const regexEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
         const regexPhome = /(((\+|)84)|0)(3|5|7|8|9)+([0-9]{8})\b/
         // check validate Email
-        if (createForm.phone.trim() === '') {
-            err.phone = "* Phone is requied *"
+        if (createForm.phone_number.trim() === '') {
+            err.phone_number = "* Phone number is requied *"
             valid = false;
-        } else if (!regexPhome.test(createForm.phone)) {
-            err.phone = "* Please enter a valid phone *"
+        } else if (!regexPhome.test(createForm.phone_number)) {
+            err.phone_number = "* Please enter a valid Phone number *"
             valid = false;
         }
 
@@ -64,20 +60,23 @@ const Login = () => {
         return valid;
     }
 
-    const checkLogin = () => {
-        if (createForm.phone !== Account.phone || createForm.password !== Account.password) {
-            ToastError('Incorrect phone number or password please try again');
+   
 
-        } else {
-            ToastSuccess('okok')
-            console.log('payload', createForm);
-        }
-    }
-
-    const onLogin = (e) => {
+    const login = async (e) => {
         e.preventDefault();
         if (validateForm()) {
-            checkLogin()
+            const response = await All_API.loginAPI(createForm);
+            try {
+                if (response.data.status === "success") {
+                    ToastSuccess(response.data.message)
+                    localStorage.setItem("jwt", response.data.token);
+                    navigate('/')
+                } else {
+                    ToastError(response.data.message)
+                }
+            } catch (error) {
+                ToastError(error.response.data.message)
+            }
         }
 
 
@@ -116,17 +115,17 @@ const Login = () => {
                                 <h2 className="mb-2 title-color" style={{ textAlign: 'center' }}>Login </h2>
                                 <p className="mb-4">Mollitia dicta commodi est recusandae iste, natus eum asperiores
                                     corrupti qui velit . Iste dolorum atque similique praesentium soluta.</p>
-                                <form id="#" className="appoinment-form" method="post" action="#">
+                                <form id="" className="appoinment-form" method="" action="">
                                     <div className="row" style={{ padding: '0px 8%', }}>
 
                                         <div className="col-lg-12" style={{ margin: '5% 0px' }}>
                                             <div className="form-group">
-                                                <input name="phone" type="text" className="form-control"
-                                                    placeholder="Number Phone"
-                                                    value={createForm.phone}
+                                                <input name="phone_number" type="text" className="form-control"
+                                                    placeholder="Number phone"
+                                                    value={createForm.phone_number}
                                                     onChange={onChangeInput} />
                                             </div>
-                                            <span style={errorStyle}>{errForm.phone}</span>
+                                            <span style={errorStyle}>{errForm.phone_number}</span>
 
                                         </div>
 
@@ -142,21 +141,22 @@ const Login = () => {
 
                                         </div>
                                     </div>
+                                    <div style={{ textAlign: 'center' }} >
+                                        <div className="btn-container " style={{ color: 'white' }}>
+                                            <a onClick={login}
+                                                className="btn btn-main-2 btn-icon btn-round-full">Login
+                                                <i className="icofont-simple-right ml-2  "></i>
+                                            </a>
+                                        </div>
+                                        <div >
+                                            Don't have an account? <Link to="/register">Register</Link>
+                                        </div>
+
+                                    </div>
 
 
                                 </form>
-                                <div style={{ textAlign: 'center' }} >
-                                    <div className="btn-container " style={{ color: 'white' }}>
-                                        <a onClick={onLogin}
-                                            className="btn btn-main-2 btn-icon btn-round-full">Login
-                                            <i className="icofont-simple-right ml-2  "></i>
-                                        </a>
-                                    </div>
-                                    <div >
-                                        Don't have an account? <Link to="/register">Register</Link>
-                                    </div>
 
-                                </div>
 
                             </div>
                         </div>

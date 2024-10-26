@@ -1,12 +1,25 @@
 import React from 'react';
-import {Link} from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import {Link, useNavigate} from "react-router-dom";
+import { GetUserAdmin, removeUserAdmin } from '../../../state/Auth/authAdminSlice';
 
 function HeaderAdmin(props) {
+
+  const userAdmin = useSelector(GetUserAdmin)
+  const navigate = useNavigate();
+  const dispatch = useDispatch()
+
+  const handleLogout= () => {
+    localStorage.removeItem("jwtAdmin")
+    dispatch(removeUserAdmin(null))
+    navigate('/admin/login')
+    }
+
     return (
         <header className="main-header">
         <div className="d-flex align-items-center logo-box justify-content-start">	
             {/* <!-- Logo --> */}
-            <a href="index.html" className="logo">
+            <a href="/admin" className="logo">
               {/* <!-- logo--> */}
              
               <div className="logo-lg">
@@ -39,8 +52,8 @@ function HeaderAdmin(props) {
                     </a>
                     <ul className="dropdown-menu animated flipInX">
                       <li className="user-body">
-                         <a className="dropdown-item" href="extra_profile.html"><i className="ti-user text-muted me-2"></i> Profile</a>
-                         <a className="dropdown-item" href="auth_login.html"><i className="ti-lock text-muted me-2"></i> Logout</a>
+                         <a className="dropdown-item" href='#'><i className="ti-user text-muted me-2"></i> Profile</a>
+                         <a className="dropdown-item" href="#" onClick={handleLogout}><i className="ti-lock text-muted me-2"></i> Logout</a>
                       </li>
                     </ul>
                 </li>	
@@ -86,26 +99,8 @@ function HeaderAdmin(props) {
                           <i className="fa fa-users text-danger"></i> Donec at nisi sit amet tortor commodo porttitor pretium a erat.
                         </a>
                       </li>
-                      <li>
-                        <a href="#">
-                          <i className="fa fa-shopping-cart text-success"></i> In gravida mauris et nisi
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i className="fa fa-user text-danger"></i> Praesent eu lacus in libero dictum fermentum.
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i className="fa fa-user text-primary"></i> Nunc fringilla lorem 
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i className="fa fa-user text-success"></i> Nullam euismod dolor ut quam interdum, at scelerisque ipsum imperdiet.
-                        </a>
-                      </li>
+         
+                  
                     </ul>
                   </li>
                   <li className="footer">

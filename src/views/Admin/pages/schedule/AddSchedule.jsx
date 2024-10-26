@@ -18,6 +18,7 @@ const AddSchedule = () => {
     const [startTime, setStartTime] = useState('');
     const [endTime, setEndTime] = useState('');
     const [durationMinutes, setDurationMinutes] = useState(0);
+    const [price,setPrice] = useState(0);
 
 
 
@@ -31,7 +32,7 @@ const AddSchedule = () => {
             start_time: data.get("start_time"),
             end_time: data.get("end_time"),
             date_schedule: data.get("dateSchedule"),
-            price: data.get("price"),
+            price: price,
             booking_limit: data.get("booking_limit"),
 		};
 		createSchedule(scheduleData)
@@ -60,13 +61,15 @@ const AddSchedule = () => {
         const foundDoctor = doctors.find((doctor) => doctor.id === doctorIdexs);
 
         // Cập nhật thông tin bác sĩ được chọn
-        fetchDurationMinutes(foundDoctor?.specialty_id);  // Gọi API khi chọn start_time
+        fetchDurationMinutes(foundDoctor?.specialty?.id);  // Gọi API khi chọn start_time
 
+        getDoctorById(doctorIdexs)
     };
     const handleEndTimeChange = (e) => setEndTime(e.target.value)
     const handleClinicChange = (e) => setClinicId(e.target.value);
     const handleDateChange = (e) => setDateSchedule(e.target.value);
   
+
 
     async function getAllDoctor() {
         try{
@@ -95,6 +98,15 @@ const AddSchedule = () => {
         }
       }
 
+      async function getDoctorById(doctorId) {
+        try{
+          const response = await All_API.getDoctorById(doctorId)
+          setPrice(response?.data?.data?.specialty?.price)
+        }catch {
+          
+        }
+      }
+
       const handleStartTimeChange = (e) => {
         const value = e.target.value;
         setStartTime(value);
@@ -112,8 +124,6 @@ const AddSchedule = () => {
       const newHours = Math.floor(totalMinutes / 60) % 24; // Giới hạn trong khoảng 24 giờ
       const newMinutes = totalMinutes % 60;
     
-            console.log(newHours)
-            console.log(newMinutes + "phút")
       // Định dạng giờ và phút để có 2 chữ số
       const formattedHours = newHours.toString().padStart(2, '0');
       const formattedMinutes = newMinutes.toString().padStart(2, '0');
@@ -213,7 +223,7 @@ const AddSchedule = () => {
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label class="form-label">Price</label>
-                                                        <input type="number" name='price' id='price' min={0} className='schedule-filter-input select-admin-form' required/>
+                                                        <input type="number" value={price} onChange={(e)=> setPrice(e.target.value)} name='price' id='price' min={0} className='schedule-filter-input select-admin-form' required/>
                                                         </div>
                                                 </div>
                                             </div>

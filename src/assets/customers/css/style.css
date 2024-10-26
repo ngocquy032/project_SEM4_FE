@@ -1503,6 +1503,11 @@ a:focus {
     flex-direction: column;
 }
 
+.booking-form .form-group label{
+  font-size: 16px;
+  
+}
+
 .booking-form .time-selection {
     display: flex;
     flex-wrap: wrap;
@@ -1510,7 +1515,9 @@ a:focus {
 }
 
 .booking-form .time-slot {
-    padding: 10px 20px;
+    max-width: 110px !important;
+    min-width: 110px !important;
+    padding: 8px 12px;
     border: 1px solid #007bff;
     border-radius: 5px;
     cursor: pointer;
@@ -1518,6 +1525,7 @@ a:focus {
     flex: 1 0 21%;  /* Điều chỉnh giá trị này để thay đổi kích thước ô chữ nhật */
     margin: 5px;
     background-color: #f8f9fa;
+    font-size: 14px;
 }
 
 .booking-form .time-slot:hover {
@@ -1527,4 +1535,1040 @@ a:focus {
 .booking-form .time-slot.selected {
     background-color: #ffc107;  /* Màu vàng khi được chọn */
     color: white;
+}
+
+
+.img-specilaty-client{
+  height: 252px;
+  object-fit: cover;
+}
+
+.content-specialty-tiltle{
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.content-specialty-tiltle .read-more{
+  margin-top: 22px;
+}
+
+
+
+.department-single-v2 {
+  padding-top: 60px !important;
+}
+
+.card-doctor-cle {
+  display: flex;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.img-doctor-cle {
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+}
+.btn-more-cle {
+  
+  margin-top: 8px;
+  text-align: center;
+
+}
+.btn-more-cle {
+  color: #64a3e6;
+  font-size: 15px;
+}
+
+.btn-more-cle:hover {
+  color: rgb(245, 60, 122);
+  cursor: pointer;
+}
+
+.doctor-rcle {
+  margin-left: 20px;
+}
+
+.doctor-exp-cle,
+.doctor-bio-cle {
+  font-size: 15px;
+}
+
+.doctor-exp-cle {
+  margin-bottom: 1px;
+}
+
+.doctor-bio-cle {
+  line-height: 20px;
+}
+
+.doctor-rcle {width: 70%;}
+
+.doctor-fullname-cle {
+  margin-bottom: 1px !important;
+}
+
+.date-schedule-cle {
+  margin-bottom: 0 !important;
+display: flex;
+flex-direction: row !important;
+}
+
+.title-address {
+  font-size: 17px;
+  margin-bottom: 4px;
+  line-height: 32px;
+  }
+
+.name-address, .address-details {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.name-address {
+  font-weight: 600;
+}
+
+.title-address {
+  color: #474343;
+}
+
+.flex-price-cle {
+  display: flex;
+}
+
+.card-doctors-cle  h4 a{
+  display: block;
+  text-align: center;
+
+  
+}
+
+.card-doctors-cle:hover  h4 a{
+  color: rgb(223, 75, 112);
+  cursor: pointer;
+}
+
+.card-doctors-cle .card-doctor-sp {
+  text-align: center;
+}
+
+.doctor-img-lt {
+  width: 255px;
+  height: 255px;
+  object-fit: cover;
+}
+
+.doctor-detail-lt {
+  width: 350px;
+  height: 350px;
+  object-fit: cover;
+}
+
+.doctor-detail-title {
+  text-align: center;
+}
+
+.font-doctor-detail {
+  font-size: 17px;
+}
+.date-schedule-cle > .react-datepicker-wrapper {
+  margin-left: 10px;
+  width: 90px;
+  margin-top: -2px;
+
+}
+.custom-datepicker {
+  text-align: center;
+  border: none; /* Bỏ border mặc định */
+  border-bottom: 2px solid #6f8ba4; /* Thêm gạch ngang */
+  color: #6f8ba4; /* Đổi màu giá trị thành xanh */
+  outline: none; /* Khi click vào, không hiện viền */
+  font-weight: 600;
+  width: 90px;
+  height: 26px !important;
+}
+
+.custom-datepicker:focus {
+  outline: none; /* Bỏ viền khi focus */
+  border-bottom: 2px solid blue; /* Gạch ngang khi focus */
+}
+
+.doctor-qualification {
+  padding-top: 70px !important;
+  padding-bottom: 70px;
+}
+
+.doctor-skills {
+  padding:10px;
+}
+
+
+.time-selection > .disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.date-time-schedule, 
+.clinicName-booking {
+  display: flex;
+  align-items: center;
+}
+
+.date-time-schedule > strong,
+.clinicName-booking > strong{
+  margin-left: 6px;
+  margin-bottom: -2px;
+  font-size: 17px;
+}
+
+.date-time-schedule > strong {
+  color: #f35752;
+}
+
+.clinic-adrs {
+  font-size: 17px;
+}
+
+.card-book-doctor {
+  
+}
+
+.img-dc-cle {
+  margin-top: 6px;
+}
+
+.card-dc-cle {
+  margin-bottom: 0;
+}
+
+
+.btn-book-conf {
+  margin-left: 36%;
+  color: #fff !important;
+}
+
+
+
+/* Loading CSS */
+/* Loading CSS */
+.loading-overlay-booking {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column; /* Đặt phần tử theo cột */
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.spinner-booking {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #fff;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px; /* Khoảng cách giữa spinner và chữ */
+}
+
+.loading-overlay-booking> p {
+  color: white;
+  font-size: 18px;
+  text-align: center;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+
+.payment-method-container {
+  margin-top: 20px;
+}
+
+.payment-method-container > label {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.payment-options {
+  display: flex;
+  gap: 60px;
+  margin-top: 10px;
+}
+
+.payment-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: 5px 100px;
+  transition: border 0.3s ease;
+  border: 1px solid #000;
+  margin-bottom: 30px;
+}
+
+.payment-option.selected {
+  border: 2px solid #00aaff; /* Màu viền khi hover */
+}
+
+.payment-option img {
+  width: 150px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.payment-option span {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+
+
+
+
+.appointment-container {  
+  text-align: center;  
+  padding: 50px;  
+  background-color: #f9f9f9;  
+  
+}  
+
+.appointment-check-icon {
+  margin-top: 50px;
+}
+
+.appointment-title {  
+  font-size: 24px;  
+  margin: 20px 0;  
+  color: #08af0b;
+}  
+
+.box-appoint-note, 
+.appointment-btn-sc {
+  display: flex;
+  width: 100%;
+justify-content: center;
+}
+
+.appointment-note {  
+  font-weight: bold;  
+  width: 600px;
+}  
+
+
+
+ 
+
+
+
+.tick-icon-sc {
+  width: 60px;
+  color: rgb(3, 255, 3) !important;
+}
+
+
+.ic-appoint-sc{
+  margin-top: 20px;
+  margin-left: 0 !important;
+  margin-bottom: 36px;
+
+
+}
+
+
+.pay-failt-sc {
+  color: rgb(209, 14, 14);
+}
+
+
+
+.appoits-content {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+.appoits-ct-mx {
+  max-width: 850px;
+
+}
+
+.crcs-6 {
+  padding-left: 20px;
+}
+
+.appoits-ft-cd {}
+
+.appoits-card  {
+ justify-content: center;
+  background-color: #fff;
+  border-radius: 10px;
+  margin-top: 10px;
+  padding: 30px 40px 30px 40px;
+}
+
+.presctr-card {
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 10px;
+  margin-top: 10px;
+  padding: 30px 40px 30px 10px;
+}
+.appoits-card-header {
+  align-items: center;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.appoits-card-header img {
+  margin-top: 10px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+.appoits-card-header .title-app-sc {
+  margin-top: 6px;
+  font-size: 18px;
+  color: #00bcd4;
+}
+.appoits-card-body {
+  margin-bottom: 20px;
+}
+.appoits-card-body p {
+  margin: 5px 0;
+  font-size: 16px;
+}
+.appoits-card-body p a {
+
+  color: #00bcd4;
+  text-decoration: none;
+}
+.appoits-time, .appoits-date {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+
+}
+.appoits-time i, .appoits-date i {
+  color: #e12454;
+  margin-right: 10px;
+}
+.appoits-button {
+  text-align: center;
+  margin: 20px 0;
+}
+.appoits-button button {
+  background-color: #058831;
+  border: none;
+  color: #fff;
+  padding: 6px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  float: left;
+}
+.appoits-rejected button{
+  background-color: #e12454;
+}
+
+.appoits-pending button {
+  background-color: #ecb911;
+}
+
+
+.appoits-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #e0e0e0;
+  padding-top: 10px;
+}
+.appoits-card-footer a {
+  color: #00bcd4;
+  text-decoration: none;
+}
+
+.appoits-time > .appoits-icon-sc,
+.appoits-date> .appoits-icon-sc{
+  width: 20px;
+  height: 20px;
+  margin-top: -3px;
+  margin-right: 6px;
+}
+
+
+
+.view-history {
+  color: #00bcd4 !important;
+  
+}
+
+.view-history:hover {
+  cursor: pointer;
+  color: #0774f1 !important;
+}
+
+
+
+
+
+
+.medical2-card {
+  width: 500px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  padding: 20px;
+}
+.medical2-header {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+  background-color: #4CAF50; /* Green background */
+  color: white; /* White text */
+  padding: 10px;
+  border-radius: 8px 8px 0 0; /* Rounded corners on top */
+}
+.medical2-diagnosis {
+  font-weight: bold;
+}
+.medical2-prescriptions {
+  margin-top: 10px;
+}
+.medical2-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+.medical2-table th, .medical2-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+.medical2-table th {
+  background-color: #f2f2f2;
+  text-align: left;
+}
+
+
+.list-bk-user {
+  margin-left: 6px !important;
+}
+
+
+.profile-user-sc {
+  margin-top: 10px !important;
+}
+
+
+.appoits-view > button {
+  background-color: #007bff !important;
+  margin-right: 10px;
+}
+
+.btn-bk-user-ac > button{
+   font-size: 14px;
+   padding: 4px 10px;
+
+}
+.btn-bk-user-ac:hover button {
+  opacity: 0.8;
+  
+}
+
+.appoits-rejected > button:disabled {
+  background-color: #ccc; 
+  color: #666;            
+  cursor: not-allowed;    
+  opacity: 0.6;        
+}
+
+
+
+
+
+.manage-patient-container {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 22px 40px;
+}
+.manage-patient-title {
+  margin-top: 20px;
+}
+.manage-patient-date-input {
+  margin: 20px 0;
+}
+.manage-patient-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+.manage-patient-table, .manage-patient-table th, .manage-patient-table td {
+  border: 1px solid black;
+}
+.manage-patient-table th, .manage-patient-table td {
+  padding: 10px;
+  text-align: center;
+}
+.manage-patient-actions{
+  display: flex;
+  border: none !important;
+  align-items: center;
+}
+
+
+.manage-patient-actions button {
+  margin: 0 5px;
+  padding: 1px 10px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  height: 40px;
+  border-radius: 6px;
+}
+
+.manage-patient-actions button:hover {
+  opacity: 0.8;
+}
+
+
+.manage-patient-cancel {
+  background-color: #007bff;
+}
+
+.manage-patient-create-prescriptions {
+  width: 160px;
+}
+
+.btn-view-dc {
+  color: #00aaff !important;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-view-dc:hover {
+  color: #0066ff !important;
+}
+
+
+
+
+
+
+
+
+.list-schedule-dc {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;  /* khoảng cách giữa các ô nhập liệu */
+  width: 100%;
+}
+
+.list-schedule-dc .form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.list-schedule-dc .time-selection {
+  margin-left: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.list-schedule-dc .time-slot {
+  max-width: 110px !important;
+  min-width: 110px !important;
+  padding: 8px 12px;
+  border: 1px solid #007bff;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  flex: 1 0 21%;  /* Điều chỉnh giá trị này để thay đổi kích thước ô chữ nhật */
+  margin: 5px;
+  background-color: #f8f9fa;
+  font-size: 14px;
+}
+
+.list-schedule-dc .time-slot:hover {
+  background-color: #e2e6ea;
+}
+
+.list-schedule-dc .time-slot.selected {
+  background-color: #ffc107;  /* Màu vàng khi được chọn */
+  color: white;
+}
+
+.nav-page-dc {
+  margin-bottom: 20px;
+}
+
+.manage-patient-table tbody .bk-address-dc {
+  max-width:  150px !important;
+  white-space: nowrap ; 
+  overflow: hidden; 
+  text-overflow: ellipsis ; 
+}
+
+.bk-reason-dc {
+  max-width:  186px !important;
+  white-space: nowrap ; 
+  overflow: hidden; 
+  text-overflow: ellipsis ; 
+}
+
+
+
+
+.prescrt-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 20px;
+}
+.prescrt-container input, .prescrt-container select {
+  padding: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.prescrt-container input
+ {
+  height: 38px;
+
+ }
+ .prescrt-container select {
+  height: 36px;
+  color: #8a8888;
+ }
+
+.prescrt-container input[type="number"] {
+  width: 50px;
+  color: #8a8888;
+
+}
+.prescrt-container input[type="text"] {
+  width: 220px;
+
+}
+.prescrt-container .delete-icon {
+  color: red;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.sl-presctr {
+  height: 26px;
+position: relative;
+top: -5px;
+max-width: 160px;
+min-width: 160px;
+}
+
+.sl-presctr .css-13cymwt-control , .css-13cymwt-control .css-hlgwow, 
+.css-13cymwt-control .css-1wy0on6{
+  height: 26px;
+}
+.css-13cymwt-control .css-hlgwow .css-1jqq78o-placeholder {
+  margin-top: 0px;
+}
+
+.css-13cymwt-control .css-hlgwow .css-19bb58m input{
+  height: 26px !important;
+  width: 30px;
+ 
+}
+.css-13cymwt-control .css-hlgwow {
+  padding: 0 8px;
+}
+
+.css-13cymwt-control .css-hlgwow .css-19bb58m{
+  margin: 0 ;
+  padding: 0 ;
+}
+
+.css-13cymwt-control .css-1wy0on6 {
+  margin-top: 4px;
+}
+
+
+ .add-prescrtr {
+  padding: 4px 10px;
+  background-color: #223a66;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.add-prescrtr:hover {
+  background-color: #e12454;
+} 
+
+.css-13cymwt-control {
+  max-width: 160px !important;
+  min-width: 160px !important;
+}
+
+.diagnosis-tx-dc {
+
+}
+
+.css-13cymwt-control {
+  max-width: 160px !important;
+  min-width: 160px !important;
+}
+
+.diagnosis-tx-dc:disabled {
+  background-color: #f4f4f8;
+}
+
+
+.mt-dcss {
+  padding-top: 110px
+}
+
+
+
+
+/* Css FormBank */
+/* Css FormBank */
+
+
+
+.custombk-card-container {
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.custombk-card-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.custombk-form-group {
+  margin-bottom: 15px;
+}
+
+.custombk-form-group label {
+  font-size: 14px;
+  color: #333;
+}
+
+.custombk-form-group input,
+.custombk-form-group select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.custombk-form-group input:focus,
+.custombk-form-group select:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.custombk-card-preview {
+  background: linear-gradient(135deg, #007bff, #00aaff);
+  color: white;
+  padding: 20px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  text-align: left;
+  font-size: 16px;
+}
+
+.custombk-card-preview .custombk-bank-name {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.custombk-card-preview .custombk-account-number {
+  font-size: 20px;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.custombk-card-preview .custombk-holder-name {
+  font-size: 16px;
+}
+
+.custombk-btn-submit {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.custombk-btn-submit:hover {
+  background-color: #0056b3;
+}
+
+.appoits-waitrefund > button{
+  background-color: #17a2b8 ;
+}
+
+.appoits-refunded > button {
+  background-color: #007bff ;
+
+}
+
+
+
+
+/* Css Refund Invoice */
+/* Css Refund Invoice */
+
+.customRI-invoice-card {
+  border-radius: 10px;
+  padding: 20px;
+  width: 400px;
+  margin: 20px auto;
+  margin-bottom: 10px;
+}
+
+.customRI-invoice-title {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.customRI-invoice-info {
+  margin: 10px 0;
+}
+
+.customRI-info-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.customRI-info-label {
+  font-weight: bold;
+  color: #555;
+}
+
+.c-info-value {
+  color: #333;
+}
+
+
+.customRI-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #333;
+}
+
+.customRI-invoice-button {
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  padding: 6px;
+  background-color: #28a745; /* Màu xanh lá cây */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.customRI-invoice-button:hover {
+  background-color: #218838; /* Màu xanh lá cây đậm hơn khi hover */
+}
+
+.box-btn-cancel {
+justify-content: center;  width: 100%;
+}
+
+
+.btn-chage-sc {
+  z-index: 100;
+  position: relative;
+  top: 0;
+  left: -260px;
+  margin-bottom: -40px;
+}
+
+
+.note-chage-sc {
+  color: red;
+}
+
+.note-header-sc {
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+}
+  
+
+
+.box-hd-appoints{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #E8E8E8;
+  color: #000;
+
+}
+
+.box-hd-appoints .b2-hd-txt{
+  margin-right: 10px;
+}
+
+.b2-hd-appoints {
+  width: 220px;
+  color: #000;
+}
+
+.b2-hd-appoints .appoits-time, .b2-hd-appoints .appoits-date {
+  margin: 0;
+}
+
+.b2-hd-appoints .appoits-time {
+  margin-top: 10px;
+}
+
+.b2-hd-appoints .appoits-date {
+  margin-bottom: 10px;
+}
+
+.cost-bk-dc{
+  margin-top: -14px;
 }
